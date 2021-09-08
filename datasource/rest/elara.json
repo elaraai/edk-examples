@@ -1,0 +1,28 @@
+{
+  "project": {
+    "name": "Rest DataSource Example"
+  },
+  "assets": {
+    "local.deployment": {
+      "type": "deployment",
+      "name": "Local",
+      "loglevel": "debug",
+      "server": "localhost",
+      "warn": false
+    },
+    "rest.source": {
+      "name": "Rest",
+      "def_path": "src/datasource/rest.source.def.ts",
+      "gen_path": "gen/rest.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    }
+  }
+}

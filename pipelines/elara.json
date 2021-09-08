@@ -1,0 +1,82 @@
+{
+  "project": {
+    "name": "Pipelines Example"
+  },
+  "assets": {
+    "aggregate.pipeline": {
+      "name": "Aggregate",
+      "def_path": "src/pipeline/aggregate.pipeline.def.ts",
+      "gen_path": "gen/aggregate.pipeline.ts",
+      "entity_type": "pipeline",
+      "type": "entity"
+    },
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "disaggregate_dict.pipeline": {
+      "name": "Disaggregate Dict",
+      "def_path": "src/pipeline/disaggregate_dict.pipeline.def.ts",
+      "gen_path": "gen/disaggregate_dict.pipeline.ts",
+      "type": "entity",
+      "entity_type": "pipeline"
+    },
+    "filter.pipeline": {
+      "name": "Filter",
+      "def_path": "src/pipeline/filter.pipeline.def.ts",
+      "gen_path": "gen/filter.pipeline.ts",
+      "entity_type": "pipeline",
+      "type": "entity"
+    },
+    "http.pipeline": {
+      "name": "Http",
+      "def_path": "src/pipeline/http.pipeline.def.ts",
+      "gen_path": "gen/http.pipeline.ts",
+      "type": "entity",
+      "entity_type": "pipeline"
+    },
+    "join.pipeline": {
+      "name": "Join",
+      "def_path": "src/pipeline/join.pipeline.def.ts",
+      "gen_path": "gen/join.pipeline.ts",
+      "entity_type": "pipeline",
+      "type": "entity"
+    },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "Localhost",
+      "server": "localhost"
+    },
+    "offset.pipeline": {
+      "name": "Offset",
+      "def_path": "src/pipeline/offset.pipeline.def.ts",
+      "gen_path": "gen/offset.pipeline.ts",
+      "entity_type": "pipeline",
+      "type": "entity"
+    },
+    "select.pipeline": {
+      "name": "Select",
+      "def_path": "src/pipeline/select.pipeline.def.ts",
+      "gen_path": "gen/select.pipeline.ts",
+      "entity_type": "pipeline",
+      "type": "entity"
+    },
+    "test_one.source": {
+      "name": "Test One",
+      "def_path": "src/datasource/test_one.source.def.ts",
+      "gen_path": "gen/test_one.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "test_two.source": {
+      "name": "Test Two",
+      "def_path": "src/datasource/test_two.source.def.ts",
+      "gen_path": "gen/test_two.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    }
+  }
+}

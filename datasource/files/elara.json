@@ -1,0 +1,55 @@
+{
+  "project": {
+    "name": "File Datasource Example"
+  },
+  "assets": {
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "csv.source": {
+      "name": "Csv",
+      "def_path": "src/datasource/csv.source.def.ts",
+      "gen_path": "gen/csv.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "csv_two.source": {
+      "name": "Csv Two",
+      "def_path": "src/datasource/csv_two.source.def.ts",
+      "gen_path": "gen/csv_two.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "json.source": {
+      "name": "Json",
+      "def_path": "src/datasource/json.source.def.ts",
+      "gen_path": "gen/json.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "Localhost Test",
+      "loglevel": "info",
+      "server": "localhost"
+    },
+    "xlsx.source": {
+      "name": "Xlsx",
+      "def_path": "src/datasource/xlsx.source.def.ts",
+      "gen_path": "gen/xlsx.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "xlsx_two.source": {
+      "name": "Xlsx Two",
+      "def_path": "src/datasource/xlsx_two.source.def.ts",
+      "gen_path": "gen/xlsx_two.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    }
+  }
+}

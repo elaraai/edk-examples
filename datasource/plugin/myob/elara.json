@@ -1,0 +1,20 @@
+{
+  "project": {
+    "name": "MYOB Datasource Example"
+  },
+  "assets": {
+    "local.deployment": {
+      "type": "deployment",
+      "name": "Localhost Test",
+      "loglevel": "debug",
+      "server": "localhost"
+    },
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    }
+  }
+}

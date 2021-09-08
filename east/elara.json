@@ -1,0 +1,57 @@
+{
+  "project": {
+    "name": "east"
+  },
+  "assets": {
+    "baseline.scenario": {
+      "name": "baseline",
+      "def_path": "src/baseline.scenario.def.ts",
+      "gen_path": "gen/baseline.scenario.ts",
+      "type": "entity",
+      "entity_type": "scenario"
+    },
+    "input.source": {
+      "name": "input",
+      "def_path": "src/input.source.def.ts",
+      "gen_path": "gen/input.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "local",
+      "loglevel": "warn",
+      "server": "localhost",
+      "warn": false,
+      "override": {}
+    },
+    "pipeline.pipeline": {
+      "name": "pipeline",
+      "def_path": "src/pipeline.pipeline.def.ts",
+      "gen_path": "gen/pipeline.pipeline.ts",
+      "type": "entity",
+      "entity_type": "pipeline"
+    },
+    "results.plugin": {
+      "name": "results",
+      "def_path": "src/results.plugin.def.ts",
+      "gen_path": "gen/results.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "process.structure": {
+      "name": "process",
+      "def_path": "src/process.structure.def.ts",
+      "gen_path": "gen/process.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    }
+  }
+}

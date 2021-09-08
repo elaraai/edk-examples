@@ -1,0 +1,97 @@
+{
+  "project": {
+    "name": "Machine Learning Example"
+  },
+  "assets": {
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "baseline.scenario": {
+      "name": "Baseline",
+      "def_path": "src/scenario/baseline.scenario.def.ts",
+      "gen_path": "gen/baseline.scenario.ts",
+      "type": "entity",
+      "entity_type": "scenario"
+    },
+    "dictionary.source": {
+      "name": "Dictionary",
+      "def_path": "src/sources/dictionary.source.def.ts",
+      "gen_path": "gen/dictionary.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "dictionary.structure": {
+      "name": "Dictionary",
+      "def_path": "src/structure/dictionary.structure.def.ts",
+      "gen_path": "gen/dictionary.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "dictionary_float.source": {
+      "name": "dictionary_float",
+      "def_path": "src/sources/dictionary_float.source.def.ts",
+      "gen_path": "gen/dictionary_float.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "dictionary_float.structure": {
+      "name": "Dictionary Float",
+      "def_path": "src/structure/dictionary_float.structure.def.ts",
+      "gen_path": "gen/dictionary_float.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "gp.source": {
+      "name": "Gp",
+      "def_path": "src/sources/gp.source.def.ts",
+      "gen_path": "gen/gp.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "gp.structure": {
+      "name": "GP",
+      "def_path": "src/structure/gp.structure.def.ts",
+      "gen_path": "gen/gp.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "Localhost Test",
+      "loglevel": "info",
+      "server": "localhost"
+    },
+    "rate.source": {
+      "name": "Rate",
+      "def_path": "src/sources/rate.source.def.ts",
+      "gen_path": "gen/rate.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "rate.structure": {
+      "name": "Rate",
+      "def_path": "src/structure/rate.structure.def.ts",
+      "gen_path": "gen/rate.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "selector.source": {
+      "name": "Selector",
+      "def_path": "src/sources/selector.source.def.ts",
+      "gen_path": "gen/selector.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "selector.structure": {
+      "name": "Selector",
+      "def_path": "src/structure/selector.structure.def.ts",
+      "gen_path": "gen/selector.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    }
+  }
+}

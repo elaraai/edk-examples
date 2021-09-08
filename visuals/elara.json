@@ -1,0 +1,77 @@
+{
+  "project": {
+    "name": "Visual Example"
+  },
+  "assets": {
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "group_four.page": {
+      "name": "Group Four",
+      "def_path": "src/page/group_four.page.def.ts",
+      "gen_path": "gen/group_four.page.ts",
+      "entity_type": "page",
+      "type": "entity"
+    },
+    "group_one.page": {
+      "name": "Group One",
+      "def_path": "src/page/group_one.page.def.ts",
+      "gen_path": "gen/group_one.page.ts",
+      "entity_type": "page",
+      "type": "entity"
+    },
+    "group_three.page": {
+      "name": "Group Three",
+      "def_path": "src/page/group_three.page.def.ts",
+      "gen_path": "gen/group_three.page.ts",
+      "entity_type": "page",
+      "type": "entity"
+    },
+    "group_two.page": {
+      "name": "Group Two",
+      "def_path": "src/page/group_two.page.def.ts",
+      "gen_path": "gen/group_two.page.ts",
+      "entity_type": "page",
+      "type": "entity"
+    },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "Local",
+      "loglevel": "info",
+      "server": "localhost",
+      "application": "visuals.application"
+    },
+    "row_one.page": {
+      "name": "Row One",
+      "def_path": "src/page/row_one.page.def.ts",
+      "gen_path": "gen/row_one.page.ts",
+      "entity_type": "page",
+      "type": "entity"
+    },
+    "row_two.page": {
+      "name": "Row Two",
+      "def_path": "src/page/row_two.page.def.ts",
+      "gen_path": "gen/row_two.page.ts",
+      "entity_type": "page",
+      "type": "entity"
+    },
+    "rows.source": {
+      "name": "Rows",
+      "def_path": "src/sources/rows.source.def.ts",
+      "gen_path": "gen/rows.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "view.plugin": {
+      "name": "JSON Data Weekends",
+      "def_path": "src/plugin/view.plugin.def.ts",
+      "gen_path": "gen/view.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    }
+  }
+}

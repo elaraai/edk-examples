@@ -1,0 +1,41 @@
+{
+  "project": {
+    "name": "Procedural Datasource Example"
+  },
+  "assets": {
+    "array.source": {
+      "name": "Array",
+      "def_path": "src/datasource/array.source.def.ts",
+      "gen_path": "gen/array.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "clock.source": {
+      "name": "Clock",
+      "def_path": "src/datasource/clock.source.def.ts",
+      "gen_path": "gen/clock.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "Localhost Test",
+      "loglevel": "info",
+      "server": "localhost"
+    },
+    "range.source": {
+      "name": "Range",
+      "def_path": "src/datasource/range.source.def.ts",
+      "gen_path": "gen/range.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    }
+  }
+}

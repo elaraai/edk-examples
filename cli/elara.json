@@ -1,0 +1,14 @@
+{
+  "project": {
+    "name": "CLI"
+  },
+  "assets": {
+    "test.scenario": {
+      "name": "Test",
+      "def_path": "src/test.scenario.def.ts",
+      "gen_path": "gen/test.scenario.ts",
+      "type": "entity",
+      "entity_type": "scenario"
+    }
+  }
+}

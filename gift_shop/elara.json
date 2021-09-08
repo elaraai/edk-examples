@@ -1,0 +1,132 @@
+{
+  "project": {
+    "name": "Gift Shop"
+  },
+  "assets": {
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "baseline.scenario": {
+      "name": "Baseline",
+      "def_path": "src/scenario/baseline.scenario.def.ts",
+      "gen_path": "gen/baseline.scenario.ts",
+      "type": "entity",
+      "entity_type": "scenario"
+    },
+    "covid.source": {
+      "name": "Covid",
+      "def_path": "src/source/covid.source.def.ts",
+      "gen_path": "gen/covid.source.ts",
+      "type": "entity",
+      "entity_type": "datasource",
+      "file": "covid.file"
+    },
+    "demo.deployment": {
+      "type": "deployment",
+      "name": "demo",
+      "loglevel": "warn",
+      "server": "localhost",
+      "application": "",
+      "warn": true
+    },
+    "metrics.structure": {
+      "name": "Metrics",
+      "def_path": "src/structure/metrics.structure.def.ts",
+      "gen_path": "gen/metrics.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "money.structure": {
+      "name": "Money",
+      "def_path": "src/structure/money.structure.def.ts",
+      "gen_path": "gen/money.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "optimised.scenario": {
+      "name": "Optimised",
+      "def_path": "src/scenario/optimised.scenario.def.ts",
+      "gen_path": "gen/optimised.scenario.ts",
+      "type": "entity",
+      "entity_type": "scenario"
+    },
+    "products.structure": {
+      "name": "Products",
+      "def_path": "src/structure/products.structure.def.ts",
+      "gen_path": "gen/products.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "purchases.source": {
+      "name": "Purchases",
+      "def_path": "src/source/purchases.source.def.ts",
+      "gen_path": "gen/purchases.source.ts",
+      "type": "entity",
+      "entity_type": "datasource",
+      "file": "purchases.file"
+    },
+    "rosters.source": {
+      "name": "Rosters",
+      "def_path": "src/source/rosters.source.def.ts",
+      "gen_path": "gen/rosters.source.ts",
+      "type": "entity",
+      "entity_type": "datasource",
+      "file": "rosters.file"
+    },
+    "sales.source": {
+      "name": "Sales",
+      "def_path": "src/source/sales.source.def.ts",
+      "gen_path": "gen/sales.source.ts",
+      "type": "entity",
+      "entity_type": "datasource",
+      "file": "sales.file"
+    },
+    "sales.structure": {
+      "name": "Sales",
+      "def_path": "src/structure/sales.structure.def.ts",
+      "gen_path": "gen/sales.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "shifts.source": {
+      "name": "Shifts",
+      "def_path": "src/source/shifts.source.def.ts",
+      "gen_path": "gen/shifts.source.ts",
+      "type": "entity",
+      "entity_type": "datasource",
+      "file": "shifts.file"
+    },
+    "structure_pipelines.plugin": {
+      "name": "Structure Pipelines",
+      "def_path": "src/plugin/structure_pipelines.plugin.def.ts",
+      "gen_path": "gen/structure_pipelines.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "supplies.structure": {
+      "name": "Supplies",
+      "def_path": "src/structure/supplies.structure.def.ts",
+      "gen_path": "gen/supplies.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "time_aggregate.plugin": {
+      "name": "Time Aggregate",
+      "def_path": "src/plugin/time_aggregate.plugin.def.ts",
+      "gen_path": "gen/time_aggregate.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "time_cycle.plugin": {
+      "name": "Time Cycle Plugin",
+      "def_path": "src/plugin/time_cycle.plugin.def.ts",
+      "gen_path": "gen/time_cycle.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    }
+  }
+}

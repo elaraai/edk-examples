@@ -1,0 +1,25 @@
+TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME,DATA_TYPE,CONSTRAINT_TYPE
+dbo,TestTable,a string,nvarchar,PRIMARY KEY
+dbo,TestTable,a date,date,NONE
+dbo,TestTable,a number,float,NONE
+dbo,TestTable,a integer,bigint,NONE
+dbo,TestTable,a boolean,bit,NONE
+dbo,TestTable,Another String,nvarchar,NONE
+dbo,AnotherTestTable,another string,nvarchar,PRIMARY KEY
+dbo,AnotherTestTable,another date,date,NONE
+dbo,AnotherTestTable,another number,float,NONE
+dbo,AnotherTestTable,another integer,bigint,NONE
+dbo,AnotherTestTable,another boolean,bit,NONE
+dbo,AnotherTestTable,Yet Another String,nvarchar,NONE
+dbo,TestView,a string,nvarchar,PRIMARY KEY
+dbo,TestView,a date,date,PRIMARY KEY
+dbo,TestView,a number,float,PRIMARY KEY
+dbo,TestView,a integer,bigint,PRIMARY KEY
+dbo,TestView,a boolean,bit,PRIMARY KEY
+dbo,TestView,Another String,nvarchar,PRIMARY KEY
+dbo,AnotherTestView,another string,nvarchar,PRIMARY KEY
+dbo,AnotherTestView,another date,date,PRIMARY KEY
+dbo,AnotherTestView,another number,float,PRIMARY KEY
+dbo,AnotherTestView,another integer,bigint,PRIMARY KEY
+dbo,AnotherTestView,another boolean,bit,PRIMARY KEY
+dbo,AnotherTestView,Yet Another String,nvarchar,PRIMARY KEY
