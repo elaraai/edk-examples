@@ -26,7 +26,7 @@ export default ELARA.JsonSourceSchema({
 ```
 
 ## Detecting datasource
-The output expressions were detected for the datasource with the following command: ```edk detect json --name sales.source```
+The output expressions were detected for the datasource with the following command: ```edk-io detect json --name sales.source```
 
 This will generate the types and expressions for ```json.source```:
 
@@ -34,26 +34,19 @@ This will generate the types and expressions for ```json.source```:
 // East type declarations 
 import * as ELARA from "@elaraai/edk/lib"
 
-const sales_body_type = ELARA.ArrayType(ELARA.StructType({
-    ID: 'float',
-    Predict: 'boolean',
-    Cost: 'float',
-    Date: 'datetime',
-    Price: 'float',
-    Qty: 'float'
-}));
-
-
 export default ELARA.JsonSourceSchema({
     name: "Sales",
-    uri: ELARA.FileURI({
-        path: ELARA.Const("files/sales.jsonl"),
-    }),
-    primary_key: ELARA.Print(ELARA.Variable("ID", 'float')),
-    filter: ELARA.Const(true),
-    body: ELARA.Parse(ELARA.Variable("body", sales_body_type)),
-    body_variable: ELARA.Variable("body", sales_body_type),
-    value: ELARA.Variable("body", sales_body_type),
+    uri: "file://files/sales.json",
+    primary_key: ELARA.Print(ELARA.Variable("ID", 'integer')),
+    selections: {
+        Cost: ELARA.Parse(ELARA.Variable("Cost", 'float')),
+        Profit: ELARA.Parse(ELARA.Variable("Profit", 'float')),
+        Predict: ELARA.Parse(ELARA.Variable("Predict", 'boolean')),
+        Date: ELARA.Parse(ELARA.Variable("Date", 'datetime')),
+        Price: ELARA.Parse(ELARA.Variable("Price", 'float')),
+        Qty: ELARA.Parse(ELARA.Variable("Qty", 'float')),
+        ID: ELARA.Parse(ELARA.Variable("ID", 'integer')),
+    },
 })
 ```
 
@@ -261,5 +254,5 @@ export default Schema(
 
 ## Reference
 General reference documentation for EDK usage is available in the following links:
-- [EDK CLI reference](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
-- [EDK API reference](https://elaraai.github.io/docs/api): programmatic api for the cli functionality
+- [EDK CLI](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
+- [EDK API](https://elaraai.github.io/docs/edk): programmatic api for the cli functionality

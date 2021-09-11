@@ -27,12 +27,7 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.JsonSourceSchema({
     name: "Json",
-    uri: ELARA.FtpURI({
-        host: ELARA.Const("localhost"),
-        username: ELARA.Const("__user__"),
-        password: ELARA.Const("__password__"),
-        path: ELARA.Const("test.jsonl"),
-    })
+    uri: 'ftp://__user__:__password__@localhost/test.jsonl'
 })
 ```
 
@@ -40,11 +35,11 @@ Note that the second version of each file (and datasource) are intentionally mor
 
 ## Detecting datasources
 The output expressions were detected for each data with the following commands.
-- csv: ```edk detect csv --asset csv.source --defaults --empty ?```
-- json: ```edk detect json --asset json.source --defaults```
-- xlsx: ```edk detect xlsx --asset xlsx.source --defaults```
-- csv two: ```edk detect csv --asset csv_two.source --defaults --empty ?```
-- xlsx two: ```edk detect xlsx --asset xlsx_two.source --defaults```
+- csv: ```edk-io detect csv --asset csv.source --defaults --empty ?```
+- json: ```edk-io detect json --asset json.source --defaults```
+- xlsx: ```edk-io detect xlsx --asset xlsx.source --defaults```
+- csv two: ```edk-io detect csv --asset csv_two.source --defaults --empty ?```
+- xlsx two: ```edk-io detect xlsx --asset xlsx_two.source --defaults```
 
 This will generate the types and expressions for the datasources, for example for ```json.source```:
 
@@ -70,12 +65,7 @@ const json_struct_type = ELARA.StructType({
 
 export default ELARA.JsonSourceSchema({
     name: "Json",
-    uri: ELARA.FtpURI({
-        host: ELARA.Const("localhost"),
-        username: ELARA.Const("__user__"),
-        password: ELARA.Const("__password__"),
-        path: ELARA.Const("test.jsonl"),
-    }),
+    uri: 'ftp://__user__:__password__@localhost/test.jsonl',
     primary_key: ELARA.Variable("string", 'string'),
     selections: {
         string: ELARA.Parse(ELARA.Variable("string", 'string')),
@@ -96,12 +86,7 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.CsvSourceSchema({
     name: "Csv Two",
-    uri: ELARA.FtpURI({
-        host: ELARA.Const("localhost"),
-        username: ELARA.Const("__user__"),
-        password: ELARA.Const("__password__"),
-        path: ELARA.Const("test_two.csv"),
-    }),
+    uri: 'ftp://__user__:__password__@localhost/test_two.csv',
     primary_key: ELARA.Print(ELARA.Variable("index", 'integer')),
     index_variable: ELARA.Variable("index", 'integer'),
     selections: {
@@ -156,5 +141,5 @@ export default ELARA.Schema(
 ## Reference
 
 General reference documentation for EDK usage is available in the following links:
-- [EDK CLI reference](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
-- [EDK API reference](https://elaraai.github.io/docs/api): programmatic api for the cli functionality
+- [EDK CLI](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
+- [EDK API](https://elaraai.github.io/docs/edk): programmatic api for the cli functionality

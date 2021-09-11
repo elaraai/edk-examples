@@ -5,12 +5,7 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.CsvSourceSchema({
     name: "Csv",
-    uri: ELARA.FtpURI({
-        host: ELARA.Const("localhost"),
-        username: ELARA.Const("__user__"),
-        password: ELARA.Const("__password__"),
-        path: ELARA.Const("test.csv"),
-    }),
+    uri: 'ftp://__user__:__password__@localhost/test.csv',
     primary_key: ELARA.Variable("string", 'string'),
     selections: {
         string: ELARA.Parse(ELARA.IfElse(

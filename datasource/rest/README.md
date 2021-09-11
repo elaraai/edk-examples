@@ -116,7 +116,7 @@ export default ELARA.RestApiSourceSchema({
 ```
 
 ### Detecting response
-Now that we have a query we can use the edk detection to infer the authenticated request response, with the following command `edk detect rest --asset rest.source --defaults`. This will specify a temporary callback url, as well as a temporary app authorisation url to click on to generate an access token, to detect the `Repos` endpoitn response:
+Now that we have a query we can use the edk detection to infer the authenticated request response, with the following command `edk-io detect rest --asset rest.source --defaults`. This will specify a temporary callback url, as well as a temporary app authorisation url to click on to generate an access token, to detect the `Repos` endpoitn response:
 
 ```bash
 ℹ Datasource Rest register callback: http://localhost:8080/auth/callback/rest.source
@@ -346,7 +346,7 @@ export default ELARA.RestApiSourceSchema({
 })
 ```
 
-Using the same process as earlier we can use the edk detection to infer the authenticated request responses for the sub-queries, with the following command `edk detect rest --asset rest.source --defaults`.
+Using the same process as earlier we can use the edk detection to infer the authenticated request responses for the sub-queries, with the following command `edk-io detect rest --asset rest.source --defaults`.
 
 ## Adding application
 Now that we have a complete datasource, the application can be added with the following command ```edk add plugin --name "Application" --def_dir src/plugin```. The plugin, a ```SuperUser``` and related environment variables are added as:
@@ -384,5 +384,5 @@ export default ELARA.Schema(
 ## Reference
 
 General reference documentation for EDK usage is available in the following links:
-- [EDK CLI reference](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
-- [EDK API reference](https://elaraai.github.io/docs/api): programmatic api for the cli functionality
+- [EDK CLI](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
+- [EDK API](https://elaraai.github.io/docs/edk): programmatic api for the cli functionality

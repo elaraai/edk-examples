@@ -21,12 +21,7 @@ const json_struct_type = ELARA.StructType({
 
 export default ELARA.JsonSourceSchema({
     name: "Json",
-    uri: ELARA.FtpURI({
-        host: ELARA.Const("localhost"),
-        username: ELARA.Const("__user__"),
-        password: ELARA.Const("__password__"),
-        path: ELARA.Const("test.jsonl"),
-    }),
+    uri: 'ftp://__user__:__password__@localhost/test.jsonl',
     primary_key: ELARA.Variable("string", 'string'),
     selections: {
         string: ELARA.Parse(ELARA.Variable("string", 'string')),

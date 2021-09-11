@@ -12,9 +12,7 @@ const rate_y_type = ELARA.StructType({
 
 export default ELARA.JsonSourceSchema({
     name: "Rate",
-    uri: ELARA.FileURI({
-        path: ELARA.Const("data/rate.jsonl"),
-    }),
+    uri: 'file://data/rate.jsonl',
     primary_key: ELARA.Print(ELARA.Variable("id", 'integer')),
     selections: {
         id: ELARA.Parse(ELARA.Variable("id", 'integer')),

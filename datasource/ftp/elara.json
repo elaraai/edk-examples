@@ -3,18 +3,19 @@
     "name": "Ftp Example"
   },
   "assets": {
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
     "csv.source": {
       "name": "Csv",
       "def_path": "src/datasource/csv.source.def.ts",
       "gen_path": "gen/csv.source.ts",
       "type": "entity",
       "entity_type": "datasource"
-    },
-    "local.deployment": {
-      "type": "deployment",
-      "name": "Localhost Test",
-      "loglevel": "info",
-      "server": "localhost"
     },
     "csv_two.source": {
       "name": "Csv Two",
@@ -30,6 +31,12 @@
       "type": "entity",
       "entity_type": "datasource"
     },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "Localhost Test",
+      "loglevel": "info",
+      "server": "localhost"
+    },
     "xlsx.source": {
       "name": "Xlsx",
       "def_path": "src/datasource/xlsx.source.def.ts",
@@ -43,13 +50,6 @@
       "gen_path": "gen/xlsx_two.source.ts",
       "type": "entity",
       "entity_type": "datasource"
-    },
-    "application.plugin": {
-      "name": "Application",
-      "def_path": "src/plugin/application.plugin.def.ts",
-      "gen_path": "gen/application.plugin.ts",
-      "type": "entity",
-      "entity_type": "plugin"
     }
   }
 }

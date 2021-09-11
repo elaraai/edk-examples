@@ -5,9 +5,7 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.JsonSourceSchema({
     name: "dictionary_float",
-    uri: ELARA.FileURI({
-        path: ELARA.Const("data/dictionary_float.jsonl"),
-    }),
+    uri: 'file://data/dictionary_float.jsonl',
     primary_key: ELARA.Print(ELARA.Variable("id", 'integer')),
     selections: {
         id: ELARA.Parse(ELARA.Variable("id", 'integer')),

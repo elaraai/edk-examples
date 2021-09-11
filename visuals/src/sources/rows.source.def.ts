@@ -36,9 +36,7 @@ const rows_array_type = ELARA.ArrayType(ELARA.StructType({
 
 export default ELARA.JsonSourceSchema({
     name: "Rows",
-    uri: ELARA.FileURI({
-        path: ELARA.Const("data/rows.jsonl"),
-    }),
+    uri: "file://files/rows.jsonl",
     primary_key: ELARA.Variable("Identifier", 'string'),
     selections: {
         Identifier: ELARA.Parse(ELARA.Variable("Identifier", 'string')),

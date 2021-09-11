@@ -5,9 +5,7 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.JsonSourceSchema({
     name: "Sales",
-    uri: ELARA.FileURI({
-        path: ELARA.Const("files/sales.jsonl"),
-    }),
+    uri: 'file://files/sales.jsonl',
     primary_key: ELARA.Print(ELARA.Variable("ID", 'integer')),
     selections: {
         Cost: ELARA.Parse(ELARA.Variable("Cost", 'float')),

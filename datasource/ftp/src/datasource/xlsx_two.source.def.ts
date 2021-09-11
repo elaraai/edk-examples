@@ -5,12 +5,7 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.ExcelSourceSchema({
     name: "Xlsx Two",
-    uri: ELARA.FtpURI({
-        host: ELARA.Const("localhost"),
-        username: ELARA.Const("__user__"),
-        password: ELARA.Const("__password__"),
-        path: ELARA.Const("test_two.xlsx"),
-    }),
+    uri: 'ftp://__user__:__password__@localhost/test_two.xlsx',
     worksheets: {
         test: {
             primary_key: ELARA.Print(ELARA.Variable("index", 'integer')),

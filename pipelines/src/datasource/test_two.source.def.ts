@@ -21,9 +21,7 @@ const test_two_struct_type = ELARA.StructType({
 
 export default ELARA.JsonSourceSchema({
     name: "Test Two",
-    uri: ELARA.FileURI({
-        path: ELARA.Const("files/test_two.jsonl"),
-    }),
+    uri: "file://files/test_two.jsonl",
     primary_key: ELARA.Variable("string", 'string'),
     selections: {
         string: ELARA.Parse(ELARA.Variable("string", 'string')),

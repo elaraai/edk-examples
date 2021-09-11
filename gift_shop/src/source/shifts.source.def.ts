@@ -5,7 +5,7 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.CsvSourceSchema({
     name: "Shifts",
-    uri: ELARA.Const("files/shifts.csv"),
+    uri: 'file://files/shifts.csv',
     primary_key: ELARA.Variable("ShiftID", 'string'),
     selections: {
         ShiftID: ELARA.Parse(ELARA.Variable("ShiftID", 'string')),

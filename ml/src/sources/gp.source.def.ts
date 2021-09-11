@@ -7,9 +7,7 @@ const gp_x_dict_type = ELARA.DictType('float');
 
 export default ELARA.JsonSourceSchema({
     name: "Gp",
-    uri: ELARA.FileURI({
-        path: ELARA.Const("data/gp.jsonl"),
-    }),
+    uri: 'file://data/gp.jsonl',
     primary_key: ELARA.Print(ELARA.Variable("id", 'integer')),
     selections: {
         id: ELARA.Parse(ELARA.Variable("id", 'integer')),

@@ -4,7 +4,7 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.CsvSourceSchema({
     name: "Covid",
-    uri: ELARA.Const("files/covid.csv"),
+    uri: 'file://files/covid.csv',
     primary_key: ELARA.Print(ELARA.Variable("Date", 'datetime')),
     selections: {
         Date: ELARA.Parse(ELARA.Variable("Date", 'datetime')),

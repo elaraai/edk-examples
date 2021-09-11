@@ -5,9 +5,7 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.ExcelSourceSchema({
     name: "Xlsx Two",
-    uri: ELARA.FileURI({
-        path: ELARA.Const("files/test_two.xlsx"),
-    }),
+    uri: 'file://files/test_two.xlsx',
     worksheets: {
         test: {
             primary_key: ELARA.Print(ELARA.Variable("index", 'integer')),

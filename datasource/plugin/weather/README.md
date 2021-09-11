@@ -35,9 +35,9 @@ export default ELARA.Schema(
             })
         ],
         environments: [
-            EnvironmentVariable({ name: 'SHOPIFY_API_KEY' }),
-            EnvironmentVariable({ name: 'SHOPIFY_PASSWORD' }),
-            EnvironmentVariable({ name: 'SHOPIFY_URL' }),
+            EnvironmentVariable({ name: 'WEATHER_GEOHASH' }),
+            EnvironmentVariable({ name: 'WEATHER_NAME' }),
+            EnvironmentVariable({ name: 'WEATHER_STATE' }),
         ]
     })
 )
@@ -46,5 +46,5 @@ export default ELARA.Schema(
 ## Reference
 
 General reference documentation for EDK usage is available in the following links:
-- [EDK CLI reference](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
-- [EDK API reference](https://elaraai.github.io/docs/api): programmatic api for the cli functionality
+- [EDK CLI](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
+- [EDK API](https://elaraai.github.io/docs/edk): programmatic api for the cli functionality

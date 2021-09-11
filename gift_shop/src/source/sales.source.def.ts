@@ -4,7 +4,7 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.CsvSourceSchema({
     name: "Sales",
-    uri: ELARA.Const("files/sales.csv"),
+    uri: 'file://files/sales.csv',
     primary_key: ELARA.Variable("SaleID", 'string'),
     selections: {
         SaleID: ELARA.Parse(ELARA.Variable("SaleID", 'string')),

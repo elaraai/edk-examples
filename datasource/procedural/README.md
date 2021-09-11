@@ -130,7 +130,7 @@ export default ELARA.ArraySourceSchema({
 
 ## Detecting datasources
 The output can be detected for the array source, there is no need to do this for the clock and range though:
-- array: ```edk detect array --asset array.source```
+- array: ```edk-io detect array --asset array.source```
 
 This will generate the types and expressions for the array datasource:
 
@@ -210,5 +210,5 @@ export default ELARA.Schema(
 ## Reference
 
 General reference documentation for EDK usage is available in the following links:
-- [EDK CLI reference](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
-- [EDK API reference](https://elaraai.github.io/docs/api): programmatic api for the cli functionality
+- [EDK CLI](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
+- [EDK API](https://elaraai.github.io/docs/edk): programmatic api for the cli functionality

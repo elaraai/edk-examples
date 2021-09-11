@@ -44,5 +44,5 @@ See below for the various project categories and corresponding links.
 
 ## Reference
 For general usage and code examples we provide the following detailed documentation:
-- [EDK CLI reference](../cli/cli.md): detailed CLI usage reference and examples
-- [EDK API reference](../api/index.md): programmatic api for the cli functionality
+- [EDK CLI](../cli/cli.md): detailed CLI usage reference and examples
+- [EDK API](../api/index.md): programmatic api for the cli functionality

@@ -1,6 +1,6 @@
 # Overview
 
-Example solution that demonstrates the use of the [EDK API](https://elaraai.github.io/docs/api) available in the [EDK npm package](https://www.npmjs.com/package/@elaraai/edk).
+Example solution that demonstrates the use of the [EDK API](https://elaraai.github.io/docs/edk) available in the [EDK npm package](https://www.npmjs.com/package/@elaraai/edk).
 
 # Usage
 The project contains a valid ELARA project that simply creates a single `Scenario` called "Test", the use of the API will remove and create said `Scenario`, then build the schema:
@@ -12,5 +12,5 @@ The project contains a valid ELARA project that simply creates a single `Scenari
 ## Reference
 
 General reference documentation for EDK usage is available in the following links:
-- [EDK CLI reference](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
-- [EDK API reference](https://elaraai.github.io/docs/api): programmatic api for the cli functionality
+- [EDK CLI](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
+- [EDK API](https://elaraai.github.io/docs/edk): programmatic api for the cli functionality

@@ -10,7 +10,7 @@ The solution can be built using the following command ```edk build```. Prior to 
 The project will involve creating some an sql datasource, detecting it's outputs, then visualising the outputs.
 
 ## Adding datasource
-An sql data source was added with the following EDK command ```edk add datasource sql --name Sql --name='SQL' --server localhost --database DataSourceTest --username elara --password wXP5cJnTjJzk4Ta3 --def_dir src/datasource```.
+An sql data source was added with the following EDK command ```edk add datasource sql --name Sql --name='SQL' --uri mssql://localhost//DataSourceTest --username elara --password wXP5cJnTjJzk4Ta3 --def_dir src/datasource```.
 
 This will create an empty datasource for the database:
 
@@ -21,15 +21,14 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.SqlSourceSchema({
     name: "SQL",
-    server: ELARA.Const("localhost"),
-    database: ELARA.Const("DataSourceTest"),
+    connection: 'mssql://localhost//DataSourceTest',
     username: ELARA.Const("elara"),
     password: ELARA.Const("2sXRkybHEGY8mrnF"),
 })
 ```
 
 ## Detecting datasource
-The output expressions were detected for the datasource with the following command ```edk detect sql --asset sql.source```.
+The output expressions were detected for the datasource with the following command ```edk-io detect sql --asset sql.source```.
 
 This generated the types and expressions for the datasource:
 
@@ -40,14 +39,11 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.SqlSourceSchema({
     name: "SQL",
-    connection: MsSqlURI({
-        server: ELARA.Const("localhost"),
-        database: ELARA.Const("DataSourceTest"),
-    }),
+    connection: 'mssql://localhost//DataSourceTest',
     username: ELARA.Const("elara"),
     password: ELARA.Const("2sXRkybHEGY8mrnF"),
     queries: {
-        TestTable: {
+        TestTable: SqlSourceQuery({
             query: ELARA.Const("SELECT * FROM dbo.TestTable"),
             primary_key: ELARA.Variable("a string", 'string'),
             filter: ELARA.Const(true),
@@ -59,8 +55,8 @@ export default ELARA.SqlSourceSchema({
                 'a boolean': ELARA.Parse(ELARA.Variable("a boolean", 'boolean')),
                 'Another String': ELARA.Parse(ELARA.Variable("Another String", 'string')),
             },
-        },
-        AnotherTestTable: {
+        }),
+        AnotherTestTable: SqlSourceQuery({
             query: ELARA.Const("SELECT * FROM dbo.AnotherTestTable"),
             primary_key: ELARA.Variable("another string", 'string'),
             filter: ELARA.Const(true),
@@ -72,8 +68,8 @@ export default ELARA.SqlSourceSchema({
                 'another boolean': ELARA.Parse(ELARA.Variable("another boolean", 'boolean')),
                 'Yet Another String': ELARA.Parse(ELARA.Variable("Yet Another String", 'string')),
             },
-        },
-        TestView: {
+        }),
+        TestView: SqlSourceQuery({
             query: ELARA.Const("SELECT * FROM dbo.TestView"),
             primary_key: ELARA.StringJoin([
                 ELARA.Variable("a string", 'string'),
@@ -92,8 +88,8 @@ export default ELARA.SqlSourceSchema({
                 'a boolean': ELARA.Parse(ELARA.Variable("a boolean", 'boolean')),
                 'Another String': ELARA.Parse(ELARA.Variable("Another String", 'string')),
             },
-        },
-        AnotherTestView: {
+        }),
+        AnotherTestView: SqlSourceQuery({
             query: ELARA.Const("SELECT * FROM dbo.AnotherTestView"),
             primary_key: ELARA.StringJoin([
                 ELARA.Variable("another string", 'string'),
@@ -112,7 +108,7 @@ export default ELARA.SqlSourceSchema({
                 'another boolean': ELARA.Parse(ELARA.Variable("another boolean", 'boolean')),
                 'Yet Another String': ELARA.Parse(ELARA.Variable("Yet Another String", 'string')),
             },
-        },
+        })
     }
 })
 ```
@@ -202,5 +198,5 @@ export default ELARA.Schema(
 ## Reference
 
 General reference documentation for EDK usage is available in the following links:
-- [EDK CLI reference](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
-- [EDK API reference](https://elaraai.github.io/docs/api): programmatic api for the cli functionality
+- [EDK CLI](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
+- [EDK API](https://elaraai.github.io/docs/edk): programmatic api for the cli functionality

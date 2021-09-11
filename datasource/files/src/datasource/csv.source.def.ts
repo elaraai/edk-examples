@@ -5,9 +5,7 @@ import * as ELARA from "@elaraai/edk/lib"
 
 export default ELARA.CsvSourceSchema({
     name: "Csv",
-    uri: ELARA.FileURI({
-        path: ELARA.Const("files/test.csv"),
-    }),
+    uri: 'file://files/test.csv',
     primary_key: ELARA.Variable("string", 'string'),
     selections: {
         string: ELARA.Parse(ELARA.IfElse(

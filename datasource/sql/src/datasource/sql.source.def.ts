@@ -1,15 +1,12 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 // East type declarations 
 import * as ELARA from "@elaraai/edk/lib"
-import { MsSqlURI, SqlSourceCsv, SqlSourceQuery } from "@elaraai/edk/lib"
+import { SqlSourceCsv, SqlSourceQuery } from "@elaraai/edk/lib"
 
 
 export default ELARA.SqlSourceSchema({
     name: "SQL",
-    connection: MsSqlURI({
-        server: ELARA.Const("localhost"),
-        database: ELARA.Const("DataSourceTest"),
-    }),
+    connection: 'mssql://localhost//DataSourceTest',
     username: ELARA.Const("elara"),
     password: ELARA.Const("2sXRkybHEGY8mrnF"),
     poll: ELARA.Poll({

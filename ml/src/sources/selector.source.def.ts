@@ -7,9 +7,7 @@ const selector_x_dict_type = ELARA.DictType('float');
 
 export default ELARA.JsonSourceSchema({
     name: "Selector",
-    uri: ELARA.FileURI({
-        path: ELARA.Const("data/selector.jsonl"),
-    }),
+    uri: 'file://data/selector.jsonl',
     primary_key: ELARA.Print(ELARA.Variable("id", 'integer')),
     selections: {
         id: ELARA.Parse(ELARA.Variable("id", 'integer')),

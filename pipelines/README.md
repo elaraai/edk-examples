@@ -20,49 +20,46 @@ In order to have some data to apply in the pipelines, we will first add some jso
 
 This will create two empty datasources, we can populate the output expressions 
 
-- ```edk detect json --asset test_one.source --defaults```
-- ```edk detect json --asset test_two.source --defaults```
+- ```edk-io detect json --asset test_one.source --defaults```
+- ```edk-io detect json --asset test_two.source --defaults```
 
 The generates datasources will contain some complex nested data so we can exercise a broad range of Expressions, as described for `test_one.source`:
 
 ```typescript
 import * as ELARA from "@elaraai/edk/lib"
 
-const json_body_type = ELARA.ArrayType(ELARA.StructType({
+const test_one_struct_type = ELARA.StructType({
     string: 'string',
     date: 'datetime',
     number: 'float',
     integer: 'integer',
     'boolean': 'boolean',
-    array: 'set',
     struct: ELARA.StructType({
         string: 'string',
         date: 'datetime',
         number: 'float',
         integer: 'integer',
         'boolean': 'boolean',
-        struct: ELARA.StructType({
-            string: 'string',
-            date: 'datetime',
-            number: 'float',
-            integer: 'integer',
-            'boolean': 'boolean',
-        }),
-        array: 'set',
-    }), 
-    Dict: ELARA.DictType('float'),
-}));
+    }),
+    array: 'set',
+});
 
 export default ELARA.JsonSourceSchema({
     name: "Test One",
     uri: ELARA.FileURI({
         path: ELARA.Const("files/test_one.jsonl"),
     }),
-    filter: ELARA.Const(true),
-    primary_key: ELARA.Variable('string', 'string'),
-    body: ELARA.Parse(ELARA.Variable('body', json_body_type)),
-    body_variable: ELARA.Variable('body', json_body_type),
-    value: ELARA.Variable('body', json_body_type),
+    primary_key: ELARA.Variable("string", 'string'),
+    selections: {
+        string: ELARA.Parse(ELARA.Variable("string", 'string')),
+        date: ELARA.Parse(ELARA.Variable("date", 'datetime')),
+        number: ELARA.Parse(ELARA.Variable("number", 'float')),
+        integer: ELARA.Parse(ELARA.Variable("integer", 'integer')),
+        'boolean': ELARA.Parse(ELARA.Variable("boolean", 'boolean')),
+        array: ELARA.Parse(ELARA.Variable("array", 'set')),
+        Dict: ELARA.Parse(ELARA.Variable("Dict", ELARA.DictType('float'))),
+        struct: ELARA.Parse(ELARA.Variable("struct", test_one_struct_type)),
+    },
 })
 ```
 
@@ -438,5 +435,5 @@ export default ELARA.Schema(
 ## Reference
 
 General reference documentation for EDK usage is available in the following links:
-- [EDK CLI reference](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
-- [EDK API reference](https://elaraai.github.io/docs/api): programmatic api for the cli functionality
+- [EDK CLI](https://elaraai.github.io/docs/cli/cli): detailed CLI usage reference and examples
+- [EDK API](https://elaraai.github.io/docs/edk): programmatic api for the cli functionality
