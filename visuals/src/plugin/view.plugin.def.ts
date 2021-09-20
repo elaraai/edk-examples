@@ -4,8 +4,10 @@ import * as ELARA from "@elaraai/edk/lib"
 import { Const, colors, mergeSchemas } from "@elaraai/edk/lib"
 
 import rows_source from "../../gen/rows.source"
+import pipeline_plugin from "../../gen/pipeline.plugin"
 
 const rows = rows_source.output
+const distribution = pipeline_plugin.pipeline["Distribution"].output_table
 
 export default ELARA.Schema(
     mergeSchemas(
@@ -48,8 +50,8 @@ export default ELARA.Schema(
                     'New Number 1': ELARA.Multiply(rows.fields["Number 1"], rows.fields["Number 1"]),
                 },
                 groups: {
-                    "String 1 Group": ELARA.ViewGroup({ value: rows.fields["String 1"], dir: 'desc' }),
-                    "String 2 Group": rows.fields["String 2"]
+                    "String 1 Group": ELARA.ViewGroup({ value: rows.fields["String 1"] }),
+                    "String 2 Group": ELARA.ViewGroup({ value: rows.fields["String 2"], dir: 'asc' }),
                 },
                 aggregations: {
                     "Sum": ELARA.Sum(rows.fields["Number 1"]),
@@ -90,6 +92,16 @@ export default ELARA.Schema(
                     "Avg": ELARA.ViewAggregation({ value: ELARA.Mean(rows.fields["Number 1"]) }),
                     "String 1 Unique": ELARA.ViewAggregation({ value: ELARA.Unique(rows.fields["String 1"]) }),
                 }
+            })
+        ),
+        ELARA.ViewSchema(
+            ELARA.View({
+                name: 'JSON Distribution Single-Group',
+                partition: distribution.partitions.all,
+                table: distribution,
+                groups: {
+                    "Group": distribution.fields.group
+                },
             })
         ),
         ELARA.ViewSchema(

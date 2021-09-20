@@ -1,0 +1,56 @@
+{
+  "project": {
+    "name": "Manual Options Example"
+  },
+  "assets": {
+    "sales.source": {
+      "name": "Sales",
+      "def_path": "src/datasource/sales.source.def.ts",
+      "gen_path": "gen/sales.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "cash.structure": {
+      "name": "cash",
+      "def_path": "src/structure/cash.structure.def.ts",
+      "gen_path": "gen/cash.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "local",
+      "loglevel": "info",
+      "server": "localhost",
+      "sensitivity_trajectories": 10
+    },
+    "baseline.scenario": {
+      "name": "baseline",
+      "def_path": "src/scenario/baseline.scenario.def.ts",
+      "gen_path": "gen/baseline.scenario.ts",
+      "type": "entity",
+      "entity_type": "scenario"
+    },
+    "supplier.structure": {
+      "name": "supplier",
+      "def_path": "src/structure/supplier.structure.def.ts",
+      "gen_path": "gen/supplier.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "sales.structure": {
+      "name": "sales",
+      "def_path": "src/structure/sales.structure.def.ts",
+      "gen_path": "gen/sales.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    }
+  }
+}

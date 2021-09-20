@@ -26,7 +26,7 @@ export default ELARA.JsonSourceSchema({
 ```
 
 ## Detecting datasource
-The output expressions were detected for the datasource with the following command: ```edk-io detect json --name sales.source```
+The output expressions were detected for the datasource with the following command: ```edk-io detect json --asset sales.source```
 
 This will generate the types and expressions for ```json.source```:
 
@@ -101,16 +101,14 @@ export default ScenarioSchema({
 ```
 
 ## Update solution
-Currently there wouldn't be any generated files to reference within our process, so before continuing we have to run the followign command: ```edk update```. Following this the ```gen``` directory will contain components such as ```gen/sales.source.ts``` and ```gen/cash.structure.ts``` that can be imported in other definitions.
+Currently there wouldn't be any generated files to reference within our process, so before continuing we have to run the following command: ```edk update```. Following this the ```gen``` directory will contain components such as ```gen/sales.source.ts``` and ```gen/cash.structure.ts``` that can be imported in other definitions.
 
 ## Add sales process
 Now that we have a resource, we can create a sales process instance from each record in the datasource. First we create the `sales` process with the following command: `edk add structure process --concept sales --def_dir src/structure`. This will add a process which we can populate with a several properties to get, process then update the cash resource balance, as shown below:
 
 ```typescript
-import {
-    Add, Perturb, GetProperty, Multiply, Option, 
-    ProcessStructureSchema, Property, Random, StringJoin, ProcessMapping
-} from '@elaraai/edk/lib';
+import { Add, GetProperty, Hour, MLFunction, Multiply, Not, Option, ProcessMapping, Property, StringJoin, Subtract } from "@elaraai/edk/lib"
+
 
 // import the default scenario for the options
 import baseline_scenario from '../../gen/baseline.scenario';
@@ -191,7 +189,7 @@ export default ProcessStructureSchema({
 Now if we were to deploy the project, it will simulate the likely cash balance over time, based on the price, and qty. Also, proposals for optimum prices from the initial will be generated for each sales record.
 
 ## Add application
-The application was added for the project with the following command: ```edk add plugin --name Application --def_dir src/plugin```. The application contents was added to display the simulation outputs with the `SimulationPlugin`. Also a page was added with the ```ScenarioPlugin``` to view the optimised sales records, and seperately display the cash balance (and its uncertainty) over time.
+The application was added for the project with the following command: ```edk add plugin --name Application --def_dir src/plugin```. The application contents was added to display the simulation outputs with the `SimulationPlugin`. Also a page was added with the ```ScenarioComparePlugin``` to view the optimised sales records, and separately display the cash balance (and its uncertainty) over time.
 
 ```typescript
 import { 
@@ -207,7 +205,7 @@ export default Schema(
     ApplicationPlugin({
         name: "Sensitivity Example",
         schemas: {
-            Optimisation: ScenarioPlugin({
+            Optimisation: ScenarioComparePlugin({
                 name: "sales",
                 entity: sales,
                 baseline_scenario: baseline,

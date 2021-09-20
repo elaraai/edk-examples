@@ -30,8 +30,8 @@ export default ELARA.ProcessStructureSchema({
                 sensitivity: [
                     { 
                         scenario: baseline_scenario, 
-                        min: Multiply(sales_source.output.fields.Price, 0.5), 
-                        max: Multiply(sales_source.output.fields.Price, 2.0),
+                        min: Multiply(Property("price", "float"), 0.95), 
+                        max: Multiply(Property("price", "float"), 1.05),
                         active: sales_source.output.fields.Predict
                     },
                 ]

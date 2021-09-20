@@ -77,6 +77,13 @@
       "gen_path": "gen/test_two.source.ts",
       "type": "entity",
       "entity_type": "datasource"
+    },
+    "distribution.pipeline": {
+      "name": "Distribution",
+      "def_path": "src/pipeline/distribution.pipeline.def.ts",
+      "gen_path": "gen/distribution.pipeline.ts",
+      "type": "entity",
+      "entity_type": "pipeline"
     }
   }
 }

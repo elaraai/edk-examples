@@ -29,7 +29,8 @@
       "name": "local",
       "loglevel": "info",
       "server": "localhost",
-      "application": "Simple Simulation"
+      "application": "Simple Simulation",
+      "sensitivity_trajectories": 10
     },
     "sales.source": {
       "name": "Sales",

@@ -1,0 +1,19 @@
+{
+  "name": "queues",
+  "version": "1.0.0",
+  "description": "Example solution that demonstrates the optimization of a non-trivial queuing process by recommending dynamic priorities to multiple servers. We have been given historic data for entry and exit times of queues, with associated metadata for the queue patrons. We also have data for the sales process for each queue, based on queue patron features.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.17.12",
+    "typescript": "4.3"
+  },
+  "dependencies": {
+     "@elaraai/edk": "2.2.0"
+  }
+}

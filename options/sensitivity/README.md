@@ -26,7 +26,7 @@ export default ELARA.JsonSourceSchema({
 ```
 
 ## Detecting datasource
-The output expressions were detected for the datasource with the following command: ```edk-io detect json --name sales.source```
+The output expressions were detected for the datasource with the following command: ```edk-io detect json --asset sales.source```
 
 This will generate the types and expressions for ```json.source```:
 
@@ -107,10 +107,7 @@ Currently there wouldn't be any generated files to reference within our process,
 Now that we have a resource, we can create a sales process instance from each record in the datasource. First we create the `sales` process with the following command: `edk add structure process --concept sales --def_dir src/structure`. This will add a process which we can populate with a several properties to get, process then update the cash resource balance, as shown below:
 
 ```typescript
-import {
-    Add, Perturb, GetProperty, Multiply, Option, 
-    ProcessStructureSchema, Property, Random, StringJoin, ProcessMapping
-} from '@elaraai/edk/lib';
+import { Add, GetProperty, Hour, MLFunction, Multiply, Not, Option, ProcessMapping, Property, StringJoin, Subtract } from "@elaraai/edk/lib"
 
 // import the default scenario for the options
 import baseline_scenario from '../../gen/baseline.scenario';

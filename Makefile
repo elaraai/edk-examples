@@ -5,7 +5,7 @@ help:
 	@echo "    make help"
 
 .PHONY: build
-build: build-example-cli build-example-gift-shop build-example-datasources build-example-east build-example-ml build-example-options-automatic build-example-options-sensitivity build-example-pipelines build-example-visuals
+build: build-example-cli build-example-gift-shop build-example-datasources build-example-east build-example-events build-example-ml build-example-options-automatic build-example-options-sensitivity build-example-options-manual build-example-options-queues build-example-pipelines build-example-visuals
 
 .PHONY: build-example-datasources
 build-example-datasources: build-example-datasource-files build-example-datasource-ftp build-example-datasource-plugins build-example-datasource-procedural build-example-datasource-rest build-example-datasource-sql
@@ -85,6 +85,10 @@ build-example-gift-shop:
 build-example-east:
 	cd east && npm install && rm -rf gen && edk build
 
+.PHONY: build-example-events
+build-example-events:
+	cd events && npm install && rm -rf gen && edk build
+
 .PHONY: build-example-ml
 build-example-ml:
 	cd ml && npm install && rm -rf gen && edk build
@@ -96,6 +100,14 @@ build-example-options-automatic:
 .PHONY: build-example-options-sensitivity
 build-example-options-sensitivity:
 	cd options/sensitivity && npm install && rm -rf gen && edk build
+
+.PHONY: build-example-options-manual
+build-example-options-manual:
+	cd options/manual && npm install && rm -rf gen && edk build
+
+.PHONY: build-example-options-queues
+build-example-options-queues:
+	cd options/queues && npm install && rm -rf gen && edk build
 
 .PHONY: build-example-pipelines
 build-example-pipelines:

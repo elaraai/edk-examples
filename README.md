@@ -9,6 +9,7 @@ See below for the various project categories and corresponding links.
 
 ### General projects
 - [Expression](./east/README.md): usage of `Expression`s to manipulate streaming data values.
+- [Events](./events/README.md): usage of `Event`s and explicit `date` properties to simulate common business processes.
 
 ### Datasource projects
 - [File](./datasource/files/README.md): usage of `FileUri` to create `CsvDataSource`, `XlsxDataSource`, `JsonDataSource` to create streaming `Expression` values from local files.
@@ -36,8 +37,10 @@ See below for the various project categories and corresponding links.
 - [Machine Learning](./ml/README.md): usage of `MLFunction` to predict unknown functions from data records.
 
 ### Option projects
-- [Sensitivity](./options/sensitivity/README.md): usage sensitivity `Option`s to understand how much impact decision have on outcomes outcomes.
-- [Automatic](./options/automatic/README.md): usage of automatic `Option`s to find the choice for a decision that leads to optimum outcomes.
+- [Sensitivity](./options/sensitivity/README.md): usage sensitivity `Option`s to understand how much impact pricing decisions have on maximising profit.
+- [Automatic](./options/automatic/README.md): usage of automatic `Option`s to find the optimal pricing choice to maximise profit.
+- [Manual](./options/manual/README.md): usage of manual `Option`s to explore the impact of manually adjustying different properties of a sales process.
+- [Queues](./options/queues/README.md): usage of automatic `Option`s to optimise a complex queueing process.
 
 ### Application projects
 - [Visuals](./visuals/README.md) : an example documenting usage of `Page`s, `Visual`s and `Series`s to visualise data in a secure web application.
@@ -46,3 +49,45 @@ See below for the various project categories and corresponding links.
 For general usage and code examples we provide the following detailed documentation:
 - [EDK CLI](../cli/cli.md): detailed CLI usage reference and examples
 - [EDK API](../api/index.md): programmatic api for the cli functionality
+
+## Release Notes
+The following release notes summarise changes accross [edk](https://www.npmjs.com/package/@elaraai/edk), [edk-io package](https://www.npmjs.com/package/@elaraai/edk-io), [edk-examples](https://github.com/elaraai/edk-examples).
+
+
+- **Version 2.2**
+    - edk:
+        - Added `edk build` speed improvements.
+        - Added `edk links` command to view the relationships to a specificed project asset.
+    - edk/lib:
+        - Plugin:
+            - Added `ScenarioFlattenPlugin` to transpose multiple `Scenario` rows into value `Expression`s per `Scenario`.
+            - Added `TimeBoundsPlugin` to calculate the temporal range accross multiple `Table`s.
+        - Pipeline:
+            - Added `DistributionOperation` to generate grouped distributions in a `Pipeline`.
+            - Added `OffsetOperation` to select expressions from sorted offset rows in a `Pipeline`.
+        - Structure:
+            - Add explicit `date` configuration for `SingleEvent` and `MultipleEvent`.
+        - Application:
+            - Added `RowRidgelineVisual` to visualise high resolution stacked [ridgeline charts](https://observablehq.com/@d3/ridgeline-plot).
+            - Added `z_overlap` to `RowRidgelineVisual` and `GroupRidgelineVisual` to control of `z` vertical cutoff.
+            - Added `key` to `GroupLineVisual` to generate nested lines.
+            - Improved `Layout` and `Axis` definition and helper functions.
+    - edk-examples:
+        - Added `Queue Example` in [edk-examples](https://github.com/elaraai/edk-examples) to demonstrate optimisation of service orientated work.
+        - Added `Event Example` in [edk-examples](https://github.com/elaraai/edk-examples) to demonstrate explicit event dates in simulation.
+        - Added `Manual Example` in [edk-examples](https://github.com/elaraai/edk-examples) to demonstrate practical use of manual options.
+        - Update `Pipeline Example` in [edk-examples](https://github.com/elaraai/edk-examples) to demonstrate `OffsetOperation ` and `DistributionOperation`.
+
+- **Version 2.1**
+    - edk
+        - Seperated input/ouput (including detection) related edk functionality into [edk-io package](https://www.npmjs.com/package/@elaraai/edk-io).
+        - Added handling of `uri` schema to `edk add datasource` and `edk-io detect`.
+        - Added `version` command to view currently installed version of `edk-io` and `edk`.
+    - edk/lib:
+        - Datasource:
+            - Added `uri` schema to `DataSource` for generalised specification of the following protocols: `ftp://`, `sftp://`, `http://`, `https://`, `mssql://`, `file://`.
+    - edk-examples:
+        - Initial publish of [edk-examples](https://github.com/elaraai/edk-examples).
+
+- **Version 2.0**
+    - Initial public release

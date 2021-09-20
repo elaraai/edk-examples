@@ -81,6 +81,8 @@ export default ELARA.PanelPageSchema({
                                 z: json_data_multi_group.aggregations.Sum,
                                 z_min: json_data_multi_group.aggregations["Sum Min"],
                                 z_max: json_data_multi_group.aggregations["Sum Max"],
+                                z_overlap: 1.5,
+                                curve: 'curve_basis',
                                 color: ELARA.GroupOrdinalColor(json_data_multi_group.aggregations["String 2 Unique"]),
                                 tooltip: ELARA.Tooltip({
                                     title: ELARA.Const("Values"),
@@ -92,7 +94,7 @@ export default ELARA.PanelPageSchema({
                                         "Sum Max": json_data_multi_group.fields["Sum Max"],
                                         Sum: json_data_multi_group.fields.Sum
                                     }
-                                })
+                                }),
                             }),
                             notes: ELARA.GroupHTMLSeries({
                                 view: json_total,

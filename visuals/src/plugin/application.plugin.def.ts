@@ -7,6 +7,7 @@ import group_three from "../../gen/group_three.page"
 import group_four from "../../gen/group_four.page"
 import row_one from "../../gen/row_one.page"
 import row_two from "../../gen/row_two.page"
+import row_three from "../../gen/row_three.page"
 
 
 export default Schema(
@@ -22,6 +23,7 @@ export default Schema(
                     group_four,
                     row_one,
                     row_two,
+                    row_three
                 ]
             })
         },

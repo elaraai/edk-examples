@@ -9,6 +9,7 @@ import http from "../../gen/http.pipeline"
 import join from "../../gen/join.pipeline"
 import select from "../../gen/select.pipeline"
 import offset from "../../gen/offset.pipeline"
+import distribution from "../../gen/distribution.pipeline"
 
 export default ELARA.Schema(
     ApplicationPlugin({
@@ -19,6 +20,7 @@ export default ELARA.Schema(
                     aggregate,
                     disaggregate_dict,
                     filter,
+                    distribution,
                     http,
                     join,
                     select,

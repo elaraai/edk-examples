@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import { 
     ApplicationPlugin, Const, MLFunctionPlugin,
-    ScenarioPlugin, Schema, SimulationPlugin, SuperUser,
+    ScenarioComparePlugin, Schema, SimulationPlugin, SuperUser,
     mergeSchemas
 } from '@elaraai/edk/lib';
 
@@ -14,7 +14,7 @@ export default Schema(
     ApplicationPlugin({
         name: "Sensitivity Example",
         schemas: {
-            Optimisation: ScenarioPlugin({
+            Optimisation: ScenarioComparePlugin({
                 name: "sales",
                 entity: sales,
                 baseline_scenario: baseline,

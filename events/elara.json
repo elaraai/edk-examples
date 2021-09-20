@@ -1,0 +1,77 @@
+{
+  "project": {
+    "name": "Events Example"
+  },
+  "assets": {
+    "baseline.scenario": {
+      "name": "baseline",
+      "def_path": "src/scenario/baseline.scenario.def.ts",
+      "gen_path": "gen/baseline.scenario.ts",
+      "type": "entity",
+      "entity_type": "scenario"
+    },
+    "cash.structure": {
+      "name": "cash",
+      "def_path": "src/structure/cash.structure.def.ts",
+      "gen_path": "gen/cash.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "local",
+      "loglevel": "info",
+      "server": "localhost",
+      "application": ""
+    },
+    "invoices.source": {
+      "name": "Invoices",
+      "def_path": "src/datasource/invoices.source.def.ts",
+      "gen_path": "gen/invoices.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "payment.structure": {
+      "name": "payment",
+      "def_path": "src/structure/payment.structure.def.ts",
+      "gen_path": "gen/payment.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "supplier.structure": {
+      "name": "supplier",
+      "def_path": "src/structure/supplier.structure.def.ts",
+      "gen_path": "gen/supplier.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "suppliers.source": {
+      "name": "Suppliers",
+      "def_path": "src/datasource/suppliers.source.def.ts",
+      "gen_path": "gen/suppliers.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "work.source": {
+      "name": "Work",
+      "def_path": "src/datasource/work.source.def.ts",
+      "gen_path": "gen/work.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "work.structure": {
+      "name": "work",
+      "def_path": "src/structure/work.structure.def.ts",
+      "gen_path": "gen/work.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    }
+  }
+}

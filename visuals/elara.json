@@ -72,6 +72,20 @@
       "gen_path": "gen/view.plugin.ts",
       "type": "entity",
       "entity_type": "plugin"
+    },
+    "row_three.page": {
+      "name": "Row Three",
+      "def_path": "src/page/row_three.page.def.ts",
+      "gen_path": "gen/row_three.page.ts",
+      "entity_type": "page",
+      "type": "entity"
+    },
+    "pipeline.plugin": {
+      "name": "Pipeline",
+      "def_path": "src/plugin/pipeline.plugin.def.ts",
+      "gen_path": "gen/pipeline.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
     }
   }
 }

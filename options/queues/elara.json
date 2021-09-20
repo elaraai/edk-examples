@@ -1,0 +1,218 @@
+{
+  "project": {
+    "name": "queues"
+  },
+  "assets": {
+    "allocations.pipeline": {
+      "name": "Allocations",
+      "def_path": "src/pipeline/allocations.pipeline.def.ts",
+      "gen_path": "gen/allocations.pipeline.ts",
+      "type": "entity",
+      "entity_type": "pipeline"
+    },
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "arrival.structure": {
+      "name": "Arrival",
+      "def_path": "src/structure/process/arrival.structure.def.ts",
+      "gen_path": "gen/arrival.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "availability.file": {
+      "name": "availability",
+      "local_path": "data/availability.csv",
+      "target_path": "files/availability.file.csv",
+      "type": "file"
+    },
+    "availability.source": {
+      "name": "Availability",
+      "def_path": "src/datasource/availability.source.def.ts",
+      "gen_path": "gen/availability.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "availability.structure": {
+      "name": "Availability",
+      "def_path": "src/structure/process/availability.structure.def.ts",
+      "gen_path": "gen/availability.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "baseline.scenario": {
+      "name": "baseline",
+      "def_path": "src/scenario/baseline.scenario.def.ts",
+      "gen_path": "gen/baseline.scenario.ts",
+      "type": "entity",
+      "entity_type": "scenario"
+    },
+    "delegation.structure": {
+      "name": "Delegation",
+      "def_path": "src/structure/process/delegation.structure.def.ts",
+      "gen_path": "gen/delegation.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "delegations.pipeline": {
+      "name": "Delegations",
+      "def_path": "src/pipeline/delegations.pipeline.def.ts",
+      "gen_path": "gen/delegations.pipeline.ts",
+      "type": "entity",
+      "entity_type": "pipeline"
+    },
+    "employees.structure": {
+      "name": "Employees",
+      "def_path": "src/structure/resource/employees.structure.def.ts",
+      "gen_path": "gen/employees.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "Local",
+      "loglevel": "debug",
+      "server": "localhost",
+      "application": "",
+      "warn": false,
+      "trajectories": 5,
+      "optimization_trajectories": 5,
+      "sensitivity_trajectories": 5
+    },
+    "mode.structure": {
+      "name": "Mode",
+      "def_path": "src/structure/resource/mode.structure.def.ts",
+      "gen_path": "gen/mode.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "money.structure": {
+      "name": "Money",
+      "def_path": "src/structure/resource/money.structure.def.ts",
+      "gen_path": "gen/money.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "optimised.scenario": {
+      "name": "optimised",
+      "def_path": "src/scenario/optimised.scenario.def.ts",
+      "gen_path": "gen/optimised.scenario.ts",
+      "type": "entity",
+      "entity_type": "scenario"
+    },
+    "policy.source": {
+      "name": "Policy",
+      "def_path": "src/datasource/policy.source.def.ts",
+      "gen_path": "gen/policy.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "policy.structure": {
+      "name": "Policy",
+      "def_path": "src/structure/resource/policy.structure.def.ts",
+      "gen_path": "gen/policy.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "queue_arrivals.file": {
+      "name": "queue_arrivals",
+      "local_path": "data/queue_arrivals.csv",
+      "target_path": "files/queue_arrivals.file.csv",
+      "type": "file"
+    },
+    "queue_items.structure": {
+      "name": "Queue Items",
+      "def_path": "src/structure/resource/queue_items.structure.def.ts",
+      "gen_path": "gen/queue_items.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "queues.file": {
+      "name": "queues",
+      "local_path": "data/queues.csv",
+      "target_path": "files/queues.file.csv",
+      "type": "file"
+    },
+    "queues.source": {
+      "name": "Queues",
+      "def_path": "src/datasource/queues.source.def.ts",
+      "gen_path": "gen/queues.source.ts",
+      "type": "entity",
+      "entity_type": "datasource",
+      "file": "queues.file"
+    },
+    "queues.structure": {
+      "name": "Queues",
+      "def_path": "src/structure/resource/queues.structure.def.ts",
+      "gen_path": "gen/queues.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "sale.structure": {
+      "name": "Sale",
+      "def_path": "src/structure/process/sale.structure.def.ts",
+      "gen_path": "gen/sale.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "service.file": {
+      "name": "service",
+      "local_path": "data/queue_service.csv",
+      "target_path": "files/service.file.csv",
+      "type": "file"
+    },
+    "service_begin.structure": {
+      "name": "Service Begin",
+      "def_path": "src/structure/process/service_begin.structure.def.ts",
+      "gen_path": "gen/service_begin.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "service_end.structure": {
+      "name": "Service End",
+      "def_path": "src/structure/process/service_end.structure.def.ts",
+      "gen_path": "gen/service_end.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "staff.source": {
+      "name": "Staff",
+      "def_path": "src/datasource/staff.source.def.ts",
+      "gen_path": "gen/staff.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "work.source": {
+      "name": "Work",
+      "def_path": "src/datasource/work.source.def.ts",
+      "gen_path": "gen/work.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "pipelines.plugin": {
+      "name": "Pipelines",
+      "def_path": "src/analytics/pipelines.plugin.def.ts",
+      "gen_path": "gen/pipelines.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "simulation.plugin": {
+      "name": "Simulation",
+      "def_path": "src/analytics/simulation.plugin.def.ts",
+      "gen_path": "gen/simulation.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "views.plugin": {
+      "name": "Views",
+      "def_path": "src/analytics/views.plugin.def.ts",
+      "gen_path": "gen/views.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    }
+  }
+}

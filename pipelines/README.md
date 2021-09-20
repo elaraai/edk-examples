@@ -46,9 +46,7 @@ const test_one_struct_type = ELARA.StructType({
 
 export default ELARA.JsonSourceSchema({
     name: "Test One",
-    uri: ELARA.FileURI({
-        path: ELARA.Const("files/test_one.jsonl"),
-    }),
+    uri: "file://files/test_one.jsonl",
     primary_key: ELARA.Variable("string", 'string'),
     selections: {
         string: ELARA.Parse(ELARA.Variable("string", 'string')),
@@ -240,6 +238,29 @@ export default ELARA.PipelineSchema({
 })
 ```
 
+### Adding distribution operation
+The distribution operation allows us to calculate the probability distributions for samples within a stream, based on a group key, in this case we will calculate the distribution of the `number` variable from `test_one.source`, within each value of `string`:
+
+```typescript
+import * as ELARA from "@elaraai/edk/lib"
+import { DistributionOperation } from "@elaraai/edk/lib"
+
+import test_one from "../../gen/test_one.source"
+
+export default ELARA.PipelineSchema({
+    name: "Distribution",
+    input_table: test_one.output,
+    operations: [
+        DistributionOperation({
+            samples: test_one.output.fields.number,
+            group_key: test_one.output.fields.string,
+            distribution: 'GaussianKDE',
+            normalization: 'ProbabilityDensity'
+        })
+    ],
+})
+```
+
 ### Adding join operation
 The join operation allows us to perform an expression-based relational join between two tables, in this case we will join `test_one.source` with `test_two.source`:
 
@@ -384,6 +405,83 @@ export default ELARA.PipelineSchema({
                     status_text: Variable("status_text", 'string'),
                 })
             })
+        })
+    ],
+})
+```
+
+
+### Adding join operation
+The join operation allows us to perform an expression based relational join between two tables, in this case we will join `test_one.source` with `test_two.source`:
+
+```typescript
+import * as ELARA from "@elaraai/edk/lib"
+import { Variable } from "@elaraai/edk/lib"
+
+import test_one from "../../gen/test_one.source"
+import test_two from "../../gen/test_two.source"
+
+export default ELARA.PipelineSchema({
+    name: 'Join',
+    input_table: test_one.output,
+    operations: [
+        ELARA.JoinOperation({
+            // the table being joined in 
+            source_table: test_two.output,
+            // the join key expression for the source, could be any string expression
+            source_key: test_two.output.fields.string,
+            // the join key expression for the target, could be any string expression
+            target_key: test_one.output.fields.string,
+            // the selections to apply to the source
+            source_selections: {
+                string: test_two.output.fields.string,
+                date: test_two.output.fields.date,
+                number: test_two.output.fields.number,
+                integer: test_two.output.fields.integer,
+                'boolean': test_two.output.fields['boolean'],
+            },
+            // the selections to apply to the source
+            target_selections: {
+                target_string: test_one.output.fields.string,
+                target_date: test_one.output.fields.date,
+                target_number: test_one.output.fields.number,
+                target_integer: test_one.output.fields.integer,
+                target_boolean: test_one.output.fields['boolean']
+            },
+            // perform an inner join on the keys
+            join_type: 'Inner',
+            // use the string expression foe the output primary key
+            output_key: Variable("string", 'string')
+        }),
+    ],
+})
+```
+
+### Adding select operation
+The select operation allows us to select output expressions from input expressions, in this case we will create some new variables from `test_one.source`:
+
+```typescript
+import * as ELARA from "@elaraai/edk/lib"
+import { Multiply, SelectOperation, StringJoin, Variable } from "@elaraai/edk/lib"
+
+import test_one from "../../gen/test_one.source"
+
+export default ELARA.PipelineSchema({
+    name: 'Select',
+    input_table: test_one.output,
+    operations: [
+        SelectOperation({
+            // dont keep all the input expressions, only output the new ones
+            keep_all: false,
+            // the new expressions to create
+            selections: {
+                // output the `number` value multiplied by 2.
+                multiply: Multiply(test_one.output.fields.number, 2),
+                // combine several fields incluing a formatted date into a single string
+                'String Join': StringJoin`${test_one.output.fields.string}.${ELARA.Print(test_one.output.fields.date, 'DD/MM/YYYY')}`
+            },
+            // use the `String Join` value as the output key expression
+            primary_key: Variable('String Join', 'string')
         })
     ],
 })
