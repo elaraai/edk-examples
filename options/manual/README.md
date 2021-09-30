@@ -26,7 +26,7 @@ export default ELARA.ExcelSourceSchema({
 ```
 
 ## Detecting datasource
-The output expressions were detected for the datasource with the following command: ```edk-io detect xlsx --asset sales.source```
+The output expressions were detected for the datasource with the following command: ```edk-io detect xlsx --asset sales.source  --defaults```
 
 This will generate the types and expressions for ```sales.source```:
 

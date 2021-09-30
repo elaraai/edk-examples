@@ -71,7 +71,7 @@ export default Schema(
                                             curve: 'curve_monotone_x',
                                             color: RowFixedColor(wait_duration.fields.color),
                                             tooltip: Tooltip({
-                                                title: StringJoin`${wait_duration.fields.group} duration`,
+                                                title: StringJoin`${wait_duration.fields.distribution} duration`,
                                                 values: {
                                                     duration: wait_duration.fields.value,
                                                     percentage: wait_duration.fields.probability,

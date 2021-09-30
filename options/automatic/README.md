@@ -26,7 +26,7 @@ export default ELARA.JsonSourceSchema({
 ```
 
 ## Detecting datasource
-The output expressions were detected for the datasource with the following command: ```edk-io detect json --asset sales.source```
+The output expressions were detected for the datasource with the following command: ```edk-io detect json --asset sales.source --defaults```
 
 This will generate the types and expressions for ```json.source```:
 

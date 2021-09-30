@@ -3,6 +3,13 @@
     "name": "Events Example"
   },
   "assets": {
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
     "baseline.scenario": {
       "name": "baseline",
       "def_path": "src/scenario/baseline.scenario.def.ts",
@@ -17,19 +24,19 @@
       "type": "entity",
       "entity_type": "structure"
     },
-    "local.deployment": {
-      "type": "deployment",
-      "name": "local",
-      "loglevel": "info",
-      "server": "localhost",
-      "application": ""
-    },
     "invoices.source": {
       "name": "Invoices",
       "def_path": "src/datasource/invoices.source.def.ts",
       "gen_path": "gen/invoices.source.ts",
       "type": "entity",
       "entity_type": "datasource"
+    },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "local",
+      "loglevel": "info",
+      "server": "localhost",
+      "application": ""
     },
     "payment.structure": {
       "name": "payment",
@@ -65,13 +72,6 @@
       "gen_path": "gen/work.structure.ts",
       "type": "entity",
       "entity_type": "structure"
-    },
-    "application.plugin": {
-      "name": "Application",
-      "def_path": "src/plugin/application.plugin.def.ts",
-      "gen_path": "gen/application.plugin.ts",
-      "type": "entity",
-      "entity_type": "plugin"
     }
   }
 }

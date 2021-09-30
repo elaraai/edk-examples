@@ -24,15 +24,15 @@ export default ELARA.PanelPageSchema({
                         visual: ELARA.RowRidgelineVisual({
                             series: ELARA.RowRidgelineSeries({
                                 view: json_distribution_single_group,
-                                x: json_distribution_single_group.fields.value,
-                                z: json_distribution_single_group.fields.probability,
+                                x: json_distribution_single_group.fields.Value,
+                                z: json_distribution_single_group.fields.Probability,
                                 z_overlap: 0.2,
-                                color: ELARA.RowOrdinalColor(json_distribution_single_group.fields.group),
+                                color: ELARA.RowOrdinalColor(json_distribution_single_group.fields.Group),
                                 tooltip: ELARA.Tooltip({
-                                    title: json_distribution_single_group.fields.group,
+                                    title: json_distribution_single_group.fields.Group,
                                     values: {
-                                        value : json_distribution_single_group.fields.value,
-                                        probability : json_distribution_single_group.fields.probability,
+                                        value : json_distribution_single_group.fields.Value,
+                                        probability : json_distribution_single_group.fields.Probability,
                                     }
                                 })
                             }),

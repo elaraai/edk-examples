@@ -36,7 +36,6 @@ This generated the types and expressions for the datasource:
 // East type declarations 
 import * as ELARA from "@elaraai/edk/lib"
 
-
 export default ELARA.SqlSourceSchema({
     name: "SQL",
     connection: 'mssql://localhost//DataSourceTest',

@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from "@elaraai/edk/lib"
 
-import { Const, colors, mergeSchemas } from "@elaraai/edk/lib"
+import { Const, colors, mergeSchemas, ViewSelection } from "@elaraai/edk/lib"
 
 import rows_source from "../../gen/rows.source"
 import pipeline_plugin from "../../gen/pipeline.plugin"
@@ -99,6 +99,11 @@ export default ELARA.Schema(
                 name: 'JSON Distribution Single-Group',
                 partition: distribution.partitions.all,
                 table: distribution,
+                keep_all: false,
+                selections: {
+                    "Value": ViewSelection({ value: distribution.fields.value, dir: 'asc' }),
+                    "Probability": distribution.fields.probability
+                },
                 groups: {
                     "Group": distribution.fields.group
                 },
@@ -111,6 +116,7 @@ export default ELARA.Schema(
                 table: rows,
                 keep_all: true,
                 selections: {
+                    'Sort Date': ELARA.ViewSelection({  value: rows.fields["Date 3"], dir: 'asc' }),
                     'Nested String 1': ELARA.GetField(rows.fields.Struct, "String"),
                     'Lorem': ELARA.StringJoin`${rows.fields.Identifier} is something...`,
                     'Nested Array': ELARA.GetField(rows.fields.Struct, 'Array'),

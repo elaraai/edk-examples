@@ -23,7 +23,7 @@ export default ELARA.PanelPageSchema({
                         visual: ELARA.RowLineVisual({
                             series: ELARA.RowLineSeries({
                                 view: json_data,
-                                x: json_data.fields["Date 3"],
+                                x: json_data.fields['Sort Date'],
                                 y_heading: "Values",
                                 y: [
                                     ELARA.RowLineValue({

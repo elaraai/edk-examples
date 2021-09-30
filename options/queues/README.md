@@ -66,27 +66,27 @@ The csv data sources were added with the following commands:
 ### Availability
 The "Availability" dataset is the employee schedule. This list contains a row when a particular employee will be available for each hour. The following commands were used to created and detect the datasource:
 - `edk add datasource csv --name "Availability" --def_dir "src/datasource" --file "data/availability.csv"`
-- `edk detect csv --asset "availability.source"`
+- `edk-io detect csv --asset "availability.source"`
 
 ### Policy
 The "Policy" dataset is a default collection of parameters for how the optimal delegation of count of employee type per queue should be calculated. This was obtained via a short run of offline optimisation. This list contains a row when a particular employee will be available for each hour. The following commands were used to created and detect the datasource:
 - `edk add datasource csv --name "Policy" --def_dir "src/datasource" --file "data/policy.csv"`
-- `edk detect csv --asset "policy.source"`
+- `edk-io detect csv --asset "policy.source"`
 
 ### Queues
 The "Queues" dataset simply contains the list of queues. The following commands were used to created and detect the datasource:
 - `edk add datasource csv --name "Queues" --def_dir "src/datasource" --file "data/queues.csv"`
-- `edk detect csv --asset "queues.source"`
+- `edk-io detect csv --asset "queues.source"`
 
 ### Staff
 The "Staff" dataset contains the list of salary employed staff in the business. Each staff member has a qualification level. The following commands were used to created and detect the datasource:
 - `edk add datasource csv --name "Staff" --def_dir "src/datasource" --file "data/staff.csv"`
-- `edk detect csv --asset "staff.source"`
+- `edk-io detect csv --asset "staff.source"`
 
 ### Work
 The "Work" dataset contains records of people arriving into a queue to be pay for and be provided some service, so including their arrival time in the queue, the time they are finally served, as well as the duration of service. The following commands were used to created and detect the datasource:
 - `edk add datasource csv --name "Work" --def_dir "src/datasource" --file "data/work.csv"`
-- `edk detect csv --asset "work.source"`
+- `edk-io detect csv --asset "work.source"`
 
 ## Add Pipelines
 

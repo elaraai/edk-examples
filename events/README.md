@@ -31,9 +31,9 @@ export default ELARA.JsonSourceSchema({
 
 ## Detecting datasources
 The output expressions were detected for each data with the following commands.
-- json: ```edk-io detect json --asset suppliers.source --defaults```
-- json: ```edk-io detect json --asset work.source --defaults```
-- json: ```edk-io detect json --asset invoices.source --defaults```
+- suppliers: ```edk-io detect json --asset suppliers.source --defaults```
+- work: ```edk-io detect json --asset work.source --defaults```
+- invoices: ```edk-io detect json --asset invoices.source --defaults```
 
 This will generate the types and expressions for the datasources, for example for ```invoices.source```:
 

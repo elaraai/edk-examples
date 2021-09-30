@@ -1,5 +1,5 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import { mergeSchemas, ViewSchema, View, Schema, Maximum, Abs, Unique, ViewAggregation, ViewGroup, Sum, StringJoin, Floor } from "@elaraai/edk/lib"
+import { mergeSchemas, ViewSchema, View, Schema, Maximum, Abs, Unique, ViewAggregation, ViewGroup, Sum, StringJoin, Floor, ViewSelection } from "@elaraai/edk/lib"
 
 import pipelines from '../../gen/pipelines.plugin'
 
@@ -65,6 +65,12 @@ export default Schema(
                 name: 'Wait Duration',
                 partition: wait_duration.partitions.all,
                 table: wait_duration,
+                keep_all: false,
+                selections: {
+                    value: ViewSelection({ value: wait_duration.fields.value, dir: 'asc'  }),
+                    probability: wait_duration.fields.probability,
+                    color: wait_duration.fields.color,
+                },
                 groups: {
                     distribution: ViewGroup({ value: wait_duration.fields.group, dir: 'asc' }),
                 },

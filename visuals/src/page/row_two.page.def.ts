@@ -11,6 +11,13 @@ const json_data = view_plugin.view["JSON Data"]
 
 export default ELARA.PanelPageSchema({
     name: "Row Two",
+    filters: {
+        Date: view_plugin.view["JSON Data"].filters["Sort Date"],
+        Number: view_plugin.view["JSON Data"].filters["Number 1"],
+        Integer: view_plugin.view["JSON Data"].filters["Integer 1"],
+        Boolean: view_plugin.view["JSON Data"].filters["Boolean 1"],
+        String: view_plugin.view["JSON Data"].filters["String 1"]
+    },
     container: ELARA.PanelContainer({
         size: ELARA.PanelDimension({ size: 100 }),
         orientation: 'row',
