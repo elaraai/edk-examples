@@ -17,13 +17,26 @@ export default ELARA.ResourceStructureSchema({
                 default_value: supplies.fields.Cost,
                 manual: [{
                     scenario: baseline,
-                    min: Multiply(supplies.fields.MinCost, 0.9),
-                    max: Multiply(supplies.fields.MaxCost, 1.1),
+                    min: Multiply(supplies.fields.Cost, 0.8),
+                    max: Multiply(supplies.fields.Cost, 1.2),
                 }],
                 sensitivity: [{
                     scenario: baseline,
-                    min: Multiply(supplies.fields.MinCost, 0.9),
-                    max: Multiply(supplies.fields.MaxCost, 1.1),
+                    min: Multiply(supplies.fields.Cost, 0.8),
+                    max: Multiply(supplies.fields.Cost, 1.2),
+                }]
+            }),
+            Terms: Option({
+                default_value: supplies.fields.Terms,
+                manual: [{
+                    scenario: baseline,
+                    min: Multiply(supplies.fields.Terms, 0.5),
+                    max: Multiply(supplies.fields.Terms, 2.0),
+                }],
+                sensitivity: [{
+                    scenario: baseline,
+                    min: Multiply(supplies.fields.Terms, 0.5),
+                    max: Multiply(supplies.fields.Terms, 2.0),
                 }]
             })
         }

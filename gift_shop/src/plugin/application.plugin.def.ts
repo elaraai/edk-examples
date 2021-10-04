@@ -1,8 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from "@elaraai/edk/lib"
 
-import { ApplicationPlugin, DataSourcePlugin, Environment, EnvironmentVariable, mergeSchemas, MLFunctionPlugin, OptionsPlugin, PipelinePlugin, SuperUser } from "@elaraai/edk/lib"
-
+import { ApplicationPlugin, Const, DataSourcePlugin, mergeSchemas, MLFunctionPlugin,  PipelinePlugin, SimulationPlugin, SuperUser } from "@elaraai/edk/lib"
 import covid from '../../gen/covid.source';
 import purchases from '../../gen/purchases.source';
 import rosters from '../../gen/rosters.source';
@@ -12,10 +11,10 @@ import structure_pipelines from '../../gen/structure_pipelines.plugin';
 import time_aggregate from '../../gen/time_aggregate.plugin';
 import time_cycle from '../../gen/time_cycle.plugin';
 import sales_structure from '../../gen/sales.structure'
-import money_structure from '../../gen/money.structure'
 import products_structure from '../../gen/products.structure'
-import baseline from '../../gen/baseline.scenario'
-
+import promotions_structure from '../../gen/promotions.structure'
+import purchases_structure from '../../gen/purchases.structure'
+import supplies_structure from '../../gen/supplies.structure'
 
 export default ELARA.Schema(
     ApplicationPlugin({
@@ -39,30 +38,44 @@ export default ELARA.Schema(
                     prepend: 'Time Cycle',
                 })
             ),
+            Simulation: mergeSchemas(
+                SimulationPlugin({
+                    name: "Sales Results",
+                    entity: sales_structure,
+                    properties: sales_structure.properties
+                }),
+                SimulationPlugin({
+                    name: "Products Results",
+                    entity: products_structure,
+                    properties: products_structure.properties
+                }),
+                SimulationPlugin({
+                    name: "Supplies Results",
+                    entity: supplies_structure,
+                    properties: supplies_structure.properties
+                }),
+                SimulationPlugin({
+                    name: "Promotions Results",
+                    entity: promotions_structure,
+                    properties: promotions_structure.properties
+                }),
+                SimulationPlugin({
+                    name: "Purchases Results",
+                    entity: purchases_structure,
+                    properties: purchases_structure.properties
+                }),
+            ),
             MachineLearning: MLFunctionPlugin({
-                func: sales_structure.properties.TotalQty.function,
+                func: sales_structure.properties.Qty.function,
                 prepend: 'ML'
             }),
-            Options: OptionsPlugin({
-                name: "Product",
-                scenario: baseline,
-                entity: products_structure,
-                options: {
-                    ProductPrices: products_structure.properties.Price
-                },
-                output: money_structure.properties.Balance,
-                output_entity: money_structure,
-            })
         },
         users: [
             SuperUser({
-                email: 'support@elara.ai',
+                email: 'admin@example.com',
                 name: 'Admin',
-                password: Environment('ADMIN_PASSWORD'),
+                password: Const('admin'),
             })
-        ],
-        environments: [
-            EnvironmentVariable({ name: 'ADMIN_PASSWORD' })
         ],
     })
 )

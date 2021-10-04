@@ -17,6 +17,13 @@
       "type": "entity",
       "entity_type": "scenario"
     },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "Local",
+      "loglevel": "info",
+      "server": "localhost",
+      "application": "visuals.application"
+    },
     "covid.source": {
       "name": "Covid",
       "def_path": "src/source/covid.source.def.ts",
@@ -32,13 +39,6 @@
       "server": "localhost",
       "application": "",
       "warn": true
-    },
-    "metrics.structure": {
-      "name": "Metrics",
-      "def_path": "src/structure/metrics.structure.def.ts",
-      "gen_path": "gen/metrics.structure.ts",
-      "type": "entity",
-      "entity_type": "structure"
     },
     "money.structure": {
       "name": "Money",
@@ -127,6 +127,20 @@
       "gen_path": "gen/time_cycle.plugin.ts",
       "type": "entity",
       "entity_type": "plugin"
+    },
+    "promotions.structure": {
+      "name": "Promotions",
+      "def_path": "src/structure/promotions.structure.def.ts",
+      "gen_path": "gen/promotions.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "purchases.structure": {
+      "name": "Purchases",
+      "def_path": "src/structure/purchases.structure.def.ts",
+      "gen_path": "gen/purchases.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
     }
   }
 }

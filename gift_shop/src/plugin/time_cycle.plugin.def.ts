@@ -14,13 +14,16 @@ export default ELARA.Schema(
             future_cycles: 168n,
             inputs: [
                 TimeCycle({
-                    table: covid.output,
-                    value: covid.output.fields.Date
+                    table: sales.output,
+                    value: sales.output.fields.Date
                 }),
-                TimeCycle({
-                    table: purchases.output,
-                    value: purchases.output.fields.Date
-                }),
+            ]
+        }),
+        TimeCyclePlugin({
+            name: "Daily",
+            unit: 'day',
+            future_cycles: 7n,
+            inputs: [
                 TimeCycle({
                     table: sales.output,
                     value: sales.output.fields.Date
