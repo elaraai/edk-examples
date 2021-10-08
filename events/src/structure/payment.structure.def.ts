@@ -30,9 +30,7 @@ export default ELARA.ProcessStructureSchema({
             invoice_date: ProcessDate(),
             payment_date: AddDuration(ProcessDate(), Property('terms', 'float'), 'week'),
             amount: Multiply(Property('rate', 'float'), Property('work', 'float')),
-            balance: GetProperty({
-                property: cash.properties.balance
-            }),
+            balance: GetProperty({ property: cash.properties.balance }),
         },
         events: {
             // reset the total of work

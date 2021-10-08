@@ -215,9 +215,8 @@ for(let g = 0; g < 5; g++) {
                 }],
                 "Dict": dict
             })
-        
         }
     })
 }
 
-fs.writeFileSync("data/rows.jsonl", rows.map(row => JSON.stringify(row)).join('\r\n'))
+fs.writeFileSync("files/rows.jsonl", rows.map(row => JSON.stringify(row)).join('\r\n'))

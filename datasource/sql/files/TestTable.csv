@@ -1,16 +1,16 @@
-a string,a date,a number,a integer,a boolean,Another String
-0c5juntsmc,2021-04-11,-121.44,-339,0,0c5juntsmc
-0jx1uzy7bw,2020-09-14,-877.40,-381,1,0jx1uzy7bw
-230wy0wzln,2021-05-16,408.02,-920,0,230wy0wzln
-342scdnaum,2021-01-01,357.69,-786,0,342scdnaum
-923dlcco5h,2021-02-27,683.12,897,1,923dlcco5h
-9ktvsuthyf,2020-12-06,654.47,525,1,9ktvsuthyf
-ch8wfmh4r2,2021-06-06,724.79,-637,0,ch8wfmh4r2
-df7lc7d71p,2020-09-03,-744.46,-811,0,df7lc7d71p
-eezqi2ejxj,2020-10-23,327.79,-299,0,eezqi2ejxj
-j8novq24rd,2020-11-22,960.26,759,0,j8novq24rd
-jo8d4u54so,2020-11-11,506.86,58,1,jo8d4u54so
-kvr4k32r4u,2020-08-19,927.38,-945,0,kvr4k32r4u
-msfvgv93ez,2020-11-21,723.31,-943,0,msfvgv93ez
-mtsqttl4s5,2021-04-01,-790.29,-875,0,mtsqttl4s5
-s6c4n1lxf1,2021-05-21,410.98,819,1,s6c4n1lxf1
+a string|a date|a number|a integer|a boolean|Another String
+0c5juntsmc|2021-04-11|-121.44|-339|0|0c5juntsmc
+0jx1uzy7bw|2020-09-14|-877.40|-381|1|0jx1uzy7bw
+230wy0wzln|2021-05-16|408.02|-920|0|230wy0wzln
+342scdnaum|2021-01-01|357.69|-786|0|342scdnaum
+923dlcco5h|2021-02-27|683.12|897|1|923dlcco5h
+9ktvsuthyf|2020-12-06|654.47|525|1|9ktvsuthyf
+ch8wfmh4r2|2021-06-06|724.79|-637|0|ch8wfmh4r2
+df7lc7d71p|2020-09-03|-744.46|-811|0|df7lc7d71p
+eezqi2ejxj|2020-10-23|327.79|-299|0|eezqi2ejxj
+j8novq24rd|2020-11-22|960.26|759|0|j8novq24rd
+jo8d4u54so|2020-11-11|506.86|58|1|jo8d4u54so
+kvr4k32r4u|2020-08-19|927.38|-945|0|kvr4k32r4u
+msfvgv93ez|2020-11-21|723.31|-943|0|msfvgv93ez
+mtsqttl4s5|2021-04-01|-790.29|-875|0|mtsqttl4s5
+s6c4n1lxf1|2021-05-21|410.98|819|1|s6c4n1lxf1

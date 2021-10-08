@@ -33,6 +33,7 @@ export default ELARA.SqlSourceSchema({
             uri: "file://files/TestTable.csv",
             primary_key: ELARA.Variable("a string", 'string'),
             filter: ELARA.Const(true),
+            delimiter: '|',
             selections: {
                 'a string': ELARA.Parse(ELARA.Variable("a string", 'string')),
                 'a date': ELARA.Parse(ELARA.Variable("a date", 'datetime')),
