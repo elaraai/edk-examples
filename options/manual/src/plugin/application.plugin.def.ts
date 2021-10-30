@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import { 
     ApplicationPlugin, Const, Schema,
-    SuperUser, DataSourcePlugin, OptionsPlugin
+    SuperUser, DataSourcePlugin, OptionsPlugin, mergeSchemas, Partition, Print, SimulationPlugin, Variable
 } from '@elaraai/edk/lib';
 
 import sales_source from '../../gen/sales.source';
@@ -31,6 +31,25 @@ export default Schema(
                 output_entity: cash,
                 output: cash.properties.balance,
             }),
+            Predictions: mergeSchemas(
+                SimulationPlugin({
+                    name: "Sales Results",
+                    entity: sales,
+                    properties: sales.properties,
+                    ml: false,
+                    partitions: {
+                        refund: Partition({
+                            partition_key: Print(Variable('refund', 'boolean'))
+                        })
+                    }
+                }),
+                SimulationPlugin({
+                    name: "Cash Results",
+                    entity: cash,
+                    marker: "account",
+                    properties: cash.properties,
+                })
+            ),
             Datasource: DataSourcePlugin({
                 datasources: [sales_source]
             })

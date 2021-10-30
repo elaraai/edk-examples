@@ -1,5 +1,6 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from '@elaraai/edk/lib';
+import { colors } from '@elaraai/edk/lib';
 
 import view_plugin from '../../gen/view.plugin';
 
@@ -20,7 +21,7 @@ export default ELARA.PanelPageSchema({
                 items: [
                     ELARA.PanelVisual({
                         name: "Ridgeline",
-                        size: ELARA.PanelDimension({ size: 50 }),
+                        size: ELARA.PanelDimension({ size: 34 }),
                         visual: ELARA.RowRidgelineVisual({
                             series: ELARA.RowRidgelineSeries({
                                 view: json_distribution_single_group,
@@ -71,13 +72,56 @@ export default ELARA.PanelPageSchema({
                     }),
                     ELARA.PanelVisual({
                         name: "Hexbin",
-                        size: ELARA.PanelDimension({ size: 50 }),
+                        size: ELARA.PanelDimension({ size: 33 }),
                         visual: ELARA.RowHexbinVisual({
                             series: ELARA.RowHexbinSeries({
                                 view: json_data,
                                 x: json_data.fields["Number 1"],
                                 y: json_data.fields["Number 3"],
-                                color: ELARA.ColorValue(),
+                                color: ELARA.ColorValue(colors.Violet),
+                            }),
+                            notes: ELARA.RowHTMLSeries({
+                                view: json_total,
+                                value: ELARA.StringJoin`
+                                    While there is a maximum of <b>${json_total.fields.Max}</b> and a 
+                                    minimum of <b>${json_total.fields.Min}</b>, the average is ${json_total.fields.Min}.
+                                    <br></br>
+                                    Duis sed elit vel neque ornare pharetra vel a augue. Suspendisse auctor tincidunt tincidunt. Duis tincidunt in eros ac scelerisque. Vestibulum mattis, tellus sit amet elementum sodales, nunc enim scelerisque eros, in auctor magna dolor at ipsum. Aenean ac convallis purus. In sodales, eros non suscipit lobortis, lacus dolor varius eros, eu hendrerit est nibh nec nisi. Proin dolor arcu, eleifend non semper in, scelerisque quis est.
+                                    <br></br>
+                                    Otherwise you will probably find the following interesting:
+                                    <table style="width: 100%">
+                                    <tr>
+                                        <th style="text-align: left !important; background: lightgray;">Name</th>
+                                        <th style="text-align: left !important; background: lightgray;">Value</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Count</td>
+                                        <td>${json_total.fields.Count}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DistinctCount</td>
+                                        <td>${json_total.fields.DistinctCount}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sum</td>
+                                        <td>${json_total.fields.Sum}</td>
+                                    </tr>
+                                    </table>
+                                    <br></br>
+                                    Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
+                                    `
+                            })
+                        })
+                    }),
+                    ELARA.PanelVisual({
+                        name: "Hexbin Dict",
+                        size: ELARA.PanelDimension({ size: 33 }),
+                        visual: ELARA.RowHexbinVisual({
+                            series: ELARA.RowHexbinSeries({
+                                view: json_data,
+                                x: json_data.fields.Dict,
+                                y: json_data.fields['Dict 2'],
+                                color: ELARA.RowKeyColor(json_data.fields.Dict),
                             }),
                             notes: ELARA.RowHTMLSeries({
                                 view: json_total,

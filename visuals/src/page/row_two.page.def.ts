@@ -2,6 +2,7 @@
 import * as ELARA from "@elaraai/edk/lib"
 
 import { colors, RowTimelineInput } from "@elaraai/edk/lib";
+import { PageLoad, PageLoadValue } from '@elaraai/edk/lib';
 
 import view_plugin from '../../gen/view.plugin';
 
@@ -17,6 +18,16 @@ export default ELARA.PanelPageSchema({
         Integer: view_plugin.view["JSON Data"].filters["Integer 1"],
         Boolean: view_plugin.view["JSON Data"].filters["Boolean 1"],
         String: view_plugin.view["JSON Data"].filters["String 1"]
+    },
+    load: {
+        Group: PageLoad({
+            label: "By Group",
+            value: [
+                PageLoadValue(json_data.load.Group, json_data),
+                PageLoadValue(json_data_single_group.load.Group, json_data_single_group),
+                PageLoadValue(json_total.load.Group, json_total),
+            ]
+        })
     },
     container: ELARA.PanelContainer({
         size: ELARA.PanelDimension({ size: 100 }),
@@ -47,6 +58,7 @@ export default ELARA.PanelPageSchema({
                                                 end: json_data_single_group.fields["Date 2"],
                                                 prev_primary: json_data_single_group.fields["Prev Identifier"],
                                                 color: ELARA.RowOrdinalColor(json_data_single_group.fields["String 2"]),
+                                                label: json_data_single_group.fields["String 1"],
                                                 tooltip: ELARA.Tooltip({
                                                     title: ELARA.Const("Values"),
                                                     values: json_data_single_group.fields

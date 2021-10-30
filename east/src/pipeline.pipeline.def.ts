@@ -19,6 +19,8 @@ export default ELARA.PipelineSchema({
                 Log: ELARA.Log(1.0),
                 Exp: ELARA.Exp(0.0),
                 Pow: ELARA.Pow(2.0, 3.0),
+                LowerCase: ELARA.LowerCase("Français - Éclair"),
+                UpperCase: ELARA.UpperCase("Français - Éclair"),
             }
         })
     ],

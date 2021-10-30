@@ -1,5 +1,6 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from "@elaraai/edk/lib"
+import { Partition, PartitionPerMonth } from "@elaraai/edk/lib";
 
 const rows_struct_type = ELARA.StructType({
     Date: 'datetime',
@@ -68,9 +69,10 @@ export default ELARA.JsonSourceSchema({
         Dict: ELARA.Parse(ELARA.Variable("Dict", rows_dict_type)),
     },
     partitions: {
-        Group: {
+        Group: Partition({
             partition_key: ELARA.Variable("Group", 'string'),
-            label: ELARA.StringJoin([ELARA.Const("Group"), ELARA.Variable("Group", 'string'),], ": "),
-        },
+            label: ELARA.StringJoin`Group: ${ELARA.Variable("Group", 'string')}`,
+        }),
+        Month: PartitionPerMonth(ELARA.Variable("Date 1", 'datetime'))
     },
 })

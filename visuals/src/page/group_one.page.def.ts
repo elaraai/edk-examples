@@ -1,5 +1,6 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from '@elaraai/edk/lib';
+import { PageLoad, PageLoadValue } from '@elaraai/edk/lib';
 
 import view_plugin from '../../gen/view.plugin';
 
@@ -9,6 +10,16 @@ const json_total = view_plugin.view["JSON Total"]
 
 export default ELARA.PanelPageSchema({
     name: "Group One",
+    load: {
+        Group: PageLoad({
+            label: "By Group",
+            value: [
+                PageLoadValue(json_data_multi_group.load.Group, json_data_multi_group),
+                PageLoadValue(json_data_single_group.load.Group, json_data_single_group),
+                PageLoadValue(json_total.load.Group, json_total),
+            ]
+        })
+    },
     container: ELARA.PanelContainer({
         size: ELARA.PanelDimension({ size: 100 }),
         orientation: 'column',

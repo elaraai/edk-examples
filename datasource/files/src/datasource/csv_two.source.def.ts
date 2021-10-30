@@ -13,7 +13,6 @@ export default ELARA.CsvSourceSchema({
             ELARA.Null('string'),
             ELARA.Variable("string", 'string')
         )),
-        date: ELARA.Parse(ELARA.Variable("date", 'datetime')),
         number: ELARA.Parse(ELARA.Variable("number", 'float')),
         integer: ELARA.Parse(ELARA.Variable("integer", 'integer')),
         "boolean": ELARA.Parse(ELARA.Variable("boolean", 'boolean')),
@@ -22,5 +21,6 @@ export default ELARA.CsvSourceSchema({
             ELARA.Null('string'),
             ELARA.Variable("Another String", 'string')
         )),
+        date: ELARA.Parse(ELARA.Variable("date", 'datetime')),
     },
 })

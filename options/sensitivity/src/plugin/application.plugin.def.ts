@@ -1,12 +1,13 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import { 
     ApplicationPlugin, Const, OptionsPlugin, Schema,
-    SimulationPlugin, SuperUser, mergeSchemas, MLFunctionPlugin
+    SimulationPlugin, SuperUser, mergeSchemas, MLFunctionPlugin, DataSourcePlugin, StatusPlugin
 } from '@elaraai/edk/lib';
 
 import baseline from '../../gen/baseline.scenario';
 import cash from '../../gen/cash.structure';
 import sales from '../../gen/sales.structure';
+import sales_data from '../../gen/sales.source';
 
 export default Schema(
     ApplicationPlugin({
@@ -45,6 +46,14 @@ export default Schema(
             'Machine Learning': MLFunctionPlugin({
                 func: sales.properties.qty.function
             }),
+            Data: DataSourcePlugin({
+                datasources: {
+                    Sales: sales_data
+                }
+            }),
+            Support: mergeSchemas(
+                StatusPlugin(),
+            )
         },
         users: [
             SuperUser({

@@ -2,13 +2,16 @@
 import { 
     ApplicationPlugin, Const, MLFunctionPlugin,
     ScenarioComparePlugin, Schema, SimulationPlugin, SuperUser,
-    mergeSchemas
+    mergeSchemas,
+    TablesPlugin,
+    StatusPlugin
 } from '@elaraai/edk/lib';
 
 import baseline from '../../gen/baseline.scenario';
 import cash from '../../gen/cash.structure';
 import optimized from '../../gen/optimized.scenario';
 import sales from '../../gen/sales.structure';
+import sales_data from '../../gen/sales.source'
 
 export default Schema(
     ApplicationPlugin({
@@ -48,6 +51,20 @@ export default Schema(
             'Machine Learning': MLFunctionPlugin({
                 func: sales.properties.qty.function
             }),
+            Mappings: TablesPlugin({
+                tables: {
+                    "Sales Instances": sales.instance_table,
+                    "Cash Instances": cash.instance_table,
+                }
+            }),
+            Data: TablesPlugin({
+                tables: {
+                    "Sales Data": sales_data.output
+                }
+            }),
+            Support: mergeSchemas(
+                StatusPlugin(),
+            ),
         },
         users: [
             SuperUser({

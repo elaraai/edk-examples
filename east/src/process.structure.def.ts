@@ -33,6 +33,11 @@ export default ELARA.ProcessStructureSchema({
             Two: 2.0,
             Three: 3.0,
             PowSimulated: ELARA.Pow(Property("Two", "float"), Property("Three", "float")),
+            CaseString: "Français - Éclair",
+            LowerCaseMapped: ELARA.LowerCase("Français - Éclair"),
+            LowerCaseSimulated: ELARA.LowerCase(Property("CaseString", "string")),
+            UpperCaseMapped: ELARA.UpperCase("Français - Éclair"),
+            UpperCaseSimulated: ELARA.UpperCase(Property("CaseString", "string")),
         },
         events: {}
     }

@@ -13,6 +13,7 @@ export default ELARA.JsonSourceSchema({
         id: ELARA.Parse(ELARA.Variable("id", 'integer')),
         dates: ELARA.Parse(ELARA.Variable("dates", 'datetime')),
         x_dict: ELARA.Parse(ELARA.Variable("x_dict", gp_x_dict_type)),
+        x_dict_dict: ELARA.Parse(ELARA.Variable("x_dict_dict", ELARA.DictType(ELARA.DictType('float')))),
         x_string: ELARA.Parse(ELARA.Variable("x_string", 'string')),
         x_bool: ELARA.Parse(ELARA.Variable("x_bool", 'boolean')),
         x_date: ELARA.Parse(ELARA.Variable("x_date", 'datetime')),

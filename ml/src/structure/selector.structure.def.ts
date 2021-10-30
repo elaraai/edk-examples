@@ -10,6 +10,7 @@ export default ELARA.ProcessStructureSchema({
         date: selector.output.fields.dates,
         properties: {
             x_dict: selector.output.fields.x_dict,
+            x_dict_dict: selector.output.fields.x_dict_dict,
             x_string: selector.output.fields.x_string,
             x_bool: selector.output.fields.x_bool,
             x_date: selector.output.fields.x_date,
@@ -18,6 +19,7 @@ export default ELARA.ProcessStructureSchema({
             items: ELARA.MLFunction({
                 features: {
                     X_dict: ELARA.Property("x_dict", ELARA.DictType("float")),
+                    X_dict_dict: ELARA.Property("x_dict_dict", ELARA.DictType(ELARA.DictType("float"))),
                     X_string: ELARA.Property("x_string", 'string'),
                     X_bool: ELARA.Property("x_bool", 'boolean'),
                     X_date: ELARA.Property("x_date", 'datetime'),

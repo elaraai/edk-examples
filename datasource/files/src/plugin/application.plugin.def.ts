@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from "@elaraai/edk/lib"
 
-import { ApplicationPlugin, Const, DataSourcePlugin, SuperUser } from "@elaraai/edk/lib"
+import { ApplicationPlugin, Const, DataSourcePlugin, StatusPlugin, SuperUser } from "@elaraai/edk/lib"
 
 import csv from "../../gen/csv.source"
 import csv_two from "../../gen/csv_two.source"
@@ -15,7 +15,8 @@ export default ELARA.Schema(
         schemas: {
             "Datasources": DataSourcePlugin({
                 datasources: [csv, json, xlsx, csv_two, xlsx_two]
-            })
+            }),
+            "Status": StatusPlugin(),
         },
         users: [
             SuperUser({

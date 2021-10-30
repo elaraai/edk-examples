@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from "@elaraai/edk/lib"
 
-import { Const, colors, mergeSchemas, ViewSelection } from "@elaraai/edk/lib"
+import { Const, colors, mergeSchemas, ViewSelection, MapDict, Variable, Multiply } from "@elaraai/edk/lib"
 
 import rows_source from "../../gen/rows.source"
 import pipeline_plugin from "../../gen/pipeline.plugin"
@@ -124,6 +124,12 @@ export default ELARA.Schema(
                     'Opacity': Const(0.2),
                     'Color': Const(colors.WhiteGray),
                     'Border': Const(colors.DarkGray),
+                    "Dict 2": MapDict(
+                        rows.fields.Dict,
+                        Multiply(Variable('value', 'float'), rows.fields["Number 1"]),
+                        Variable('value', 'float'),
+                        Variable('key', 'string')
+                    )
                 }
             })
         ),
