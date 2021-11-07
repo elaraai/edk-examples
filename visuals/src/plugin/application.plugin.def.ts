@@ -1,5 +1,5 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import {  ApplicationPlugin, Const, Schema, SuperUser, PagePlugin } from '@elaraai/edk/lib';
+import {  ApplicationPlugin, Const, Schema, SuperUser, PagePlugin, StatusPlugin } from '@elaraai/edk/lib';
 
 import group_one from "../../gen/group_one.page"
 import group_two from "../../gen/group_two.page"
@@ -25,7 +25,8 @@ export default Schema(
                     row_two,
                     row_three
                 ]
-            })
+            }),
+            Status: StatusPlugin(),
         },
         users: [
             SuperUser({

@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import { 
     ApplicationPlugin, Const, Schema,
-    SuperUser, DataSourcePlugin, OptionsPlugin, mergeSchemas, Partition, Print, SimulationPlugin, Variable
+    SuperUser, DataSourcePlugin, OptionsPlugin, mergeSchemas, Partition, Print, SimulationPlugin, Variable, StatusPlugin
 } from '@elaraai/edk/lib';
 
 import sales_source from '../../gen/sales.source';
@@ -52,7 +52,8 @@ export default Schema(
             ),
             Datasource: DataSourcePlugin({
                 datasources: [sales_source]
-            })
+            }),
+            Status: StatusPlugin(),
         },
         users: [
             SuperUser({

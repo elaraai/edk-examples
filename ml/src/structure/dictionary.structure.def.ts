@@ -16,6 +16,7 @@ export default ELARA.ProcessStructureSchema({
             x_date: dictionary.output.fields.x_date,
             x_float: dictionary.output.fields.x_float,
             x_int: dictionary.output.fields.x_int,
+            y: dictionary.output.fields.y,
             items: ELARA.MLFunction({
                 features: {
                     X_dict: ELARA.Property("x_dict", ELARA.DictType("float")),
@@ -26,7 +27,7 @@ export default ELARA.ProcessStructureSchema({
                     X_float: ELARA.Property("x_float", 'float'),
                     X_int: ELARA.Property("x_int", 'integer'),
                 },
-                value: dictionary.output.fields.y,
+                output: ELARA.Property("y", ELARA.DictType("integer")),
                 predict: ELARA.IsNull(dictionary.output.fields.y),
                 train: ELARA.Not(ELARA.IsNull(dictionary.output.fields.y)),
             }),

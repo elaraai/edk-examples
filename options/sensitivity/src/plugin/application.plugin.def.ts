@@ -51,9 +51,7 @@ export default Schema(
                     Sales: sales_data
                 }
             }),
-            Support: mergeSchemas(
-                StatusPlugin(),
-            )
+            Status: StatusPlugin(),
         },
         users: [
             SuperUser({

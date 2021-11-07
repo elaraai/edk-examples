@@ -29,7 +29,7 @@ export default ELARA.ProcessStructureSchema({
                 ]
             }),
             qty: MLFunction({
-                value: sales_source.output.fields.Qty,
+                output: sales_source.output.fields.Qty,
                 features: {
                     "Price": Property("price", "float"),
                     "Hour": Property("hour", "integer"),

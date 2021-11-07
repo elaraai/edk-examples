@@ -91,6 +91,9 @@ export default ELARA.Schema(
                     "Max": ELARA.ViewAggregation({ value: ELARA.Maximum(rows.fields["Number 1"]) }),
                     "Avg": ELARA.ViewAggregation({ value: ELARA.Mean(rows.fields["Number 1"]) }),
                     "String 1 Unique": ELARA.ViewAggregation({ value: ELARA.Unique(rows.fields["String 1"]) }),
+                },
+                filters: {
+                    "String Range": ELARA.StringRangeFilter({ value: rows.fields["String 1"] }),
                 }
             })
         ),

@@ -20,6 +20,9 @@ export default ELARA.PanelPageSchema({
             ]
         })
     },
+    filters: {
+        "String Range": json_data_single_group.filters['String Range']
+    },
     container: ELARA.PanelContainer({
         size: ELARA.PanelDimension({ size: 100 }),
         orientation: 'column',

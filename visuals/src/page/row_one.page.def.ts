@@ -232,7 +232,7 @@ export default ELARA.PanelPageSchema({
                     }),
                 ]
             }),
-        ]
+        ],
     }),
     grants: [],
 })

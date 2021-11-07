@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from "@elaraai/edk/lib"
 
-import { ApplicationPlugin, Const, DataSourcePlugin, mergeSchemas, MLFunctionPlugin,  PipelinePlugin, SimulationPlugin, SuperUser } from "@elaraai/edk/lib"
+import { ApplicationPlugin, Const, DataSourcePlugin, mergeSchemas, MLFunctionPlugin,  PipelinePlugin, SimulationPlugin, StatusPlugin, SuperUser } from "@elaraai/edk/lib"
 import covid from '../../gen/covid.source';
 import purchases from '../../gen/purchases.source';
 import rosters from '../../gen/rosters.source';
@@ -69,6 +69,7 @@ export default ELARA.Schema(
                 func: sales_structure.properties.Qty.function,
                 prepend: 'ML'
             }),
+            Status: StatusPlugin(),
         },
         users: [
             SuperUser({

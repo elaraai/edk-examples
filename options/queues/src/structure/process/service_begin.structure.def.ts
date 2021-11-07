@@ -150,7 +150,7 @@ export default ELARA.ProcessStructureSchema({
             }),
             //learn the time duration of service for queue and staff category
             service_duration: MLFunction({
-                value: work_source.output.fields.Duration,
+                output: work_source.output.fields.Duration,
                 features: {
                     "Staff Type": Property("staff_type", "string"),
                     "Queue": Property("queue", "string")

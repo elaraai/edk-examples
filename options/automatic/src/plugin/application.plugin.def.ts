@@ -62,9 +62,7 @@ export default Schema(
                     "Sales Data": sales_data.output
                 }
             }),
-            Support: mergeSchemas(
-                StatusPlugin(),
-            ),
+            Status: StatusPlugin(),
         },
         users: [
             SuperUser({

@@ -16,6 +16,7 @@ export default ELARA.ProcessStructureSchema({
             x_date: selector.output.fields.x_date,
             x_float: selector.output.fields.x_float,
             x_int: selector.output.fields.x_int,
+            y: selector.output.fields.y,
             items: ELARA.MLFunction({
                 features: {
                     X_dict: ELARA.Property("x_dict", ELARA.DictType("float")),
@@ -26,9 +27,39 @@ export default ELARA.ProcessStructureSchema({
                     X_float: ELARA.Property("x_float", 'float'),
                     X_int: ELARA.Property("x_int", 'integer'),
                 },
-                value: selector.output.fields.y,
+                output: ELARA.Property("y", 'string'),
                 predict: ELARA.IsNull(selector.output.fields.y),
                 train: ELARA.Not(ELARA.IsNull(selector.output.fields.y)),
+            }),
+            items_max_likelihood: ELARA.MLFunction({
+                features: {
+                    X_dict: ELARA.Property("x_dict", ELARA.DictType("float")),
+                    X_dict_dict: ELARA.Property("x_dict_dict", ELARA.DictType(ELARA.DictType("float"))),
+                    X_string: ELARA.Property("x_string", 'string'),
+                    X_bool: ELARA.Property("x_bool", 'boolean'),
+                    X_date: ELARA.Property("x_date", 'datetime'),
+                    X_float: ELARA.Property("x_float", 'float'),
+                    X_int: ELARA.Property("x_int", 'integer'),
+                },
+                output: ELARA.Property("y", 'string'),
+                predict: ELARA.IsNull(selector.output.fields.y),
+                train: ELARA.Not(ELARA.IsNull(selector.output.fields.y)),
+                sampling_mode: "max_likelihood"
+            }),
+            items_probability: ELARA.MLFunction({
+                features: {
+                    X_dict: ELARA.Property("x_dict", ELARA.DictType("float")),
+                    X_dict_dict: ELARA.Property("x_dict_dict", ELARA.DictType(ELARA.DictType("float"))),
+                    X_string: ELARA.Property("x_string", 'string'),
+                    X_bool: ELARA.Property("x_bool", 'boolean'),
+                    X_date: ELARA.Property("x_date", 'datetime'),
+                    X_float: ELARA.Property("x_float", 'float'),
+                    X_int: ELARA.Property("x_int", 'integer'),
+                },
+                output: ELARA.Property("y", 'string'),
+                predict: ELARA.IsNull(selector.output.fields.y),
+                train: ELARA.Not(ELARA.IsNull(selector.output.fields.y)),
+                sampling_mode: "probability"
             }),
         },
         events: {}

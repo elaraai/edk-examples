@@ -4,6 +4,7 @@ import {
     GroupLinearColor, GroupLineValueSeries, GroupLineVisual, GroupPieSeries, GroupPieVisual,
     Layout, mergeSchemas, MLFunctionPlugin, PanelContainer, PanelDimension, PanelPageSchema,
     PanelVisual, PipelinePlugin, RowFixedColor, RowRidgelineSeries, RowRidgelineVisual, Schema,
+    StatusPlugin,
     StringJoin, SuperUser, Tooltip, XAxis, YAxis
 } from '@elaraai/edk/lib';
 
@@ -158,6 +159,7 @@ export default Schema(
                 ],
                 prepend: "Datasource"
             }),
+            Status: StatusPlugin(),
         },
         users: [
             SuperUser({

@@ -49,7 +49,7 @@ export default ELARA.ProcessStructureSchema({
             employee_count: Size(Property("all_employees_types", DictType("string"))),
             //A learnt model for how many employees of each type should be delegated to each queue
             baseline_delegation: MLFunction({
-                value: delegations.fields.EmployeeTypes,
+                output: delegations.fields.EmployeeTypes,
                 features: {
                     hour: Property("hour", "integer"),
                     employee_count: Property("employee_count", "integer")

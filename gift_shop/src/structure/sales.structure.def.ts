@@ -23,7 +23,7 @@ export default ELARA.ProcessStructureSchema({
             CovidCases: Replace(sales.fields.TotalCovidCases, Null('integer'), 0n),
             CumulativeQty: GetProperties({ property: products.properties.Qty }),
             Qty: MLFunction({
-                value: sales.fields.TotalSalesQty,
+                output: sales.fields.TotalSalesQty,
                 train: Less(sales.fields.HourlyCycle, 0n),
                 predict: GreaterEqual(sales.fields.HourlyCycle, 0n),
                 features: {

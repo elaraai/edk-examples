@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import { 
     ApplicationPlugin, Const, Schema,
-    SimulationPlugin, SuperUser, mergeSchemas, DataSourcePlugin
+    SimulationPlugin, SuperUser, mergeSchemas, DataSourcePlugin, StatusPlugin
 } from '@elaraai/edk/lib';
 
 
@@ -47,7 +47,8 @@ export default Schema(
                     suppliers_source,
                     work_source
                 ]
-            })
+            }),
+            Status: StatusPlugin(),
         },
         users: [
             SuperUser({

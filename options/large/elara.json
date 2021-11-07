@@ -1,0 +1,56 @@
+{
+  "project": {
+    "name": "large"
+  },
+  "assets": {
+    "application.plugin": {
+      "name": "Application",
+      "def_path": "src/plugin/application.plugin.def.ts",
+      "gen_path": "gen/application.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
+    },
+    "baseline.scenario": {
+      "name": "baseline",
+      "def_path": "src/scenario/baseline.scenario.def.ts",
+      "gen_path": "gen/baseline.scenario.ts",
+      "type": "entity",
+      "entity_type": "scenario"
+    },
+    "local.deployment": {
+      "type": "deployment",
+      "name": "local",
+      "loglevel": "info",
+      "server": "localhost",
+      "sensitivity_trajectories": 10
+    },
+    "flow.pipeline": {
+      "name": "Flow",
+      "def_path": "src/pipeline/flow.pipeline.def.ts",
+      "gen_path": "gen/flow.pipeline.ts",
+      "type": "entity",
+      "entity_type": "pipeline"
+    },
+    "flow.structure": {
+      "name": "flow",
+      "def_path": "src/structure/flow.structure.def.ts",
+      "gen_path": "gen/flow.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    },
+    "range.source": {
+      "name": "Range",
+      "def_path": "src/datasource/range.source.def.ts",
+      "gen_path": "gen/range.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
+    "stuff.structure": {
+      "name": "stuff",
+      "def_path": "src/structure/stuff.structure.def.ts",
+      "gen_path": "gen/stuff.structure.ts",
+      "type": "entity",
+      "entity_type": "structure"
+    }
+  }
+}
