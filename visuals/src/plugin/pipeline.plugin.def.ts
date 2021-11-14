@@ -4,7 +4,7 @@ import { DistributionOperation, PipelineSchema } from "@elaraai/edk/lib"
 
 import rows_source from "../../gen/rows.source"
 
-export default ELARA.Schema(
+export default ELARA.mergeSchemas(
     PipelineSchema({
         name: "Distribution",
         input_table: rows_source.output,
@@ -15,5 +15,5 @@ export default ELARA.Schema(
                 n_bins: 200n
             })
         ],
-    })
+    }),
 )

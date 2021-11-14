@@ -53,6 +53,19 @@ For general usage and code examples we provide the following detailed documentat
 ## Release Notes
 The following release notes summarise changes accross [edk](https://www.npmjs.com/package/@elaraai/edk), [edk-io package](https://www.npmjs.com/package/@elaraai/edk-io), [edk-examples](https://github.com/elaraai/edk-examples).
 
+- **Version 2.3**
+    - edk:
+        - Added `edk add visual` command to manage visual assets.
+    - edk/lib:
+        - Schema:
+            - Seperate `Visual` into root of schema object.
+        - Application:
+            - Added `RowPivotVisual` to visualise ordered structs in a dense pivot grid.
+            - Improve UI and visual styling
+            - Improved `Layout` and `Axis` definition and helper functions.
+    - edk-examples:
+        - Update `Visual Example` in [edk-examples](https://github.com/elaraai/edk-examples) to demonstrate `RowPivotVisual`.
+        - Added `Large Example` in [edk-examples](https://github.com/elaraai/edk-examples) to demonstrate simulation for large problems.
 
 - **Version 2.2**
     - edk:

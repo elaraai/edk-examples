@@ -45,6 +45,7 @@ export default ELARA.JsonSourceSchema({
         "Prev Identifier": ELARA.Parse(ELARA.Variable("Prev Identifier", 'string')),
         Group: ELARA.Parse(ELARA.Variable("Group", 'string')),
         "String 1": ELARA.Parse(ELARA.Variable("String 1", 'string')),
+        "Offset": ELARA.Parse(ELARA.Variable("Offset", 'integer')),
         "String 2": ELARA.Parse(ELARA.Variable("String 2", 'string')),
         "Prev String 1": ELARA.Parse(ELARA.Variable("Prev String 1", 'string')),
         "Prev String 2": ELARA.Parse(ELARA.Variable("Prev String 2", 'string')),

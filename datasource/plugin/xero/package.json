@@ -13,6 +13,6 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-     "@elaraai/edk": "2.2.12"
+     "@elaraai/edk": "2.3.0"
   }
 }

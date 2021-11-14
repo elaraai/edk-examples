@@ -78,8 +78,7 @@ export default ELARA.Schema(
                     samples: service_begin_simulation.fields.queue_duration,
                     group_key: StringJoin`${service_begin_simulation.fields.queue} (${service_begin_simulation.fields.scenario})`,
                     distribution: 'GaussianKDE',
-                    normalization: 'PercentSum',
-                    n_bins: 400n,
+                    normalization: 'ProbabilityDensity'
                 }),
                 SelectOperation({
                     keep_all: true,

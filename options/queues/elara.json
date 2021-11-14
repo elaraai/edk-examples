@@ -213,6 +213,13 @@
       "gen_path": "gen/views.plugin.ts",
       "type": "entity",
       "entity_type": "plugin"
+    },
+    "visuals.plugin": {
+      "name": "Visuals",
+      "def_path": "src/analytics/visuals.plugin.def.ts",
+      "gen_path": "gen/visuals.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
     }
   }
 }

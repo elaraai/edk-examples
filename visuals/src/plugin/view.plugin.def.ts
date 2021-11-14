@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from "@elaraai/edk/lib"
 
-import { Const, colors, mergeSchemas, ViewSelection, MapDict, Variable, Multiply } from "@elaraai/edk/lib"
+import { NewArray, Const, colors, mergeSchemas, ViewSelection, MapDict, Variable, Multiply, Struct, StringJoin } from "@elaraai/edk/lib"
 
 import rows_source from "../../gen/rows.source"
 import pipeline_plugin from "../../gen/pipeline.plugin"
@@ -81,6 +81,8 @@ export default ELARA.Schema(
                     'Nested String 1': ELARA.GetField(rows.fields.Struct, "String"),
                     'Nested Array': ELARA.GetField(rows.fields.Struct, 'Array'),
                     'New Number 1': ELARA.Multiply(rows.fields["Number 1"], rows.fields["Number 1"]),
+                    'Dash': NewArray('float', 3, 3),
+                    'Transparent': Const(0)
                 },
                 groups: {
                     "String 1 Group": ELARA.ViewGroup({ value: rows.fields["String 1"] })
@@ -132,7 +134,15 @@ export default ELARA.Schema(
                         Multiply(Variable('value', 'float'), rows.fields["Number 1"]),
                         Variable('value', 'float'),
                         Variable('key', 'string')
-                    )
+                    ),
+                    "Priority": StringJoin`Priority ${rows.fields.Offset}`,
+                    "Struct 1" : Struct({
+                        "Number 1": rows.fields["Number 1"],
+                        "Boolean 1": rows.fields["Boolean 1"],
+                        "Date 1": rows.fields["Date 1"],
+                        "Integer 1": rows.fields["Integer 1"],
+                        "String 2": rows.fields["String 2"],
+                    })
                 }
             })
         ),
