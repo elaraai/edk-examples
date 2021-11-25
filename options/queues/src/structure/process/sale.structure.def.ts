@@ -1,12 +1,22 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
-import { Add,  Const,  GetProperty, IfElse, NewSet, Null, ProcessMapping, Property, Union} from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  Add,
+  Const,
+  GetProperty,
+  IfElse,
+  NewSet,
+  Null,
+  ProcessMapping,
+  Property,
+  Union,
+} from '@elaraai/edk/lib';
 
-import work_source from "../../../gen/work.source"
-import service_begin from "../../../gen/service_begin.structure"
-import employees from "../../../gen/employees.structure"
-import money from "../../../gen/money.structure"
-import queues from "../../../gen/queues.structure"
+import employees from '../../../gen/employees.structure';
+import money from '../../../gen/money.structure';
+import queues from '../../../gen/queues.structure';
+import service_begin from '../../../gen/service_begin.structure';
+import work_source from '../../../gen/work.source';
 
 export default ELARA.ProcessStructureSchema({
     concept: "Sale",

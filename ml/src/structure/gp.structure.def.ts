@@ -1,8 +1,8 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
 import { Property } from '@elaraai/edk/lib';
 
-import gp from '../../gen/gp.source'
+import gp from '../../gen/gp.source';
 
 export default ELARA.ProcessStructureSchema({
     concept: 'GP',
@@ -30,7 +30,7 @@ export default ELARA.ProcessStructureSchema({
                     X_int: ELARA.Property("x_int", 'integer'),
                 },
                 output: ELARA.Property("y", "float"),
-                predict: ELARA.IsNull(gp.output.fields.y),
+                evaluate: ELARA.IsNull(gp.output.fields.y),
                 train: ELARA.Not(ELARA.IsNull(gp.output.fields.y)),
                 training_group: gp.output.fields.x_string
             }),
@@ -45,7 +45,7 @@ export default ELARA.ProcessStructureSchema({
                     X_int: ELARA.Property("x_int", 'integer'),
                 },
                 output: ELARA.Property("y", "float"),
-                predict: ELARA.IsNull(gp.output.fields.y),
+                evaluate: ELARA.IsNull(gp.output.fields.y),
                 train: ELARA.Not(ELARA.IsNull(gp.output.fields.y)),
                 training_group: gp.output.fields.x_string,
                 sampling_mode: "max_likelihood",
@@ -61,12 +61,12 @@ export default ELARA.ProcessStructureSchema({
                     X_int: ELARA.Property("x_int", 'integer'),
                 },
                 output: ELARA.Property("y", "float"),
-                predict: ELARA.IsNull(gp.output.fields.y),
+                evaluate: ELARA.IsNull(gp.output.fields.y),
                 train: ELARA.Not(ELARA.IsNull(gp.output.fields.y)),
                 training_group: gp.output.fields.x_string,
                 sampling_mode: "probability",
             }),
         },
-        events: {}
+        events: {},
     }
 })

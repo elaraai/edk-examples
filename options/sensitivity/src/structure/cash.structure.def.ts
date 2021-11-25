@@ -1,5 +1,10 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import { Property, Resource, ResourceStructureSchema, Temporal } from "@elaraai/edk/lib"
+import {
+  Property,
+  Resource,
+  ResourceStructureSchema,
+  Temporal,
+} from '@elaraai/edk/lib';
 
 export default ResourceStructureSchema({
     concept: 'cash',
@@ -16,7 +21,7 @@ export default ResourceStructureSchema({
                         "upper": "p85"
                     }
                 }),
-            }
+            },
         })
     }
 })

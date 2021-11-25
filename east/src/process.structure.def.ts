@@ -1,8 +1,16 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
-import { GenericFunction, Property, ToDateTime } from '@elaraai/edk/lib';
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  ArrayType,
+  Const,
+  DictType,
+  GenericFunction,
+  Get,
+  Property,
+  ToDateTime,
+} from '@elaraai/edk/lib';
 
-import inputSource from '../gen/input.source'
+import inputSource from '../gen/input.source';
 
 const input = inputSource.output
 
@@ -38,7 +46,21 @@ export default ELARA.ProcessStructureSchema({
             LowerCaseSimulated: ELARA.LowerCase(Property("CaseString", "string")),
             UpperCaseMapped: ELARA.UpperCase("Français - Éclair"),
             UpperCaseSimulated: ELARA.UpperCase(Property("CaseString", "string")),
+            Get1Mapped: Get(Const(new Map([["a", "A"], ["b", "B"]])), Const("a")),
+            Get2Mapped: Get(Const(new Map([["a", "A"], ["b", "B"]])), Const("c")),
+            Get3Mapped: Get(Const(new Map([["a", "A"], ["b", "B"]])), Const("c"), Const("C")),
+            Get4Mapped: Get(Const(["a", "b"]), Const(0n)),
+            Get5Mapped: Get(Const(["a", "b"]), Const(2n)),
+            Get6Mapped: Get(Const(["a", "b"]), Const(2n), Const("C")),
+            Dict: new Map([["a", "A"], ["b", "B"]]),
+            Array: ["a", "b"],
+            Get1Simulated: Get(Property("Dict", DictType("string")), Const("a")),
+            Get2Simulated: Get(Property("Dict", DictType("string")), Const("c")),
+            Get3Simulated: Get(Property("Dict", DictType("string")), Const("c"), Const("C")),
+            Get4Simulated: Get(Property("Array", ArrayType("string")), Const(0n)),
+            Get5Simulated: Get(Property("Array", ArrayType("string")), Const(2n)),
+            Get6Simulated: Get(Property("Array", ArrayType("string")), Const(2n), Const("c")),
         },
-        events: {}
+        events: {},
     }
 })

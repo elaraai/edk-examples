@@ -1,10 +1,17 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
-import { AddDuration, GetProperty, Multiply, ProcessDate, Property, Subtract } from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  AddDuration,
+  GetProperty,
+  Multiply,
+  ProcessDate,
+  Property,
+  Subtract,
+} from '@elaraai/edk/lib';
 
-import invoices_source from '../../gen/invoices.source'
-import supplier from "../../gen/supplier.structure"
-import cash from "../../gen/cash.structure"
+import cash from '../../gen/cash.structure';
+import invoices_source from '../../gen/invoices.source';
+import supplier from '../../gen/supplier.structure';
 
 const invoices = invoices_source.output
 
@@ -46,6 +53,6 @@ export default ELARA.ProcessStructureSchema({
                 date: Property('payment_date', 'datetime'),
                 value: Subtract(Property('balance', 'float'), Property('amount', 'float')) 
             },
-        }
+        },
     }
 })

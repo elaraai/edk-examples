@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
 
-import selector from '../../gen/selector.source'
+import selector from '../../gen/selector.source';
 
 export default ELARA.ProcessStructureSchema({
     concept: 'Selector',
@@ -28,7 +28,7 @@ export default ELARA.ProcessStructureSchema({
                     X_int: ELARA.Property("x_int", 'integer'),
                 },
                 output: ELARA.Property("y", 'string'),
-                predict: ELARA.IsNull(selector.output.fields.y),
+                evaluate: ELARA.IsNull(selector.output.fields.y),
                 train: ELARA.Not(ELARA.IsNull(selector.output.fields.y)),
             }),
             items_max_likelihood: ELARA.MLFunction({
@@ -42,7 +42,7 @@ export default ELARA.ProcessStructureSchema({
                     X_int: ELARA.Property("x_int", 'integer'),
                 },
                 output: ELARA.Property("y", 'string'),
-                predict: ELARA.IsNull(selector.output.fields.y),
+                evaluate: ELARA.IsNull(selector.output.fields.y),
                 train: ELARA.Not(ELARA.IsNull(selector.output.fields.y)),
                 sampling_mode: "max_likelihood"
             }),
@@ -57,11 +57,11 @@ export default ELARA.ProcessStructureSchema({
                     X_int: ELARA.Property("x_int", 'integer'),
                 },
                 output: ELARA.Property("y", 'string'),
-                predict: ELARA.IsNull(selector.output.fields.y),
+                evaluate: ELARA.IsNull(selector.output.fields.y),
                 train: ELARA.Not(ELARA.IsNull(selector.output.fields.y)),
                 sampling_mode: "probability"
             }),
         },
-        events: {}
+        events: {},
     }
 })

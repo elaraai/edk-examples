@@ -173,12 +173,14 @@ export default ELARA.ResourceStructureSchema({
     instances: {
         allocation: Resource({
             properties: {
+                date: new Date("2021-01-02T00:00:00.000Z"), // Seperates "past" from "future"
                 optimise: Option({
                     default_value: false,
                     proposals: [
                         { scenario: baseline_scenario, value: false },
                         { scenario: optimised_scenario, value: true }
-                    ]
+                    ],
+                    date: Property("date", "datetime"),
                 })
             }
         })
@@ -223,6 +225,7 @@ export default ELARA.ResourceStructureSchema({
     mapping: {
         input_table: policy,
         properties: {
+            date: new Date("2021-01-02T00:00:00.000Z"), // Seperates "past" from "future"
             queue: policy.fields.Queue,
             type: policy.fields.Type,
             bias: Option({
@@ -233,7 +236,8 @@ export default ELARA.ResourceStructureSchema({
                         min: policy.fields.BiasMin,
                         max: policy.fields.BiasMax
                     },
-                ]
+                ],
+                date: Property("date", "datetime"),
             }),
             queue_load: Option({
                 default_value: policy.fields.Load,
@@ -243,7 +247,8 @@ export default ELARA.ResourceStructureSchema({
                         min: policy.fields.LoadMin,
                         max: policy.fields.LoadMax
                     },
-                ]
+                ],
+                date: Property("date", "datetime"),
             }),
             duration_perturbation: Option({
                 default_value: 0,
@@ -253,9 +258,10 @@ export default ELARA.ResourceStructureSchema({
                         min: 0,
                         max: 120
                     },
-                ]
+                ],
+                date: Property("date", "datetime"),
             })
-        }
+        },
     }
 })
 ```

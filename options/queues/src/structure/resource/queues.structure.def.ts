@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
 
-import queue_source from "../../../gen/queues.source"
+import queue_source from '../../../gen/queues.source';
 
 export default ELARA.ResourceStructureSchema({
     concept: "Queues",

@@ -107,38 +107,36 @@ Currently there wouldn't be any generated files to reference within our process,
 Now that we have a resource, we can create a sales process instance from each record in the datasource. First we create the `sales` process with the following command: `edk add structure process --concept sales --def_dir src/structure`. This will add a process which we can populate with a several properties to get, process then update the cash resource balance, as shown below:
 
 ```typescript
-import { Add, GetProperty, Hour, MLFunction, Multiply, Not, Option, ProcessMapping, Property, StringJoin, Subtract } from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  Add,
+  GetProperty,
+  Hour,
+  MLFunction,
+  Multiply,
+  Not,
+  Option,
+  ProcessMapping,
+  Property,
+  StringJoin,
+  Subtract,
+} from '@elaraai/edk/lib';
 
-// import the default scenario for the options
 import baseline_scenario from '../../gen/baseline.scenario';
-// import the cash structure
 import cash from '../../gen/cash.structure';
-// enter the sales datasource
 import sales_source from '../../gen/sales.source';
 
-export default ProcessStructureSchema({
+export default ELARA.ProcessStructureSchema({
     concept: 'sales',
-    // we will create a mapping, generating an instance for sales 
-    //  from each record in `sales.source`
     mapping: ProcessMapping({
-        // generate the instances from `sales.source` output table
         input_table: sales_source.output,
-        // use the sales date for the process data
         date: sales_source.output.fields.Date,
-        // we need to define an identifier, use the sales id
-        marker: StringJoin`${sales_source.output.fields.Id}`,
+        marker: StringJoin`${sales_source.output.fields.ID}`,
         properties: {
-            // since sales seem to change at different points in the day 
-            //  we will calulcate the hour of day to use later as an MLFunction feature
             hour: Hour(sales_source.output.fields.Date),
-            // we are assuming that the cost s fixed
             cost: sales_source.output.fields.Cost,
-            // the price is a decision we can make, we want to be able to manually adjust
-            //  the value. We also want to know how much a particular price affects profitiability
             price: Option({
-                // use the list price as a default
                 default_value: sales_source.output.fields.Price,
-                // allow users to change the price from 0.5 - 2.0 the list price
                 manual: [
                     { 
                         scenario: baseline_scenario, 
@@ -147,29 +145,24 @@ export default ProcessStructureSchema({
                         active: sales_source.output.fields.Predict
                     },
                 ],
-                // allow ELARA to explore the impact of changing the price 
-                //  from 0.5 - 2.0 the list price
                 sensitivity: [
                     { 
                         scenario: baseline_scenario, 
-                        min: Multiply(sales_source.output.fields.Price, 0.5), 
-                        max: Multiply(sales_source.output.fields.Price, 2.0),
+                        min: Multiply(Property("price", "float"), 0.95), 
+                        max: Multiply(Property("price", "float"), 1.05),
                         active: sales_source.output.fields.Predict
                     },
                 ]
             }),
-            // let ELARA calculate the complex relationship 
-            //  between qty, and price and hour of day
             qty: MLFunction({
-                value: sales_source.output.fields.Qty,
+                output: sales_source.output.fields.Qty,
                 features: {
                     "Price": Property("price", "float"),
                     "Hour": Property("hour", "integer"),
                 },
                 train: Not(sales_source.output.fields.Predict),
-                predict: sales_source.output.fields.Predict,
+                evaluate: sales_source.output.fields.Predict,
             }),
-            // calculate the profit from the sale
             profit: Multiply(
                 Property("qty", "float"),
                 Subtract(
@@ -177,21 +170,16 @@ export default ProcessStructureSchema({
                     Property("cost", 'float')
                 )
             ),
-            // get the cash balance prior to the process date
             cash_balance: GetProperty({
                 property: cash.properties.balance
             }),
         },
-        // events can be used to "set" the value of an external temporal property
         events: {
-            // update the cash based on the sales amount
             increment_cash: {
-                // want to update the balance property
                 property: cash.properties.balance,
-                // update as the sum of cash balance prior to the process and the sales profit
-                value: Add(Property("cash_balance", "float"), Property("amount", "float")),
+                value: Add(Property("cash_balance", "float"), Property("profit", "float")),
             }
-        }
+        },
     })
 })
 ```

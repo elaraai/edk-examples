@@ -53,6 +53,12 @@ For general usage and code examples we provide the following detailed documentat
 ## Release Notes
 The following release notes summarise changes accross [edk](https://www.npmjs.com/package/@elaraai/edk), [edk-io package](https://www.npmjs.com/package/@elaraai/edk-io), [edk-examples](https://github.com/elaraai/edk-examples).
 
+- **Version 3.0**
+    - edk/lib:
+        - Remove `predict` predicate in `Process`, `Resource` and `Agent` entities, to automate seperation of deterministic trajectories from probabilistic trajectories in simulation.
+    - edk-examples:
+        - Update all examples with removal of `predict` predicate in `Process`, `Resource` and `Agent` entities.
+
 - **Version 2.3**
     - edk:
         - Added `edk add visual` command to manage visual assets.

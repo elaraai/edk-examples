@@ -1,11 +1,25 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  Add,
+  AddAll,
+  AddDict,
+  DictType,
+  GetProperties,
+  GetProperty,
+  GreaterEqual,
+  Less,
+  MLFunction,
+  MultiplyDict,
+  Null,
+  ProcessMapping,
+  Property,
+  Replace,
+} from '@elaraai/edk/lib';
 
-import { Add, AddAll, AddDict, DictType, GetProperties, GetProperty, GreaterEqual, Less, MLFunction, MultiplyDict, Null, ProcessMapping, Property, Replace } from "@elaraai/edk/lib"
-
-import money from "../../gen/money.structure"
-import products from "../../gen/products.structure"
-import structure_pipeline_plugin from "../../gen/structure_pipelines.plugin"
+import money from '../../gen/money.structure';
+import products from '../../gen/products.structure';
+import structure_pipeline_plugin from '../../gen/structure_pipelines.plugin';
 
 const sales = structure_pipeline_plugin.pipeline.Sales.output_table
 
@@ -25,7 +39,7 @@ export default ELARA.ProcessStructureSchema({
             Qty: MLFunction({
                 output: sales.fields.TotalSalesQty,
                 train: Less(sales.fields.HourlyCycle, 0n),
-                predict: GreaterEqual(sales.fields.HourlyCycle, 0n),
+                evaluate: GreaterEqual(sales.fields.HourlyCycle, 0n),
                 features: {
                     CovidCases: Property("CovidCases", "integer"),
                     Prices: Property("Prices", DictType("float")),
@@ -55,6 +69,6 @@ export default ELARA.ProcessStructureSchema({
                     Property("Qty", DictType("integer"))
                 )
             }
-        }
+        },
     })
 })

@@ -33,7 +33,7 @@ export default Schema(
                 SimulationPlugin({
                     name: "Sales Results",
                     entity: sales,
-                    properties: sales.properties,
+                    properties: { ...sales.properties, date: sales.date },
                     ml: false
                 }),
                 SimulationPlugin({

@@ -1,9 +1,16 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
-import { Add, GetProperty, NewSet, ProcessMapping, Property, Union } from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  Add,
+  GetProperty,
+  NewSet,
+  ProcessMapping,
+  Property,
+  Union,
+} from '@elaraai/edk/lib';
 
-import queues from "../../../gen/queues.structure"
-import work_source from "../../../gen/work.source"
+import queues from '../../../gen/queues.structure';
+import work_source from '../../../gen/work.source';
 
 export default ELARA.ProcessStructureSchema({
     concept: "Arrival",

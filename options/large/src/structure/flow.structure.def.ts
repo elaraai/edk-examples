@@ -1,11 +1,20 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import {
-    Option, ProcessStructureSchema, ProcessMapping, Property, Add, Subtract, Divide, GetProperty, MLFunction, Not
+  Add,
+  Divide,
+  GetProperty,
+  MLFunction,
+  Not,
+  Option,
+  ProcessMapping,
+  ProcessStructureSchema,
+  Property,
+  Subtract,
 } from '@elaraai/edk/lib';
 
 import baseline_scenario from '../../gen/baseline.scenario';
-import stuff from '../../gen/stuff.structure';
 import flow_pipeline from '../../gen/flow.pipeline';
+import stuff from '../../gen/stuff.structure';
 
 const flow = flow_pipeline.output_table
 
@@ -27,7 +36,7 @@ export default ProcessStructureSchema({
                     balance: Property("current_stuff", "float"),
                 },
                 output: Divide(Property("current_stuff", "float"), 10.0),
-                predict: flow.fields.future,
+                evaluate: flow.fields.future,
                 train: Not(flow.fields.future),
             })
         },
@@ -42,6 +51,6 @@ export default ProcessStructureSchema({
                     )
                 ),
             }
-        }
+        },
     })
 })

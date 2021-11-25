@@ -1,15 +1,23 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  DictType,
+  GetProperties,
+  GreaterEqual,
+  MapDict,
+  Option,
+  ProcessMapping,
+  Property,
+  Variable,
+} from '@elaraai/edk/lib';
 
-
-import { Option, GetProperties, ProcessMapping, Multiply } from "@elaraai/edk/lib"
-
-import products from "../../gen/products.structure"
-import structure_pipeline_plugin from "../../gen/structure_pipelines.plugin"
+import baseline from '../../gen/baseline.scenario';
+import products from '../../gen/products.structure';
+import structure_pipeline_plugin from '../../gen/structure_pipelines.plugin';
 
 const promotions = structure_pipeline_plugin.pipeline.Promotions.output_table
-import baseline from "../../gen/baseline.scenario"
 
+// TODO this just sets a flat discount across all products for a day
 export default ELARA.ProcessStructureSchema({
     concept: "Promotions",
     mapping: ProcessMapping({
@@ -24,16 +32,26 @@ export default ELARA.ProcessStructureSchema({
                 default_value: promotions.fields.MeanSalesPrice,
                 manual: [{
                     scenario: baseline,
-                    min: Multiply(promotions.fields.MeanSalesPrice, 0.8),
-                    max: Multiply(promotions.fields.MeanSalesPrice, 1.2),
+                    min: 0.0,
+                    max: 10.0,
                 }],
                 sensitivity: [{
                     scenario: baseline,
-                    min: Multiply(promotions.fields.MeanSalesPrice, 0.8),
-                    max: Multiply(promotions.fields.MeanSalesPrice, 1.2)
+                    min: 0.8,
+                    max: 1.2,
                 }]
             }),
         },
-        events: { }
+        events: { 
+            SetDiscount: {
+                property: products.properties.Discount,
+                values: MapDict(
+                    Property("CurrentDiscounts", DictType("float")),
+                    Property("Discount", "float"),
+                    Variable("_", "float")
+                ),
+            }
+        },
+        filter: GreaterEqual(promotions.fields.DailyCycle, 0n),
     })
 })

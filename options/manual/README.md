@@ -118,7 +118,6 @@ export default AgentStructureSchema({
         }
     }
 })
-
 ```
 
 ## Add scenario
@@ -140,14 +139,27 @@ Now that we have a resource, we can create a sales process instance from each re
 
 ```typescript
 import {
-    Multiply, Option,
-    ProcessStructureSchema, ProcessMapping, Print, GetProperties, Property, DictType, SubtractDuration, AddDuration, Add, GetProperty, Subtract, Get, IfElse
+  Add,
+  AddDuration,
+  DictType,
+  Get,
+  GetProperties,
+  GetProperty,
+  IfElse,
+  Multiply,
+  Option,
+  Print,
+  ProcessMapping,
+  ProcessStructureSchema,
+  Property,
+  Subtract,
+  SubtractDuration,
 } from '@elaraai/edk/lib';
 
 import baseline_scenario from '../../gen/baseline.scenario';
 import cash from '../../gen/cash.structure';
-import supplier from '../../gen/supplier.structure';
 import sales_source from '../../gen/sales.source';
+import supplier from '../../gen/supplier.structure';
 
 const sales = sales_source.outputs.Sales.table
 
@@ -155,15 +167,10 @@ export default ProcessStructureSchema({
     concept: "sales",
     mapping: ProcessMapping({
         input_table: sales,
-        // the date of the sale is set by the manual option below
-        date: Property("datetime", 'datetime'),
         marker: Print(sales.fields.Sale),
+        date: Property("datetime", 'datetime'),
         properties: {
-            // get all the costs (dictionary) from each supplier
-            costs: GetProperties({
-                property: supplier.properties.Cost
-            }),
-            // the date of the sales will be a manual option, set at += 2 weeks from the default date
+            min_datetime: SubtractDuration(sales.fields.Date, 2, 'week'),
             datetime: Option({
                 default_value: sales.fields.Date,
                 manual: [
@@ -172,9 +179,12 @@ export default ProcessStructureSchema({
                         min: SubtractDuration(sales.fields.Date, 2, 'week'),
                         max: AddDuration(sales.fields.Date, 2, 'week')
                     },
-                ]
+                ],
+                date: Property("min_datetime", "datetime"),
             }),
-            // the refund predicate will be a manual option
+            costs: GetProperties({
+                property: supplier.properties.Cost
+            }),
             refund: Option({
                 default_value: sales.fields.Refund,
                 manual: [
@@ -183,7 +193,6 @@ export default ProcessStructureSchema({
                     },
                 ]
             }),
-            // the price will be a manual option
             price: Option({
                 default_value: sales.fields.Price,
                 manual: [
@@ -194,7 +203,6 @@ export default ProcessStructureSchema({
                     },
                 ]
             }),
-            // the qty will be a manual option
             qty: Option({
                 default_value: sales.fields.Qty,
                 manual: [
@@ -205,7 +213,6 @@ export default ProcessStructureSchema({
                     },
                 ]
             }),
-            // the supplier will be a manual option, constrained by the set of suppliers
             supplier: Option({
                 default_value: sales.fields.Supplier,
                 manual: [
@@ -217,11 +224,8 @@ export default ProcessStructureSchema({
                     },
                 ]
             }),
-            // get the current cash balance
             cash_balance: GetProperty({ property: cash.properties.balance }),
-            // the current cost is determined by the selected supplier
             cost: Get(Property("costs", DictType('float')), Property("supplier", 'string')),
-            // calclate the profit from the various properties (refund is negated)
             profit: Multiply(
                 IfElse(
                     Property("refund", "boolean"),
@@ -242,10 +246,9 @@ export default ProcessStructureSchema({
                     Property("profit", "float")
                 ),
             }
-        }
+        },
     })
 })
-=
 ```
 Now if we were to deploy the project, it will simulate the likely cash balance over time, based on the price, and qty. Also, proposals for optimum prices from the initial will be generated for each sales record.
 

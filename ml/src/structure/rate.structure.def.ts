@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
 
-import rate from '../../gen/rate.source'
+import rate from '../../gen/rate.source';
 
 export default ELARA.ProcessStructureSchema({
     concept: 'Rate',
@@ -28,10 +28,10 @@ export default ELARA.ProcessStructureSchema({
                     X_int: ELARA.Property("x_int", 'integer'),
                 },
                 output: ELARA.Property("y", rate.output.fields.y.type),
-                predict: ELARA.IsNull(rate.output.fields.y),
+                evaluate: ELARA.IsNull(rate.output.fields.y),
                 train: ELARA.Not(ELARA.IsNull(rate.output.fields.y)),
             }),
         },
-        events: {}
+        events: {},
     }
 })

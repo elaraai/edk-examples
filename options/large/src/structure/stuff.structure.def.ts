@@ -1,7 +1,9 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
-import { Resource, Temporal } from "@elaraai/edk/lib"
-
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  Resource,
+  Temporal,
+} from '@elaraai/edk/lib';
 
 export default ELARA.ResourceStructureSchema({
     concept: "stuff",
@@ -15,7 +17,7 @@ export default ELARA.ResourceStructureSchema({
                         "median": "p50",
                     }
                 })
-            }
+            },
         })
     }
 })

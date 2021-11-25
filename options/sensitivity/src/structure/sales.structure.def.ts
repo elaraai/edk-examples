@@ -1,11 +1,22 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  Add,
+  GetProperty,
+  Hour,
+  MLFunction,
+  Multiply,
+  Not,
+  Option,
+  ProcessMapping,
+  Property,
+  StringJoin,
+  Subtract,
+} from '@elaraai/edk/lib';
 
-import { Add, GetProperty, Hour, MLFunction, Multiply, Not, Option, ProcessMapping, Property, StringJoin, Subtract } from "@elaraai/edk/lib"
-
-import cash from "../../gen/cash.structure"
-import baseline_scenario from "../../gen/baseline.scenario"
-import sales_source from "../../gen/sales.source"
+import baseline_scenario from '../../gen/baseline.scenario';
+import cash from '../../gen/cash.structure';
+import sales_source from '../../gen/sales.source';
 
 export default ELARA.ProcessStructureSchema({
     concept: 'sales',
@@ -13,7 +24,6 @@ export default ELARA.ProcessStructureSchema({
         input_table: sales_source.output,
         date: sales_source.output.fields.Date,
         marker: StringJoin`${sales_source.output.fields.ID}`,
-        predict: sales_source.output.fields.Predict,
         properties: {
             hour: Hour(sales_source.output.fields.Date),
             cost: sales_source.output.fields.Cost,
@@ -43,7 +53,7 @@ export default ELARA.ProcessStructureSchema({
                     "Hour": Property("hour", "integer"),
                 },
                 train: Not(sales_source.output.fields.Predict),
-                predict: sales_source.output.fields.Predict,
+                evaluate: sales_source.output.fields.Predict,
             }),
             profit: Multiply(
                 Property("qty", "float"),
@@ -61,6 +71,6 @@ export default ELARA.ProcessStructureSchema({
                 property: cash.properties.balance,
                 value: Add(Property("cash_balance", "float"), Property("profit", "float")),
             }
-        }
+        },
     })
 })

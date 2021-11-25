@@ -5,7 +5,7 @@ import utc from 'dayjs/plugin/utc'
 import * as fs from 'fs';
 dayjs.extend(utc)
 
-const N_CATEGORIES = 10;
+const N_CATEGORIES = 15;
 const N_ROWS = 500;
 
 const dict_rand: { [key: string]: number; } = {}

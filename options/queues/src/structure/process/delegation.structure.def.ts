@@ -1,12 +1,44 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib";
-import { Add, DictType, Get, GetField, GetProperties, GetProperty, Hour, IfElse, Insert, Keys, LessEqual, Max, MLFunction, Multiply, NewDict, NewSet, Not, ProcessMapping, Property, Reduce, Replace, Round, SetDiff, Size, StringJoin, Struct, StructType, ToSet, Union, UnionAll, Variable } from "@elaraai/edk/lib";
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  Add,
+  DictType,
+  Get,
+  GetField,
+  GetProperties,
+  GetProperty,
+  Hour,
+  IfElse,
+  Insert,
+  Keys,
+  LessEqual,
+  Max,
+  MLFunction,
+  Multiply,
+  NewDict,
+  NewSet,
+  Not,
+  ProcessMapping,
+  Property,
+  Reduce,
+  Replace,
+  Round,
+  SetDiff,
+  Size,
+  StringJoin,
+  Struct,
+  StructType,
+  ToSet,
+  Union,
+  UnionAll,
+  Variable,
+} from '@elaraai/edk/lib';
 
-import employees from "../../../gen/employees.structure";
-import delegations_pipeline from "../../../gen/delegations.pipeline";
-import queues from "../../../gen/queues.structure";
-import policy from "../../../gen/policy.structure";
-import mode from "../../../gen/mode.structure";
+import delegations_pipeline from '../../../gen/delegations.pipeline';
+import employees from '../../../gen/employees.structure';
+import mode from '../../../gen/mode.structure';
+import policy from '../../../gen/policy.structure';
+import queues from '../../../gen/queues.structure';
 
 const delegations = delegations_pipeline.output_table;
 
@@ -55,7 +87,7 @@ export default ELARA.ProcessStructureSchema({
                     employee_count: Property("employee_count", "integer")
                 },
                 train: Not(delegations.fields.Predict),
-                predict: delegations.fields.Predict,
+                evaluate: delegations.fields.Predict,
             }),
             current_arrival_set: GetProperty({
                 property: queues.properties.new_queue_arrivals,
@@ -65,10 +97,12 @@ export default ELARA.ProcessStructureSchema({
                 Property("current_arrival_set", "set")
             ),
             bias_parameters: GetProperties({
-                property: policy.properties.bias
+                property: policy.properties.bias,
+                evaluate: delegations.fields.Predict,
             }),
             queue_load_parameters: GetProperties({
-                property: policy.properties.queue_load
+                property: policy.properties.queue_load,
+                evaluate: delegations.fields.Predict,
             }),
             //An model that uses queue, employee type and dynamic demand to optimally delegate
             optimised_delegation: IfElse(
@@ -104,7 +138,9 @@ export default ELARA.ProcessStructureSchema({
                 delegations.fields.EmployeeTypes,
             ),
             optimise_mode: GetProperty({
-                property: mode.properties.optimise
+                property: mode.properties.optimise,
+                evaluate: delegations.fields.Predict,
+                value: false,
             }),
             //switch between optimised and baseline delegation strategies based on scenario
             employee_delegation: IfElse(

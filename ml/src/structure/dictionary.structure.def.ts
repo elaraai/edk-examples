@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
 
-import dictionary from '../../gen/dictionary.source'
+import dictionary from '../../gen/dictionary.source';
 
 export default ELARA.ProcessStructureSchema({
     concept: 'Dictionary',
@@ -28,10 +28,10 @@ export default ELARA.ProcessStructureSchema({
                     X_int: ELARA.Property("x_int", 'integer'),
                 },
                 output: ELARA.Property("y", ELARA.DictType("integer")),
-                predict: ELARA.IsNull(dictionary.output.fields.y),
+                evaluate: ELARA.IsNull(dictionary.output.fields.y),
                 train: ELARA.Not(ELARA.IsNull(dictionary.output.fields.y)),
             }),
         },
-        events: {}
+        events: {},
     }
 })

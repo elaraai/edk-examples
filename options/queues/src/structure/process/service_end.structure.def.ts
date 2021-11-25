@@ -1,10 +1,17 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
-import { GetProperty, NewSet, ProcessMapping, Property, SetDiff, Subtract } from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  GetProperty,
+  NewSet,
+  ProcessMapping,
+  Property,
+  SetDiff,
+  Subtract,
+} from '@elaraai/edk/lib';
 
-import work_source from "../../../gen/work.source"
-import service_begin from "../../../gen/service_begin.structure"
-import queues from "../../../gen/queues.structure"
+import queues from '../../../gen/queues.structure';
+import service_begin from '../../../gen/service_begin.structure';
+import work_source from '../../../gen/work.source';
 
 export default ELARA.ProcessStructureSchema({
     concept: "Service End",

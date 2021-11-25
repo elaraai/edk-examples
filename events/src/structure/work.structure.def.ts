@@ -1,9 +1,15 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
-import { Property, GetProperty, AddDuration, ProcessDate, Add } from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  Add,
+  AddDuration,
+  GetProperty,
+  ProcessDate,
+  Property,
+} from '@elaraai/edk/lib';
 
-import work_source from '../../gen/work.source'
-import supplier from "../../gen/supplier.structure"
+import supplier from '../../gen/supplier.structure';
+import work_source from '../../gen/work.source';
 
 const work = work_source.output
 
@@ -29,6 +35,6 @@ export default ELARA.ProcessStructureSchema({
                 date: Property('completion', 'datetime'),
                 value: Add(Property('work', 'float'), Property('hours', 'float'))
             }
-        }
+        },
     }
 })

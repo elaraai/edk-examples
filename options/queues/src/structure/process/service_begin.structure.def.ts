@@ -1,13 +1,47 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
+import * as ELARA from '@elaraai/edk/lib';
+import {
+  Add,
+  AddDuration,
+  And,
+  Const,
+  DictType,
+  Duration,
+  Equal,
+  Filter,
+  GenericFunction,
+  Get,
+  GetField,
+  GetProperties,
+  GetProperty,
+  IfElse,
+  IsNull,
+  Keys,
+  Less,
+  LessEqual,
+  MaxAll,
+  MLFunction,
+  Multiply,
+  NewSet,
+  Not,
+  Null,
+  ProcessMapping,
+  Property,
+  Random,
+  Reduce,
+  Replace,
+  StringJoin,
+  Struct,
+  StructType,
+  Subtract,
+  Variable,
+} from '@elaraai/edk/lib';
 
-import * as ELARA from "@elaraai/edk/lib"
-import { Add, AddDuration, And, Const, DictType, Duration, Equal, GenericFunction, Get, GetField, GetProperties, GetProperty, IfElse, IsNull, Less,LessEqual, MLFunction, Multiply, NewSet, Not, Null, ProcessMapping, Property, Reduce, Random, StringJoin, Struct, StructType, Subtract, Variable, Replace, MaxAll, Filter, Keys } from "@elaraai/edk/lib"
-
-import employees from "../../../gen/employees.structure"
-import queues from "../../../gen/queues.structure"
-import work_source from "../../../gen/work.source"
-import arrival from "../../../gen/arrival.structure"
-import policy from "../../../gen/policy.structure"
+import arrival from '../../../gen/arrival.structure';
+import employees from '../../../gen/employees.structure';
+import policy from '../../../gen/policy.structure';
+import queues from '../../../gen/queues.structure';
+import work_source from '../../../gen/work.source';
 
 const next_available_type = StructType({
     Marker: "string",
@@ -156,18 +190,21 @@ export default ELARA.ProcessStructureSchema({
                     "Queue": Property("queue", "string")
                 },
                 train: Not(work_source.output.fields.Predict),
-                predict: work_source.output.fields.Predict,
+                evaluate: work_source.output.fields.Predict,
             }),
             parameter_name: StringJoin`${Property("queue", "string")}.${Property("staff_type", "string")}`,
             //add extra duration as a sensitivity perturbation
             service_duration_perturbation: GetProperty({
                 property: policy.properties.duration_perturbation,
-                marker: Property("parameter_name", "string")
+                marker: Property("parameter_name", "string"),
+                evaluate: work_source.output.fields.Predict,
+                value: 0.0,
             }),
             //select a random available staff member
             random_available_staff: Random({
                 distribution: "set",
-                set: Property("available_staff", "set")
+                set: Property("available_staff", "set"),
+                evaluate: work_source.output.fields.Predict,
             }),
             //chose the service staff member based on if any staff member is current available or not
             service_staff: IfElse(
