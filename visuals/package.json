@@ -20,6 +20,6 @@
     "@types/faker": "^5.1.2",
     "dayjs": "^1.9.1",
     "faker": "^5.1.0",
-     "@elaraai/edk": "3.0.0"
+     "@elaraai/edk": "3.1.0"
   }
 }

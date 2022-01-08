@@ -1,7 +1,7 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import * as ELARA from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
 
-import test_one from "../../gen/test_one.source"
+import test_one from '../../gen/test_one.source';
 
 export default ELARA.PipelineSchema({
     name: 'Aggregate',
@@ -19,7 +19,7 @@ export default ELARA.PipelineSchema({
                 stddev: ELARA.StdDev(test_one.output.fields.number),
                 collectset: ELARA.CollectSet(test_one.output.fields.string),
                 collectdict: ELARA.CollectDict(test_one.output.fields.string, test_one.output.fields.number),
-                collectdictcount: ELARA.CollectDictCount(test_one.output.fields.string, test_one.output.fields.number),
+                collectdictcount: ELARA.CollectDictCount(test_one.output.fields.string),
                 collectdictsum: ELARA.CollectDictSum(test_one.output.fields.string, test_one.output.fields.number),
                 some: ELARA.Some(test_one.output.fields.boolean),
                 every: ELARA.Every(test_one.output.fields.boolean),

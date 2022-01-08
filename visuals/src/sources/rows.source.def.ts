@@ -70,10 +70,7 @@ export default ELARA.JsonSourceSchema({
         Dict: ELARA.Parse(ELARA.Variable("Dict", rows_dict_type)),
     },
     partitions: {
-        Group: Partition({
-            partition_key: ELARA.Variable("Group", 'string'),
-            label: ELARA.StringJoin`Group: ${ELARA.Variable("Group", 'string')}`,
-        }),
+        Group: Partition({ partition_key: ELARA.Variable("Group", 'string') }),
         Month: PartitionPerMonth(ELARA.Variable("Date 1", 'datetime'))
     },
 })

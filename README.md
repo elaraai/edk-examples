@@ -53,9 +53,23 @@ For general usage and code examples we provide the following detailed documentat
 ## Release Notes
 The following release notes summarise changes accross [edk](https://www.npmjs.com/package/@elaraai/edk), [edk-io package](https://www.npmjs.com/package/@elaraai/edk-io), [edk-examples](https://github.com/elaraai/edk-examples).
 
+- **Version 3.1**
+    - edk/lib:
+        - Application:
+            - Added `GroupCombinedVisual` to visualise a combination column and line chart on a shared numeric y axes.
+            - Added `VisualList` to allow secondary charts to be shown on a page using drag and drop into existing `PanelVisual` objects
+            - Added `powered`, `ApplicationIcon` and updates to `ApplicationColors` for customised styling of UI.
+            - Improve UI and visual loading
+    -edk/io:
+        - Store:
+            - Added list, size and top commands to enable interaction with the file store.
+    - edk-examples:
+        - Added customisation of `Application` and `VisualList` to `Visual Example` in [edk-examples](https://github.com/elaraai/edk-examples).
+
 - **Version 3.0**
     - edk/lib:
-        - Remove `predict` predicate in `Process`, `Resource` and `Agent` entities, to automate seperation of deterministic trajectories from probabilistic trajectories in simulation.
+        - Structure:
+            - Remove `predict` predicate in `Process`, `Resource` and `Agent` entities, to automate seperation of deterministic trajectories from probabilistic trajectories in simulation.
     - edk-examples:
         - Update all examples with removal of `predict` predicate in `Process`, `Resource` and `Agent` entities.
 

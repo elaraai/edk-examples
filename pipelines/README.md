@@ -186,8 +186,8 @@ export default ELARA.PipelineSchema({
                 collectset: ELARA.CollectSet(test_one.output.fields.string),
                 // create a dictionary of distinct key-value pairs of `string` => `number`
                 collectdict: ELARA.CollectDict(test_one.output.fields.string, test_one.output.fields.number),
-                // create a dictionary of the count of non-null values for key-value pairs of `string` => `number`
-                collectdictcount: ELARA.CollectDictCount(test_one.output.fields.string, test_one.output.fields.number),
+                // create a dictionary of the count of non-null values for keys of `string`
+                collectdictcount: ELARA.CollectDictCount(test_one.output.fields.string),
                 // create a dictionary of the sum of non-null values for key-value pairs of `string` => `number`
                 collectdictsum: ELARA.CollectDictSum(test_one.output.fields.string, test_one.output.fields.number),
                 // calculate the sum of the values of `Dict` where missing elements are presumed to have value of zero.

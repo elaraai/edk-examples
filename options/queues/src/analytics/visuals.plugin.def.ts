@@ -1,13 +1,20 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from "@elaraai/edk/lib"
-import { VisualSchema, GroupLineVisual, GroupLineValueSeries, GroupFixedColor, Tooltip, StringJoin, Layout, RowFixedColor, RowRidgelineSeries, RowRidgelineVisual, XAxis, YAxis, GroupPieVisual, colors, GroupLinearColor, GroupPieSeries, AxisTick, AxisTitle } from "@elaraai/edk/lib"
+import { VisualSchema, GroupLineVisual, GroupLineValueSeries, Tooltip, StringJoin, Layout, RowRidgelineSeries, RowRidgelineVisual, XAxis, YAxis, GroupPieVisual, colors, GroupLinearColor, GroupPieSeries, AxisTick, AxisTitle, RowFixedOrdinalColor, GroupFixedOrdinalColor } from "@elaraai/edk/lib"
 
 import views from '../../gen/views.plugin';
+import baseline from '../../gen/baseline.scenario'
+import optimised from '../../gen/optimised.scenario'
 
 const efficiency_improvement_impact = views.view["Efficiency Improvement Impact"]
 const sales = views.view["Sales"]
 const queue_size = views.view['Queue Size']
 const wait_duration = views.view['Wait Duration']
+
+const scenario_palette = new Map([
+    [baseline.name, colors.Red],
+    [optimised.name, colors.Blue],
+])
 
 export default ELARA.mergeSchemas(
     VisualSchema(
@@ -17,9 +24,9 @@ export default ELARA.mergeSchemas(
                 view: sales,
                 x: sales.aggregations.day,
                 y: sales.aggregations['daily revenue'],
-                key: sales.groups.scenario,
+                stack: sales.groups.scenario,
                 curve: 'curve_monotone_x',
-                color: GroupFixedColor(sales.aggregations.color),
+                color: GroupFixedOrdinalColor(sales.groups.scenario, scenario_palette),
                 tooltip: Tooltip({
                     title: StringJoin`${sales.fields.scenario} sales`,
                     values: {
@@ -37,9 +44,9 @@ export default ELARA.mergeSchemas(
                 view: wait_duration,
                 x: wait_duration.fields.value,
                 z: wait_duration.fields.probability,
-                z_overlap: 0.0,
+                overlap: 0.0,
                 curve: 'curve_monotone_x',
-                color: RowFixedColor(wait_duration.fields.color),
+                color: RowFixedOrdinalColor(wait_duration.fields.scenario, scenario_palette),
                 tooltip: Tooltip({
                     title: StringJoin`${wait_duration.fields.distribution} duration`,
                     values: {
@@ -87,9 +94,9 @@ export default ELARA.mergeSchemas(
                 view: queue_size,
                 x: queue_size.aggregations.day,
                 y: queue_size.aggregations['queue size'],
-                key: queue_size.groups.scenario,
+                stack: queue_size.groups.scenario,
                 curve: 'curve_monotone_x',
-                color: GroupFixedColor(queue_size.aggregations.color),
+                color: GroupFixedOrdinalColor(sales.groups.scenario, scenario_palette),
                 tooltip: Tooltip({
                     title: StringJoin`${queue_size.fields.scenario} sales`,
                     values: {

@@ -3,10 +3,9 @@ import * as ELARA from "@elaraai/edk/lib"
 
 import { NewArray, Const, colors, mergeSchemas, ViewSelection, MapDict, Variable, Multiply, Struct, StringJoin } from "@elaraai/edk/lib"
 
-import rows_source from "../../gen/rows.source"
 import pipeline_plugin from "../../gen/pipeline.plugin"
 
-const rows = rows_source.output
+const rows = pipeline_plugin.pipeline.Rows.output_table
 const distribution = pipeline_plugin.pipeline["Distribution"].output_table
 
 export default ELARA.Schema(
@@ -96,6 +95,11 @@ export default ELARA.Schema(
                 },
                 filters: {
                     "String Range": ELARA.StringRangeFilter({ value: rows.fields["String 1"] }),
+                    "String Value": ELARA.StringValueFilter({ value: rows.fields["String 2"] }),
+                    "Boolean": ELARA.BooleanFilter({ value: rows.fields["Boolean 1"] }),
+                    "Integer": ELARA.IntegerFilter({ value: rows.fields["Integer 1"] }),
+                    "Number": ELARA.NumberFilter({ value: rows.fields["Number 1"] }),
+                    "Date": ELARA.DateTimeFilter({ value: rows.fields["Date 1"] }),
                 }
             })
         ),

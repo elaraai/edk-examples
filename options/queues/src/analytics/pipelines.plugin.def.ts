@@ -1,8 +1,9 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from "@elaraai/edk/lib"
-import { AggregateOperation, colors, Const, DateKey, DistributionOperation, Divide, Equal, FilterOperation, Floor, IfElse, JoinOperation, Maximum, mergeSchemas, PipelineSchema, Print, RegexContains, SelectOperation, StringJoin, Sum, Unique, Variable } from "@elaraai/edk/lib"
+import { AggregateOperation, Const, DateKey, DistributionOperation, Divide, Equal, FilterOperation, Floor, IfElse, JoinOperation, Maximum, mergeSchemas, PipelineSchema, Print, RegexContains, SelectOperation, StringJoin, Sum, Unique, Variable } from "@elaraai/edk/lib"
 
 import baseline from '../../gen/baseline.scenario'
+import optimised from '../../gen/optimised.scenario'
 import policy from "../../gen/policy.structure"
 import simulation from "../../gen/simulation.plugin"
 
@@ -29,16 +30,6 @@ export default ELARA.Schema(
                         date: Unique(Floor(queue_simulation.fields.date, 'day')),
                     }
                 }),
-                SelectOperation({
-                    keep_all: true,
-                    selections: {
-                        color: IfElse(
-                            RegexContains(Variable('scenario', 'string'), baseline.name),
-                            Const(colors.Red),
-                            Const(colors.Blue)
-                        )
-                    }
-                })
             ]
         }),
         PipelineSchema({
@@ -55,16 +46,6 @@ export default ELARA.Schema(
                         date: Unique(Floor(sale_simulation.fields.finish_time, 'day')),
                     }
                 }),
-                SelectOperation({
-                    keep_all: true,
-                    selections: {
-                        color: IfElse(
-                            RegexContains(Variable('scenario', 'string'), baseline.name),
-                            Const(colors.Red),
-                            Const(colors.Blue)
-                        )
-                    }
-                })
             ]
         }),
         PipelineSchema({
@@ -84,10 +65,10 @@ export default ELARA.Schema(
                     keep_all: true,
                     selections: {
                         value: Divide(Variable('value', 'float'), 3600),
-                        color: IfElse(
+                        scenario: IfElse(
                             RegexContains(Variable('group', 'string'), baseline.name),
-                            Const(colors.Red),
-                            Const(colors.Blue)
+                            Const(baseline.name),
+                            Const(optimised.name)
                         )
                     }
                 })

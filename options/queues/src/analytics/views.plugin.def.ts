@@ -38,7 +38,6 @@ export default Schema(
                 },
                 aggregations: {
                     "daily revenue": Sum(sales.fields["daily revenue"]),
-                    color: Unique(sales.fields.color),
                     day: Unique(sales.fields.day),
                 }
             })
@@ -54,7 +53,6 @@ export default Schema(
                     date: ViewGroup({ value: Floor(queue_size.fields.date, 'day'), dir: 'asc'}),
                 },
                 aggregations: {
-                    color: Unique(queue_size.fields.color),
                     "queue size": Sum(queue_size.fields["queue size"]),
                     day: Unique(queue_size.fields.day),
                 }
@@ -69,7 +67,7 @@ export default Schema(
                 selections: {
                     value: ViewSelection({ value: wait_duration.fields.value, dir: 'asc'  }),
                     probability: wait_duration.fields.probability,
-                    color: wait_duration.fields.color,
+                    scenario: wait_duration.fields.scenario,
                 },
                 groups: {
                     distribution: ViewGroup({ value: wait_duration.fields.group, dir: 'asc' }),

@@ -10,12 +10,26 @@
       "type": "entity",
       "entity_type": "plugin"
     },
+    "clock.source": {
+      "name": "Clock",
+      "def_path": "src/sources/clock.source.def.ts",
+      "gen_path": "gen/clock.source.ts",
+      "type": "entity",
+      "entity_type": "datasource"
+    },
     "local.deployment": {
       "type": "deployment",
       "name": "Local",
       "loglevel": "info",
       "server": "localhost",
       "application": "visuals.application"
+    },
+    "page.plugin": {
+      "name": "Page",
+      "def_path": "src/plugin/page.plugin.def.ts",
+      "gen_path": "gen/page.plugin.ts",
+      "type": "entity",
+      "entity_type": "plugin"
     },
     "pipeline.plugin": {
       "name": "Pipeline",
@@ -42,13 +56,6 @@
       "name": "Visual",
       "def_path": "src/plugin/visual.plugin.def.ts",
       "gen_path": "gen/visual.plugin.ts",
-      "type": "entity",
-      "entity_type": "plugin"
-    },
-    "page.plugin": {
-      "name": "Page",
-      "def_path": "src/plugin/page.plugin.def.ts",
-      "gen_path": "gen/page.plugin.ts",
       "type": "entity",
       "entity_type": "plugin"
     }
