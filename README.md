@@ -60,6 +60,7 @@ The following release notes summarise changes accross [edk](https://www.npmjs.co
             - Added `VisualList` to allow secondary charts to be shown on a page using drag and drop into existing `PanelVisual` objects
             - Added `powered`, `ApplicationIcon` and updates to `ApplicationColors` for customised styling of UI.
             - Improve UI and visual loading
+            - Add improved UI view download, filtering and sorting
     -edk/io:
         - Store:
             - Added list, size and top commands to enable interaction with the file store.
