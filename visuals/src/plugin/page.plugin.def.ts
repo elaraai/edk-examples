@@ -30,6 +30,7 @@ export default ELARA.mergeSchemas(
                 visual_plugin.visual["Row Ridgeline (Ungrouped)"],
                 visual_plugin.visual["Row Timeline"],
                 visual_plugin.visual["Row Scatter"],
+                visual_plugin.visual["Row Table (flat)"],
             ]
         }),
         filters: {
