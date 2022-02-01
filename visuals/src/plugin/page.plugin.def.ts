@@ -113,7 +113,9 @@ export default ELARA.mergeSchemas(
                 visual_plugin.visual["Group Table"],
                 visual_plugin.visual["Group Pivot"],
                 visual_plugin.visual["Group Line"],
-                visual_plugin.visual["Group Line (Stacked)"]
+                visual_plugin.visual["Group Line (Stacked)"],
+                visual_plugin.visual["Group KPI"],
+                visual_plugin.visual["Group KPI (single)"]
             ]
         }),
         filters: {

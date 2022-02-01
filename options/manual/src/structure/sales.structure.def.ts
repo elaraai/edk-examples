@@ -2,12 +2,15 @@
 import {
   Add,
   AddDuration,
+  Const,
   DictType,
   Get,
   GetProperties,
   GetProperty,
   IfElse,
+  In,
   Multiply,
+  NewSet,
   Option,
   Print,
   ProcessMapping,
@@ -85,12 +88,25 @@ export default ProcessStructureSchema({
                     },
                 ]
             }),
+            tags: Option({
+                default_value: sales.fields.Tags,
+                manual: [
+                    {
+                        scenario: baseline_scenario,
+                        range: NewSet("A", "B", "C", "D", "E", "F", "G"),
+                    },
+                ]
+            }),
             cash_balance: GetProperty({ property: cash.properties.balance }),
             cost: Get(Property("costs", DictType('float')), Property("supplier", 'string')),
             profit: Multiply(
                 IfElse(
                     Property("refund", "boolean"),
-                    Multiply(Property("qty", "integer"), -1n),
+                    IfElse(
+                        In(Property("tags", "set"), Const("A")),
+                        Multiply(Property("qty", "integer"), -1n),
+                        Multiply(Property("qty", "integer"), -5n),
+                    ),
                     Property("qty", "integer"),
                 ),
                 Subtract(

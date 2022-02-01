@@ -23,6 +23,7 @@ export default ELARA.ExcelSourceSchema({
                 Qty: ELARA.Parse(ELARA.Variable("Qty", 'integer')),
                 Refund: ELARA.Parse(ELARA.Variable("Refund", 'boolean')),
                 Price: ELARA.Parse(ELARA.Variable("Price", 'float')),
+                Tags: ELARA.Parse(ELARA.Variable("Tags", 'set')),
             },
         },
     }

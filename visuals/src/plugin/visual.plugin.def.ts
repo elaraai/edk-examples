@@ -15,6 +15,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowPivotVisual({
             name: "Row Pivot",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowPivotSeries({
                 view: json_data,
                 row_pivot: json_data.fields["String 3"],
@@ -27,11 +28,11 @@ export default ELARA.mergeSchemas(
                 tooltip: ELARA.Tooltip({
                     title: ELARA.Const("Values"),
                     values: {
-                        "String 1" : json_data.fields["String 1"],
-                        "Integer 1" : json_data.fields["Integer 1"],
-                        "Number 1" : json_data.fields["Number 1"],
-                        "Date 1" : json_data.fields["Date 1"],
-                        "Boolean 1" : json_data.fields["Boolean 1"],
+                        "String 1": json_data.fields["String 1"],
+                        "Integer 1": json_data.fields["Integer 1"],
+                        "Number 1": json_data.fields["Number 1"],
+                        "Date 1": json_data.fields["Date 1"],
+                        "Boolean 1": json_data.fields["Boolean 1"],
                     }
                 })
             }),
@@ -65,12 +66,13 @@ export default ELARA.mergeSchemas(
                     <br></br>
                     Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
                     `
-             })
+            })
         })
     ),
     ELARA.VisualSchema(
         ELARA.RowLineVisual({
             name: "Row Line",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowLineSeries({
                 view: json_data,
                 x: json_data.fields['Sort Date'],
@@ -82,11 +84,11 @@ export default ELARA.mergeSchemas(
                         tooltip: ELARA.Tooltip({
                             title: ELARA.Const("Values"),
                             values: {
-                                "String 1" : json_data.fields["String 1"],
-                                "Integer 1" : json_data.fields["Integer 1"],
-                                "Number 1" : json_data.fields["Number 1"],
-                                "Date 1" : json_data.fields["Date 1"],
-                                "Boolean 1" : json_data.fields["Boolean 1"],
+                                "String 1": json_data.fields["String 1"],
+                                "Integer 1": json_data.fields["Integer 1"],
+                                "Number 1": json_data.fields["Number 1"],
+                                "Date 1": json_data.fields["Date 1"],
+                                "Boolean 1": json_data.fields["Boolean 1"],
                             }
                         })
                     }),
@@ -130,12 +132,13 @@ export default ELARA.mergeSchemas(
                     <br></br>
                     Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
                     `
-             })
+            })
         })
     ),
     ELARA.VisualSchema(
         ELARA.RowGeoVisual({
             name: "Row Geo",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowGeoSeries({
                 view: json_data,
                 lat: json_data.fields.Latitude,
@@ -182,20 +185,22 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowAreaVisual({
             name: "Row Area",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowAreaSeries({
                 view: json_data,
                 x: json_data.fields["Date 3"],
                 y: [
                     RowAreaDict({
                         value: json_data.fields.Dict,
+                        color: ELARA.RowKeyColor(json_data.fields.Dict),
                         tooltip: ELARA.Tooltip({
                             title: ELARA.Const("Values"),
                             values: {
-                                "String 1" : json_data.fields["String 1"],
-                                "Integer 1" : json_data.fields["Integer 1"],
-                                "Number 1" : json_data.fields["Number 1"],
-                                "Date 1" : json_data.fields["Date 1"],
-                                "Boolean 1" : json_data.fields["Boolean 1"],
+                                "String 1": json_data.fields["String 1"],
+                                "Integer 1": json_data.fields["Integer 1"],
+                                "Number 1": json_data.fields["Number 1"],
+                                "Date 1": json_data.fields["Date 1"],
+                                "Boolean 1": json_data.fields["Boolean 1"],
                             }
                         })
                     }),
@@ -239,12 +244,13 @@ export default ELARA.mergeSchemas(
                     <br></br>
                     Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
                     `
-             })
+            })
         })
     ),
     ELARA.VisualSchema(
         ELARA.RowScatterVisual({
             name: "Row Scatter",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowScatterSeries({
                 view: json_data,
                 x: json_data.fields["Number 1"],
@@ -286,12 +292,13 @@ export default ELARA.mergeSchemas(
                     <br></br>
                     Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
                     `
-             })
+            })
         })
     ),
     ELARA.VisualSchema(
         ELARA.RowTimelineVisual({
             name: "Row Timeline",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowTimelineSeries({
                 view: json_data_single_group,
                 x: [
@@ -353,6 +360,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowMarginalVisual({
             name: "Row Marginal",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowMarginalSeries({
                 view: json_data,
                 y: json_data.fields["Number 1"],
@@ -420,6 +428,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowTreeVisual({
             name: "Row Tree",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowTreeSeries({ view: json_data, value: json_data.fields }),
             notes: ELARA.RowHTMLSeries({
                 view: json_total,
@@ -430,6 +439,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowTableVisual({
             name: "Row Table",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowTableSeries({ view: json_data_single_group }),
             notes: ELARA.RowHTMLSeries({
                 view: json_total,
@@ -467,6 +477,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowTableVisual({
             name: "Row Table (flat)",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowTableSeries({ view: json_data }),
             notes: ELARA.RowHTMLSeries({
                 view: json_total,
@@ -504,6 +515,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowFormVisual({
             name: "Row Form",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowFormSeries({
                 view: json_data,
                 elements: [
@@ -563,8 +575,9 @@ export default ELARA.mergeSchemas(
         })
     ),
     ELARA.VisualSchema(
-        ELARA.RowListVisual({                        
+        ELARA.RowListVisual({
             name: "Row List",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowListSeries({
                 view: json_data,
                 value: json_data.fields["String 1"],
@@ -618,6 +631,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowRidgelineVisual({
             name: "Row Ridgeline",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowRidgelineSeries({
                 view: json_distribution_single_group,
                 x: json_distribution_single_group.fields.Value,
@@ -627,8 +641,8 @@ export default ELARA.mergeSchemas(
                 tooltip: ELARA.Tooltip({
                     title: json_distribution_single_group.fields.Group,
                     values: {
-                        value : json_distribution_single_group.fields.Value,
-                        probability : json_distribution_single_group.fields.Probability,
+                        value: json_distribution_single_group.fields.Value,
+                        probability: json_distribution_single_group.fields.Probability,
                     }
                 })
             }),
@@ -668,6 +682,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowRidgelineVisual({
             name: "Row Ridgeline (Ungrouped)",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowRidgelineSeries({
                 view: json_data,
                 x: json_data.fields['Sort Date'],
@@ -714,6 +729,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowHexbinVisual({
             name: "Row Hexbin",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowHexbinSeries({
                 view: json_data,
                 x: json_data.fields["Number 1"],
@@ -756,6 +772,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowHexbinVisual({
             name: "Row Hexbin Dict",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowHexbinSeries({
                 view: json_data,
                 x: json_data.fields.Dict,
@@ -799,6 +816,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.RowDistributionVisual({
             name: "Row Distribution (value)",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowDistributionSeries({
                 view: json_data,
                 x: [
@@ -846,12 +864,13 @@ export default ELARA.mergeSchemas(
                     <br></br>
                     Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
                     `
-             })
+            })
         })
     ),
     ELARA.VisualSchema(
         ELARA.RowDistributionVisual({
             name: "Row Distribution (dict)",
+            subtitle: "Visual Subtitle",
             series: ELARA.RowDistributionSeries({
                 view: json_data,
                 x: [
@@ -900,6 +919,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupHeatMapVisual({
             name: "Group HeatMap",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupHeatMapSeries({
                 view: json_data_multi_group,
                 x: json_data_multi_group.aggregations["String 1 Unique"],
@@ -952,6 +972,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupRidgelineVisual({
             name: "Group Ridgeline",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupRidgelineSeries({
                 view: json_data_multi_group,
                 x: json_data_multi_group.aggregations["String 1 Unique"],
@@ -1008,6 +1029,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupBarVisual({
             name: "Group Bar",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupBarValueSeries({
                 view: json_data_single_group,
                 x: json_data_single_group.aggregations.Sum,
@@ -1066,6 +1088,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupBarVisual({
             name: "Group Bar (Stacked)",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupBarStackedSeries({
                 view: json_data_multi_group,
                 x: json_data_multi_group.aggregations.Sum,
@@ -1118,9 +1141,10 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupFlowVisual({
             name: "Group Flow",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupFlowSeries({
                 view: json_data_edge_group,
-                x: { prev: json_data_edge_group.aggregations['Prev String 1 Unique'], curr: json_data_edge_group.groups['String 1 Group'] }, 
+                x: { prev: json_data_edge_group.aggregations['Prev String 1 Unique'], curr: json_data_edge_group.groups['String 1 Group'] },
                 y: { prev: json_data_edge_group.aggregations['Prev String 2 Unique'], curr: json_data_edge_group.groups['String 2 Group'] },
                 value: json_data_edge_group.aggregations.Sum,
                 color: ELARA.GroupLinearColor(json_data_edge_group.aggregations.Sum),
@@ -1166,15 +1190,16 @@ export default ELARA.mergeSchemas(
                     <br></br>
                     Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
                     `
-             })
+            })
         })
     ),
     ELARA.VisualSchema(
         ELARA.GroupRangeVisual({
             name: "Group Range",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupRangeSeries({
                 view: json_data_single_group,
-                x1: json_data_single_group.aggregations.Min, 
+                x1: json_data_single_group.aggregations.Min,
                 x2: json_data_single_group.aggregations.Max,
                 x_mid: json_data_single_group.aggregations.Avg,
                 y: json_data_single_group.aggregations['String 1 Unique'],
@@ -1220,13 +1245,14 @@ export default ELARA.mergeSchemas(
                     </table>
                     <br></br>
                     Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
-                    `   
-             })
+                    `
+            })
         })
     ),
     ELARA.VisualSchema(
         ELARA.GroupPieVisual({
             name: "Group Pie",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupPieSeries({
                 view: json_data_single_group,
                 x: json_data_single_group.aggregations["String 1 Unique"],
@@ -1277,6 +1303,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupScatterVisual({
             name: "Group Scatter",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupScatterSeries({
                 view: json_data_multi_group,
                 x: json_data_multi_group.aggregations["String 1 Unique"],
@@ -1324,12 +1351,13 @@ export default ELARA.mergeSchemas(
                     <br></br>
                     Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
                     `
-             })
+            })
         })
     ),
     ELARA.VisualSchema(
         ELARA.GroupColumnVisual({
             name: "Group Column",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupColumnValueSeries({
                 view: json_data_single_group,
                 x: json_data_single_group.aggregations["String 1 Unique"],
@@ -1380,6 +1408,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupColumnVisual({
             name: "Group Column (Stacked)",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupColumnStackedSeries({
                 view: json_data_multi_group,
                 x: json_data_multi_group.aggregations["String 1 Unique"],
@@ -1426,12 +1455,13 @@ export default ELARA.mergeSchemas(
                     <br></br>
                     Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
                     `
-             })
+            })
         })
     ),
     ELARA.VisualSchema(
         ELARA.GroupTreeMapVisual({
             name: "Group TreeMap",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupTreeMapSeries({
                 view: json_data_single_group,
                 x: json_data_single_group.aggregations["String 1 Unique"],
@@ -1476,12 +1506,13 @@ export default ELARA.mergeSchemas(
                     <br></br>
                     Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
                     `
-             })
+            })
         })
     ),
     ELARA.VisualSchema(
         ELARA.GroupAreaVisual({
             name: "Group Area",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupAreaValueSeries({
                 view: json_data_single_group,
                 x: json_data_single_group.aggregations["String 1 Unique"],
@@ -1532,6 +1563,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupAreaVisual({
             name: "Group Area (Stacked)",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupAreaStackedSeries({
                 view: json_data_multi_group,
                 x: json_data_multi_group.aggregations["String 1 Unique"],
@@ -1584,6 +1616,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupTableVisual({
             name: "Group Table",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupTableSeries({
                 view: json_data_single_group,
                 columns: [
@@ -1647,8 +1680,149 @@ export default ELARA.mergeSchemas(
         })
     ),
     ELARA.VisualSchema(
+        ELARA.GroupKPIVisual({
+            name: "Group KPI",
+            subtitle: "Visual Subtitle",
+            series: ELARA.GroupKPISeries({
+                view: json_data_single_group,
+                columns: [
+                    ELARA.GroupKPIValue({
+                        value: json_data_single_group.aggregations["String 1 Unique"],
+                        color: ELARA.GroupOrdinalColor(json_data_single_group.aggregations["String 1 Unique"]),
+                        tooltip: ELARA.Tooltip({
+                            title: ELARA.Const("Values"),
+                            description: ELARA.StringJoin`<p>Some great description <b>${json_data_single_group.fields.Sum}</b> placed here.</p>`,
+                            values: {
+                                Sum: json_data_single_group.fields.Sum,
+                                "String 1 Unique": json_data_single_group.fields["String 1 Unique"],
+                            }
+                        })
+                    }),
+                    ELARA.GroupKPIValue({
+                        value: json_data_single_group.aggregations.Sum,
+                        background: ELARA.GroupLinearColor(json_data_single_group.aggregations.Sum),
+                        tooltip: ELARA.Tooltip({
+                            title: ELARA.Const("Values"),
+                            description: ELARA.StringJoin`<p>Some great description <b>${json_data_single_group.fields.Sum}</b> placed here.</p>`,
+                            values: {
+                                Sum: json_data_single_group.fields.Sum,
+                                "String 1 Unique": json_data_single_group.fields["String 1 Unique"],
+                            }
+                        })
+                    }),
+                ],
+            }),
+            notes: ELARA.GroupHTMLSeries({
+                view: json_total,
+                value: ELARA.StringJoin`
+                    While there is a maximum of <b>${json_total.fields.Max}</b> and a 
+                    minimum of <b>${json_total.fields.Min}</b>, the average is ${json_total.fields.Min}.
+                    <br></br>
+                    Duis sed elit vel neque ornare pharetra vel a augue. Suspendisse auctor tincidunt tincidunt. Duis tincidunt in eros ac scelerisque. Vestibulum mattis, tellus sit amet elementum sodales, nunc enim scelerisque eros, in auctor magna dolor at ipsum. Aenean ac convallis purus. In sodales, eros non suscipit lobortis, lacus dolor varius eros, eu hendrerit est nibh nec nisi. Proin dolor arcu, eleifend non semper in, scelerisque quis est.
+                    <br></br>
+                    Otherwise you will probably find the following interesting:
+                    <table style="width: 100%">
+                    <tr>
+                        <th style="text-align: left !important; background: lightgray;">Name</th>
+                        <th style="text-align: left !important; background: lightgray;">Value</th>
+                    </tr>
+                    <tr>
+                        <td>Count</td>
+                        <td>${json_total.fields.Count}</td>
+                    </tr>
+                    <tr>
+                        <td>DistinctCount</td>
+                        <td>${json_total.fields.DistinctCount}</td>
+                    </tr>
+                    <tr>
+                        <td>Sum</td>
+                        <td>${json_total.fields.Sum}</td>
+                    </tr>
+                    </table>
+                    <br></br>
+                    Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
+                    `
+            })
+        })
+    ),
+    ELARA.VisualSchema(
+        ELARA.GroupKPIVisual({
+            name: "Group KPI (single)",
+            subtitle: "Visual Subtitle",
+            series: ELARA.GroupKPISeries({
+                view: json_total,
+                columns: [
+                    ELARA.GroupKPIValue({
+                        value: json_total.aggregations.Max,
+                        tooltip: ELARA.Tooltip({
+                            title: ELARA.Const("Values"),
+                            description: ELARA.StringJoin`<p>Some great description <b>${json_total.fields.Sum}</b> placed here.</p>`,
+                            values: json_total.fields
+                        })
+                    }),
+                    ELARA.GroupKPIValue({
+                        value: json_total.aggregations.Min,
+                        tooltip: ELARA.Tooltip({
+                            title: ELARA.Const("Values"),
+                            description: ELARA.StringJoin`<p>Some great description <b>${json_total.fields.Sum}</b> placed here.</p>`,
+                            values: json_total.fields
+                        })
+                    }),
+                    ELARA.GroupKPIValue({
+                        value: json_total.aggregations.Sum,
+                        tooltip: ELARA.Tooltip({
+                            title: ELARA.Const("Values"),
+                            description: ELARA.StringJoin`<p>Some great description <b>${json_total.fields.Sum}</b> placed here.</p>`,
+                            values: json_total.fields
+                        })
+                    }),
+                    ELARA.GroupKPIValue({
+                        value: json_total.aggregations.Avg,
+                        tooltip: ELARA.Tooltip({
+                            title: ELARA.Const("Values"),
+                            description: ELARA.StringJoin`<p>Some great description <b>${json_total.fields.Sum}</b> placed here.</p>`,
+                            values: json_total.fields
+                        })
+                    }),
+                ],
+            }),
+            notes: ELARA.GroupHTMLSeries({
+                view: json_total,
+                value: ELARA.StringJoin`
+                    While there is a maximum of <b>${json_total.fields.Max}</b> and a 
+                    minimum of <b>${json_total.fields.Min}</b>, the average is ${json_total.fields.Min}.
+                    <br></br>
+                    Duis sed elit vel neque ornare pharetra vel a augue. Suspendisse auctor tincidunt tincidunt. Duis tincidunt in eros ac scelerisque. Vestibulum mattis, tellus sit amet elementum sodales, nunc enim scelerisque eros, in auctor magna dolor at ipsum. Aenean ac convallis purus. In sodales, eros non suscipit lobortis, lacus dolor varius eros, eu hendrerit est nibh nec nisi. Proin dolor arcu, eleifend non semper in, scelerisque quis est.
+                    <br></br>
+                    Otherwise you will probably find the following interesting:
+                    <table style="width: 100%">
+                    <tr>
+                        <th style="text-align: left !important; background: lightgray;">Name</th>
+                        <th style="text-align: left !important; background: lightgray;">Value</th>
+                    </tr>
+                    <tr>
+                        <td>Count</td>
+                        <td>${json_total.fields.Count}</td>
+                    </tr>
+                    <tr>
+                        <td>DistinctCount</td>
+                        <td>${json_total.fields.DistinctCount}</td>
+                    </tr>
+                    <tr>
+                        <td>Sum</td>
+                        <td>${json_total.fields.Sum}</td>
+                    </tr>
+                    </table>
+                    <br></br>
+                    Otherwise just remember, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tempor leo, ac varius quam porttitor vel. Fusce vel nibh eget mauris malesuada malesuada nec sed urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante turpis, viverra congue viverra at.
+                    `
+            })
+        })
+    ),
+    ELARA.VisualSchema(
         ELARA.GroupPivotVisual({
             name: "Group Pivot",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupPivotSeries({
                 view: json_data_multi_group,
                 col_pivot: json_data_multi_group.aggregations["String 1 Unique"],
@@ -1702,6 +1876,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupCombinedVisual({
             name: "Group Combined",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupCombinedSeries({
                 view: json_data_single_group,
                 x: json_data_single_group.aggregations["String 1 Unique"],
@@ -1766,6 +1941,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupLineVisual({
             name: "Group Line",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupLineValueSeries({
                 view: json_data_single_group,
                 x: json_data_single_group.aggregations["String 1 Unique"],
@@ -1816,6 +1992,7 @@ export default ELARA.mergeSchemas(
     ELARA.VisualSchema(
         ELARA.GroupLineVisual({
             name: "Group Line (Stacked)",
+            subtitle: "Visual Subtitle",
             series: ELARA.GroupLineStackedSeries({
                 view: json_data_multi_group,
                 x: json_data_multi_group.aggregations["String 1 Unique"],

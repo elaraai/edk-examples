@@ -23,6 +23,7 @@ export default Schema(
                     supplier: sales.properties.supplier,
                     refund: sales.properties.refund,
                     price: sales.properties.price,
+                    tags: sales.properties.tags,
                 },
                 values: {
                     cost: sales.properties.cost,
