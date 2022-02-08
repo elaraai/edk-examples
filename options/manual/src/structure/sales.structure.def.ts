@@ -1,23 +1,23 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import {
-  Add,
-  AddDuration,
-  Const,
-  DictType,
-  Get,
-  GetProperties,
-  GetProperty,
-  IfElse,
-  In,
-  Multiply,
-  NewSet,
-  Option,
-  Print,
-  ProcessMapping,
-  ProcessStructureSchema,
-  Property,
-  Subtract,
-  SubtractDuration,
+    Add,
+    AddDuration,
+    Const,
+    DictType,
+    Get,
+    GetProperties,
+    GetProperty,
+    IfElse,
+    In,
+    Multiply,
+    NewSet,
+    Option,
+    Print,
+    ProcessMapping,
+    ProcessStructureSchema,
+    Property,
+    Subtract,
+    SubtractDuration,
 } from '@elaraai/edk/lib';
 
 import baseline_scenario from '../../gen/baseline.scenario';
@@ -93,7 +93,14 @@ export default ProcessStructureSchema({
                 manual: [
                     {
                         scenario: baseline_scenario,
-                        range: NewSet("A", "B", "C", "D", "E", "F", "G"),
+                        range: NewSet(
+                            "Tag One",
+                            "Tag Two",
+                            "Tag Three",
+                            "Tag Four",
+                            "Another (but long) Tag Four",
+                            "Tag Five",
+                        ),
                     },
                 ]
             }),
@@ -103,7 +110,7 @@ export default ProcessStructureSchema({
                 IfElse(
                     Property("refund", "boolean"),
                     IfElse(
-                        In(Property("tags", "set"), Const("A")),
+                        In(Property("tags", "set"), Const("Tag One")),
                         Multiply(Property("qty", "integer"), -1n),
                         Multiply(Property("qty", "integer"), -5n),
                     ),
@@ -111,7 +118,7 @@ export default ProcessStructureSchema({
                 ),
                 Subtract(
                     Property("price", 'float'),
-                    Property("cost", 'float') 
+                    Property("cost", 'float')
                 )
             ),
         },
@@ -119,7 +126,7 @@ export default ProcessStructureSchema({
             increment_cash: {
                 property: cash.properties.balance,
                 value: Add(
-                    Property("cash_balance", "float"), 
+                    Property("cash_balance", "float"),
                     Property("profit", "float")
                 ),
             }
