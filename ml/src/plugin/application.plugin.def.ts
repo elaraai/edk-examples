@@ -1,11 +1,20 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import {  ApplicationPlugin, Const, MLFunctionPlugin, Schema, SuperUser, mergeSchemas, StatusPlugin, SimulationPlugin } from '@elaraai/edk/lib';
+import {
+  ApplicationPlugin,
+  Const,
+  mergeSchemas,
+  MLFunctionPlugin,
+  Schema,
+  SimulationPlugin,
+  StatusPlugin,
+  SuperUser,
+} from '@elaraai/edk/lib';
 
-import dictionary from "../../gen/dictionary.structure"
-import gp from "../../gen/gp.structure"
-import rate from "../../gen/rate.structure"
-import selector from "../../gen/selector.structure"
-import dictionary_float from "../../gen/dictionary_float.structure"
+import dictionary from '../../gen/dictionary.structure';
+import dictionary_float from '../../gen/dictionary_float.structure';
+import gp from '../../gen/gp.structure';
+import rate from '../../gen/rate.structure';
+import selector from '../../gen/selector.structure';
 
 export default Schema(
     ApplicationPlugin({
@@ -13,6 +22,7 @@ export default Schema(
         schemas: {
             'Machine Learning':  mergeSchemas(
                 MLFunctionPlugin({ func: gp.properties.items.function }),
+                MLFunctionPlugin({ func: gp.properties.items_squared.function }),
                 MLFunctionPlugin({ func: gp.properties.items_max_likelihood.function }),
                 MLFunctionPlugin({ func: gp.properties.items_probability.function }),
                 MLFunctionPlugin({ func: dictionary.properties.items.function }),
