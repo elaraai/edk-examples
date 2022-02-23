@@ -1,6 +1,6 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 // East type declarations 
-import * as ELARA from "@elaraai/edk/lib"
+import * as ELARA from '@elaraai/edk/lib';
 
 const gp_x_dict_type = ELARA.DictType('float');
 
@@ -20,5 +20,7 @@ export default ELARA.JsonSourceSchema({
         x_float: ELARA.Parse(ELARA.Variable("x_float", 'float')),
         x_int: ELARA.Parse(ELARA.Variable("x_int", 'integer')),
         y: ELARA.Parse(ELARA.Variable("y", 'float')),
+        x_exp: ELARA.Parse(ELARA.Variable("x_exp", 'float')),
+        y_exp: ELARA.Parse(ELARA.Variable("y_exp", 'float')),
     },
 })

@@ -22,7 +22,7 @@ export default Schema(
         schemas: {
             'Machine Learning':  mergeSchemas(
                 MLFunctionPlugin({ func: gp.properties.items.function }),
-                MLFunctionPlugin({ func: gp.properties.items_squared.function }),
+                MLFunctionPlugin({ func: gp.properties.exponential.function }),
                 MLFunctionPlugin({ func: gp.properties.items_max_likelihood.function }),
                 MLFunctionPlugin({ func: gp.properties.items_probability.function }),
                 MLFunctionPlugin({ func: dictionary.properties.items.function }),
