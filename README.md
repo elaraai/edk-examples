@@ -53,22 +53,24 @@ For general usage and code examples we provide the following detailed documentat
 ## Release Notes
 The following release notes summarise changes accross [edk](https://www.npmjs.com/package/@elaraai/edk), [edk-io package](https://www.npmjs.com/package/@elaraai/edk-io), [edk-examples](https://github.com/elaraai/edk-examples).
 
-- **Version 3.x.x**
+**Version 3.x.x**
     - edk/lib:
         - Application:
             - Added `GroupCombinedVisual` to visualise a combination column and line chart on a shared numeric y axes.
             - Added `VisualList` to allow secondary charts to be shown on a page using drag and drop into existing `PanelVisual` objects
             - Added `powered`, `ApplicationIcon` and updates to `ApplicationColors` for customised styling of UI.
-            - Improve UI and visual loading
             - Add improved UI view download, filtering and sorting
         - Structure:
             - Add `Settable``Property` to facilitate event based single-value properties.
             - Remove `predict` predicate in `Process`, `Resource` and `Agent` entities, to automate seperation of deterministic trajectories from probabilistic trajectories in simulation.
+            - Improve status output for `Optimization`
+        - Plugin:
+                - Added `OptimizationPlugin` to diagnose state and progress of `Optimization`.
+                - Added `OptionsPipelinePlugin` to create a pipeline flattening `Option`, `Value` and `Function` property values across defined scenarios.
     -edk/io:
         - Store:
             - Added `skip` paramater to skip a number of rows for `top`.
             - Added `list`, `size` and `top` commands to enable interaction with the file store.
-            
     - edk-examples:
         - Added customisation of `Application` and `VisualList` to `Visual Example` in [edk-examples](https://github.com/elaraai/edk-examples).
         - Update all examples with removal of `predict` predicate in `Process`, `Resource` and `Agent` entities.

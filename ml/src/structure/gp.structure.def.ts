@@ -71,6 +71,7 @@ export default ELARA.ProcessStructureSchema({
             exponential: ELARA.MLFunction({
                 features: {
                     X_exp: ELARA.Property("x_exp", 'float'),
+                    X_float: ELARA.Property("x_float", 'float'),
                 },
                 output: ELARA.Property("y_exp", "float"),
                 evaluate: ELARA.IsNull(gp.output.fields.y_exp),

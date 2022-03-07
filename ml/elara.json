@@ -63,7 +63,8 @@
       "type": "deployment",
       "name": "Localhost Test",
       "loglevel": "info",
-      "server": "localhost"
+      "server": "localhost",
+      "training_iterations_gp": 50000
     },
     "rate.source": {
       "name": "Rate",

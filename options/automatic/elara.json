@@ -29,7 +29,10 @@
       "name": "local",
       "loglevel": "info",
       "server": "localhost",
-      "application": ""
+      "application": "",
+      "optimization_randomness": 10,
+      "optimization_serial_iterations": 50,
+      "optimization_iterations": 200000
     },
     "optimized.scenario": {
       "name": "optimized",
