@@ -22,6 +22,20 @@ export default ELARA.mergeSchemas(
         },
     }),
     PipelineSchema({
+        name: "Single",
+        input_table: rows_source.output,
+        operations: [
+            JoinOperation({
+                source_table: clock_source.output,
+                source_key: Const(""),
+                target_key: Const("")
+            }),
+        ],
+        partitions: {
+            Rows: Partition({ partition_key: rows_source.output.primary_key }),
+        },
+    }),
+    PipelineSchema({
         name: "Distribution",
         input_table: rows_source.output,
         operations: [

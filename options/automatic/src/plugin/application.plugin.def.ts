@@ -5,6 +5,7 @@ import {
   mergeSchemas,
   MLFunctionPlugin,
   OptimizationPlugin,
+  PredictionPlugin,
   ScenarioComparePlugin,
   Schema,
   SimulationPlugin,
@@ -69,6 +70,7 @@ export default Schema(
                     "Sales Data": sales_data.output
                 }
             }),
+            "Prediction Performance": PredictionPlugin(),
             Status: StatusPlugin(),
         },
         users: [

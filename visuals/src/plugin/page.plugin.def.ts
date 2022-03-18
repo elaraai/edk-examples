@@ -10,6 +10,7 @@ const json_data_multi_group = view_plugin.view["JSON Data Multi-Group"]
 const json_data_single_group = view_plugin.view["JSON Data Single-Group"]
 const json_total = view_plugin.view["JSON Total"]
 const json_data = view_plugin.view["JSON Data"]
+const json_single = view_plugin.view["JSON Single"]
 
 export default ELARA.mergeSchemas(
     ELARA.PanelPageSchema({
@@ -31,6 +32,7 @@ export default ELARA.mergeSchemas(
                 visual_plugin.visual["Row Timeline"],
                 visual_plugin.visual["Row Scatter"],
                 visual_plugin.visual["Row Table (flat)"],
+                visual_plugin.visual["Row Table (single)"],
             ]
         }),
         filters: {
@@ -48,7 +50,8 @@ export default ELARA.mergeSchemas(
                     ELARA.PageLoadValue(json_data_single_group.load.Group, json_data_single_group),
                 ]
             }),
-            Total: json_total.load.Group
+            Total: json_total.load.Group,
+            Single: json_single.load.Rows
         }, 
         container: ELARA.PanelContainer({
             size: ELARA.PanelDimension({ size: 100 }),

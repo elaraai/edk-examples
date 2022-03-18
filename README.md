@@ -53,7 +53,7 @@ For general usage and code examples we provide the following detailed documentat
 ## Release Notes
 The following release notes summarise changes accross [edk](https://www.npmjs.com/package/@elaraai/edk), [edk-io package](https://www.npmjs.com/package/@elaraai/edk-io), [edk-examples](https://github.com/elaraai/edk-examples).
 
-**Version 3.x.x**
+- **Version 3.x.x**
     - edk/lib:
         - Application:
             - Added `GroupCombinedVisual` to visualise a combination column and line chart on a shared numeric y axes.
@@ -67,6 +67,7 @@ The following release notes summarise changes accross [edk](https://www.npmjs.co
         - Plugin:
                 - Added `OptimizationPlugin` to diagnose state and progress of `Optimization`.
                 - Added `OptionsPipelinePlugin` to create a pipeline flattening `Option`, `Value` and `Function` property values across defined scenarios.
+                - Added `PredictionPlugin` to diagnose state and progress of `Prediction`.
     -edk/io:
         - Store:
             - Added `skip` paramater to skip a number of rows for `top`.

@@ -1,13 +1,22 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import { 
-    ApplicationPlugin, Const, OptionsPlugin, Schema,
-    SimulationPlugin, SuperUser, mergeSchemas, MLFunctionPlugin, DataSourcePlugin, StatusPlugin
+import {
+  ApplicationPlugin,
+  Const,
+  DataSourcePlugin,
+  mergeSchemas,
+  MLFunctionPlugin,
+  OptionsPlugin,
+  PredictionPlugin,
+  Schema,
+  SimulationPlugin,
+  StatusPlugin,
+  SuperUser,
 } from '@elaraai/edk/lib';
 
 import baseline from '../../gen/baseline.scenario';
 import cash from '../../gen/cash.structure';
-import sales from '../../gen/sales.structure';
 import sales_data from '../../gen/sales.source';
+import sales from '../../gen/sales.structure';
 
 export default Schema(
     ApplicationPlugin({
@@ -51,6 +60,7 @@ export default Schema(
                     Sales: sales_data
                 }
             }),
+            "Prediction Performance": PredictionPlugin(),
             Status: StatusPlugin(),
         },
         users: [

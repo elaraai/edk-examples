@@ -1,8 +1,19 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import {
-    ApplicationPlugin, Const, DataSourcePlugin, mergeSchemas, MLFunctionPlugin, 
-    PanelContainer, PanelDimension, PanelPageSchema, PanelVisual, PipelinePlugin, 
-    Schema, StatusPlugin, SuperUser
+  ApplicationPlugin,
+  Const,
+  DataSourcePlugin,
+  mergeSchemas,
+  MLFunctionPlugin,
+  PanelContainer,
+  PanelDimension,
+  PanelPageSchema,
+  PanelVisual,
+  PipelinePlugin,
+  PredictionPlugin,
+  Schema,
+  StatusPlugin,
+  SuperUser,
 } from '@elaraai/edk/lib';
 
 import allocations_pipeline from '../../gen/allocations.pipeline';
@@ -80,6 +91,7 @@ export default Schema(
                 ],
                 prepend: "Datasource"
             }),
+            "Prediction Performance": PredictionPlugin(),
             Status: StatusPlugin(),
         },
         users: [

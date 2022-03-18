@@ -7,6 +7,7 @@ import pipeline_plugin from "../../gen/pipeline.plugin"
 
 const rows = pipeline_plugin.pipeline.Rows.output_table
 const distribution = pipeline_plugin.pipeline["Distribution"].output_table
+const single = pipeline_plugin.pipeline.Single.output_table
 
 export default ELARA.Schema(
     mergeSchemas(
@@ -69,6 +70,13 @@ export default ELARA.Schema(
                 name: 'JSON Data Other',
                 partition: rows.partitions.Group,
                 table: rows,
+            })
+        ),
+        ELARA.ViewSchema(
+            ELARA.View({
+                name: 'JSON Single',
+                partition: single.partitions.Rows,
+                table: single,
             })
         ),
         ELARA.ViewSchema(

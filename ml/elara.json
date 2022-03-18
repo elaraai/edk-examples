@@ -64,7 +64,7 @@
       "name": "Localhost Test",
       "loglevel": "info",
       "server": "localhost",
-      "training_iterations_gp": 50000
+      "training_iterations_gp": 2000
     },
     "rate.source": {
       "name": "Rate",

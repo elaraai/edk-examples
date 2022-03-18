@@ -1,12 +1,23 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import { 
-    ApplicationPlugin, Const, Schema,
-    SuperUser, DataSourcePlugin, OptionsPlugin, mergeSchemas, Partition, Print, SimulationPlugin, Variable, StatusPlugin
+import {
+  ApplicationPlugin,
+  Const,
+  DataSourcePlugin,
+  mergeSchemas,
+  OptionsPlugin,
+  Partition,
+  PredictionPlugin,
+  Print,
+  Schema,
+  SimulationPlugin,
+  StatusPlugin,
+  SuperUser,
+  Variable,
 } from '@elaraai/edk/lib';
 
-import sales_source from '../../gen/sales.source';
 import baseline from '../../gen/baseline.scenario';
 import cash from '../../gen/cash.structure';
+import sales_source from '../../gen/sales.source';
 import sales from '../../gen/sales.structure';
 
 export default Schema(
@@ -54,6 +65,7 @@ export default Schema(
             Datasource: DataSourcePlugin({
                 datasources: [sales_source]
             }),
+            "Prediction Performance": PredictionPlugin(),
             Status: StatusPlugin(),
         },
         users: [

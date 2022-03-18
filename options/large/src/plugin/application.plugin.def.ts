@@ -1,11 +1,24 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import { ApplicationPlugin, Const, Schema, SuperUser, StatusPlugin, DataSourcePlugin, PipelinePlugin, mergeSchemas, SimulationPlugin, MLFunctionPlugin, OptionsPlugin } from '@elaraai/edk/lib';
+import {
+  ApplicationPlugin,
+  Const,
+  DataSourcePlugin,
+  mergeSchemas,
+  MLFunctionPlugin,
+  OptionsPlugin,
+  PipelinePlugin,
+  PredictionPlugin,
+  Schema,
+  SimulationPlugin,
+  StatusPlugin,
+  SuperUser,
+} from '@elaraai/edk/lib';
 
-import range_source from '../../gen/range.source'
-import flow_pipeline from '../../gen/flow.pipeline'
-import flow from '../../gen/flow.structure'
-import stuff from '../../gen/stuff.structure'
 import baseline_scenario from '../../gen/baseline.scenario';
+import flow_pipeline from '../../gen/flow.pipeline';
+import flow from '../../gen/flow.structure';
+import range_source from '../../gen/range.source';
+import stuff from '../../gen/stuff.structure';
 
 export default Schema(
     ApplicationPlugin({
@@ -51,6 +64,7 @@ export default Schema(
             'Machine Learning': MLFunctionPlugin({
                 func: flow.properties.outflow.function
             }),
+            "Prediction Performance": PredictionPlugin(),
             Status: StatusPlugin(),
         },
         users: [
