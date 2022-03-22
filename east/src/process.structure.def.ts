@@ -1,13 +1,22 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from '@elaraai/edk/lib';
 import {
+  Add,
   ArrayType,
   Const,
   DictType,
   GenericFunction,
   Get,
+  Insert,
+  Modulo,
+  NewDict,
+  Print,
   Property,
+  Range,
+  Reduce,
   ToDateTime,
+  ToDict,
+  Variable,
 } from '@elaraai/edk/lib';
 
 import inputSource from '../gen/input.source';
@@ -60,6 +69,75 @@ export default ELARA.ProcessStructureSchema({
             Get4Simulated: Get(Property("Array", ArrayType("string")), Const(0n)),
             Get5Simulated: Get(Property("Array", ArrayType("string")), Const(2n)),
             Get6Simulated: Get(Property("Array", ArrayType("string")), Const(2n), Const("c")),
+            ReduceMapped: Reduce(
+                Range(1n, 10000n),
+                Insert(
+                    Variable("Previous", DictType("integer")),
+                    Print(Modulo(Variable("Index", "integer"), 100n)),
+                    Add(
+                        Get(Variable("Previous", DictType("integer")), Print(Modulo(Variable("Index", "integer"), 100n)), 0n),
+                        Variable("Value", "integer"),
+                    ),
+                ),
+                NewDict("integer"),
+                Variable("Previous", DictType("integer")),
+                Variable("Value", "integer"),
+                Variable("Index", "integer"),
+            ),
+            ToDictMapped: ToDict(
+                Range(1n, 10000n),
+                Add(
+                    Variable("Previous", "integer"),
+                    Variable("Value", "integer"),
+                ),
+                Print(Modulo(Variable("Index", "integer"), 100n)),
+                Variable("Value", "integer"),
+                Variable("Index", "integer"),
+                Variable("Previous", "integer"),
+                0n,
+            ),
+            ToDictSimpleMapped: ToDict(
+                Range(1n, 10000n),
+                Variable("Value", "integer"),
+                Print(Modulo(Variable("Index", "integer"), 100n)),
+                Variable("Value", "integer"),
+                Variable("Index", "integer"),
+            ),
+            Range: Range(1n, 10000n),
+            ReduceSimulated: Reduce(
+                Property("Range", ArrayType("integer")),
+                Insert(
+                    Variable("Previous", DictType("integer")),
+                    Print(Modulo(Variable("Index", "integer"), 100n)),
+                    Add(
+                        Get(Variable("Previous", DictType("integer")), Print(Modulo(Variable("Index", "integer"), 100n)), 0n),
+                        Variable("Value", "integer"),
+                    ),
+                ),
+                NewDict("integer"),
+                Variable("Previous", DictType("integer")),
+                Variable("Value", "integer"),
+                Variable("Index", "integer"),
+            ),
+            ToDictSimulated: ToDict(
+                Property("Range", ArrayType("integer")),
+                Add(
+                    Variable("Previous", "integer"),
+                    Variable("Value", "integer"),
+                ),
+                Print(Modulo(Variable("Index", "integer"), 100n)),
+                Variable("Value", "integer"),
+                Variable("Index", "integer"),
+                Variable("Previous", "integer"),
+                0n,
+            ),
+            ToDictSimpleSimulated: ToDict(
+                Property("Range", ArrayType("integer")),
+                Variable("Value", "integer"),
+                Print(Modulo(Variable("Index", "integer"), 100n)),
+                Variable("Value", "integer"),
+                Variable("Index", "integer"),
+            )
         },
         events: {},
     }
