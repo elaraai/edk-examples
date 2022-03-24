@@ -25,7 +25,8 @@ export default ProcessStructureSchema({
         date: flow.fields.date,
         properties: {
             current_stuff: GetProperty({
-                property: stuff.properties.balance
+                property: stuff.properties.balance,
+                sampling_statistic: "none",
             }),
             inflow: Option({
                 default_value: flow.fields.flow,

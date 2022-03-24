@@ -33,7 +33,7 @@ export default Schema(
                 },
                 values: {
                     datetime: flow.date,
-                    current_stuff: flow.properties.current_stuff,
+                    //current_stuff: flow.properties.current_stuff,
                     outflow: flow.properties.outflow,
                 },
                 output_entity: stuff,
@@ -50,7 +50,9 @@ export default Schema(
                     name: "Flow Results",
                     entity: flow,
                     properties: {
-                        ...flow.properties,
+                        //current_stuff: flow.properties.current_stuff,
+                        inflow: flow.properties.inflow,
+                        outflow: flow.properties.outflow,
                         new_stuff: flow.events.flow.value
                     },
                     ml: false,
