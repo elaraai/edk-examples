@@ -1,17 +1,23 @@
 // © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
-import { 
-    ApplicationPlugin, Const, Schema,
-    SimulationPlugin, SuperUser, mergeSchemas, DataSourcePlugin, StatusPlugin
+import {
+  ApplicationPlugin,
+  Const,
+  DataSourcePlugin,
+  mergeSchemas,
+  PredictionPlugin,
+  Schema,
+  SimulationPlugin,
+  StatusPlugin,
+  SuperUser,
 } from '@elaraai/edk/lib';
 
-
 import cash from '../../gen/cash.structure';
-import work from '../../gen/work.structure';
-import supplier from '../../gen/supplier.structure';
-import payment from '../../gen/payment.structure';
 import invoices_source from '../../gen/invoices.source';
+import payment from '../../gen/payment.structure';
+import supplier from '../../gen/supplier.structure';
 import suppliers_source from '../../gen/suppliers.source';
 import work_source from '../../gen/work.source';
+import work from '../../gen/work.structure';
 
 export default Schema(
     ApplicationPlugin({
@@ -48,6 +54,7 @@ export default Schema(
                     work_source
                 ]
             }),
+            Prediction: PredictionPlugin(),
             Status: StatusPlugin(),
         },
         users: [

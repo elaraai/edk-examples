@@ -32,7 +32,8 @@
       "application": "",
       "optimization_randomness": 10,
       "optimization_serial_iterations": 50,
-      "optimization_iterations": 200000
+      "optimization_iterations": 2500,
+      "optimization_emit_proposals": "final"
     },
     "optimized.scenario": {
       "name": "optimized",
