@@ -1,4 +1,4 @@
-// © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
+// © Copyright 2018- 2022 - Elara AI Pty Ltd ACN 627 124 903
 import {
   Add,
   Const,
@@ -9,7 +9,9 @@ import {
   Log,
   LowerCase,
   Modulo,
+  Multiply,
   NewDict,
+  NewVariant,
   PipelineSchema,
   Pow,
   Print,
@@ -17,10 +19,12 @@ import {
   Reduce,
   SelectOperation,
   Sqrt,
+  Switch,
   ToDateTime,
   ToDict,
   UpperCase,
   Variable,
+  Variant,
 } from '@elaraai/edk/lib';
 
 import input_source from '../gen/input.source';
@@ -81,7 +85,40 @@ export default PipelineSchema({
                     Print(Modulo(Variable("Index", "integer"), 100n)),
                     Variable("Value", "integer"),
                     Variable("Index", "integer"),
-                )
+                ),
+                NewVariant1: NewVariant({ "Some": "float", "None": "null" }, "Some", 3.14),
+                NewVariant2: NewVariant({ "Some": "float", "None": "null" }, "None"),
+                NewVariant3: NewVariant({ "Some": DictType("integer"), "None": "null" }, "Some", new Map<string, bigint>([["a", 1n], ["b", 2n], ["c", 3n]])),
+                Switch1: Switch(
+                    Const(Variant({ "Some": "float", "None": "null" }, "Some", 1)),
+                    {
+                        Some: Multiply(Variable("x", "float"), 2),
+                        None: Const(0),
+                    },
+                    "x"
+                ),
+                Switch2: Switch(
+                    Const(Variant({ "Some": "float", "None": "null" }, "None")),
+                    {
+                        Some: Multiply(Variable("x", "float"), 2),
+                        None: Const(0),
+                    },
+                    "x"
+                ),
+                Switch3: Switch(
+                    Const(Variant({ "Some": "float", "None": "null" }, "Some", 1)),
+                    {
+                        Some: Const(true),
+                        None: Const(false),
+                    },
+                ),
+                Switch4: Switch(
+                    Const(Variant({ "Some": "float", "None": "null" }, "None")),
+                    {
+                        Some: Const(true),
+                        None: Const(false),
+                    },
+                ),
             }
         })
     ],

@@ -1,9 +1,11 @@
-// © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
+// © Copyright 2018- 2022 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from '@elaraai/edk/lib';
 import {
   Add,
   AddDuration,
+  GetProperties,
   GetProperty,
+  NewSet,
   ProcessDate,
   Property,
 } from '@elaraai/edk/lib';
@@ -25,6 +27,15 @@ export default ELARA.ProcessStructureSchema({
             work: GetProperty({
                 property: supplier.properties.work,
                 marker: Property('supplier', 'string')
+            }),
+            suppliers: NewSet(work.fields.supplier),
+            works1: GetProperties({
+                property: supplier.properties.work,
+                markers: Property('suppliers', 'set'),
+            }),
+            works2: GetProperties({
+                property: supplier.properties.work,
+                markers: NewSet(work.fields.supplier),
             }),
             completion: AddDuration(ProcessDate(), Property('hours', 'float'), 'hour'),
         },

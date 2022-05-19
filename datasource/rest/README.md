@@ -100,7 +100,7 @@ export default ELARA.RestApiSourceSchema({
     },
     endpoints: {
         Repos: {
-            rows_request: {
+            request: {
                 url: ELARA.StringJoin`https://api.github.com/users/${ELARA.Environment("GITHUB_USER")}/repos`,
                 method: 'GET',
                 accept: 'application/json',
@@ -263,7 +263,7 @@ export default ELARA.RestApiSourceSchema({
     },
     endpoints: {
         Repos: {
-            rows_request: {
+            request: {
                 url: ELARA.StringJoin`https://api.github.com/users/${ELARA.Environment("GITHUB_USER")}/repos`,
                 method: 'GET',
                 accept: 'application/json',
@@ -273,7 +273,7 @@ export default ELARA.RestApiSourceSchema({
                 }),
                 content: 'application/json',
             },
-            rows_response: {
+            response: {
                 status_code_variable: ELARA.Variable("status_code", 'integer'),
                 status_text_variable: ELARA.Variable("status_text", 'string'),
                 headers: ELARA.Parse(ELARA.Variable("headers", rest_repos_response_headers_type)),

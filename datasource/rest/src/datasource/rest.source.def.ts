@@ -1,4 +1,4 @@
-// © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
+// © Copyright 2018- 2022 - Elara AI Pty Ltd ACN 627 124 903
 // East type declarations 
 import * as ELARA from "@elaraai/edk/lib"
 
@@ -491,38 +491,11 @@ const rest_repos_detail_response_headers_type = ELARA.StructType({
     'x-ratelimit-used': 'integer',
     'x-xss-protection': 'float',
 });
-const shared_rest_repos_tags_response_body_type = ELARA.StructType({
-    message: 'string',
-    documentation_url: 'string',
-});
-const shared_rest_repos_tags_response_headers_type = ELARA.StructType({
-    'access-control-allow-origin': 'string',
-    'access-control-expose-headers': 'string',
-    connection: 'string',
-    'content-encoding': 'string',
-    'content-security-policy': 'string',
-    'content-type': 'string',
-    date: 'string',
-    'referrer-policy': 'string',
-    server: 'string',
-    'strict-transport-security': 'string',
-    'transfer-encoding': 'string',
-    vary: 'string',
-    'x-accepted-oauth-scopes': 'string',
-    'x-content-type-options': 'string',
-    'x-frame-options': 'string',
-    'x-github-media-type': 'string',
-    'x-github-request-id': 'string',
-    'x-oauth-client-id': 'string',
-    'x-oauth-scopes': 'string',
-    'x-ratelimit-limit': 'float',
-    'x-ratelimit-remaining': 'integer',
-    'x-ratelimit-reset': 'float',
-    'x-ratelimit-resource': 'string',
-    'x-ratelimit-used': 'integer',
-    'x-xss-protection': 'float',
-});
 
+const rest_repos_commit_response_body_type = ELARA.ArrayType(ELARA.StructType({
+    url: 'string',
+    html_url: 'string',
+}));
 
 export default ELARA.RestApiSourceSchema({
     name: "Rest",
@@ -570,9 +543,9 @@ export default ELARA.RestApiSourceSchema({
         token_variable: ELARA.Variable("token", rest_token_response_body_type),
     },
     endpoints: {
-        Repos: {
+        Repos: ELARA.RestApiEndpoint({
             primary_key: ELARA.Print(ELARA.Variable("id", 'float')),
-            rows_request: {
+            request: {
                 url: ELARA.StringJoin([ELARA.Const("https://api.github.com/users/"), ELARA.Environment("GITHUB_USER"), ELARA.Const("/repos"),], ""),
                 method: 'GET',
                 accept: 'application/json',
@@ -588,7 +561,7 @@ export default ELARA.RestApiSourceSchema({
                 datetime_variable: ELARA.Variable("request_datetime", 'datetime'),
                 delay_ms: ELARA.Const(0n),
             },
-            rows_response: {
+            response: {
                 status_code_variable: ELARA.Variable("status_code", 'integer'),
                 status_text_variable: ELARA.Variable("status_text", 'string'),
                 headers: ELARA.Parse(ELARA.Variable("headers", rest_repos_response_headers_type)),
@@ -626,14 +599,15 @@ export default ELARA.RestApiSourceSchema({
                     },
                     variable: ELARA.Variable("detail", rest_repos_detail_response_body_type),
                 }),
-                contributors: ELARA.RestApiEndpointStructElement({
+                commits: ELARA.RestApiEndpointArrayElement({
                     request: {
                         url: ELARA.StringJoin([
-                            ELARA.Const("https://api.github.com/users/"),
+                            ELARA.Const("https://api.github.com/repos/"),
                             ELARA.Environment("GITHUB_USER"),
                             ELARA.Const("/"),
                             ELARA.Variable("name", 'string'),
-                            ELARA.Const("/contributors"),
+                            ELARA.Const("/"),
+                            ELARA.Const("commits")
                         ], ""),
                         method: 'GET',
                         accept: 'application/json',
@@ -647,22 +621,24 @@ export default ELARA.RestApiSourceSchema({
                     response: {
                         status_code_variable: ELARA.Variable("status_code", 'integer'),
                         status_text_variable: ELARA.Variable("status_text", 'string'),
-                        headers: ELARA.Parse(ELARA.Variable("headers", shared_rest_repos_tags_response_headers_type)),
-                        headers_variable: ELARA.Variable("headers", shared_rest_repos_tags_response_headers_type),
-                        body: ELARA.Parse(ELARA.Variable("body", shared_rest_repos_tags_response_body_type)),
-                        body_variable: ELARA.Variable("body", shared_rest_repos_tags_response_body_type),
-                        value: ELARA.Variable("body", shared_rest_repos_tags_response_body_type),
+                        headers: ELARA.Parse(ELARA.Variable("headers", rest_repos_detail_response_headers_type)),
+                        headers_variable: ELARA.Variable("headers", rest_repos_detail_response_headers_type),
+                        body: ELARA.Parse(ELARA.Variable("body", rest_repos_commit_response_body_type)),
+                        body_variable: ELARA.Variable("body", rest_repos_commit_response_body_type),
+                        value: ELARA.Variable("body", rest_repos_commit_response_body_type),
                     },
-                    variable: ELARA.Variable("contributors", shared_rest_repos_tags_response_body_type),
+                    variable: ELARA.Variable("commits", rest_repos_commit_response_body_type),
                 }),
-                tags: ELARA.RestApiEndpointStructElement({
+                commits_table: ELARA.RestApiEndpointTableElement({
+                    primary_key: ELARA.Variable("url", 'string'),
                     request: {
                         url: ELARA.StringJoin([
-                            ELARA.Const("https://api.github.com/users/"),
+                            ELARA.Const("https://api.github.com/repos/"),
                             ELARA.Environment("GITHUB_USER"),
                             ELARA.Const("/"),
                             ELARA.Variable("name", 'string'),
-                            ELARA.Const("/tags"),
+                            ELARA.Const("/"),
+                            ELARA.Const("commits")
                         ], ""),
                         method: 'GET',
                         accept: 'application/json',
@@ -676,15 +652,14 @@ export default ELARA.RestApiSourceSchema({
                     response: {
                         status_code_variable: ELARA.Variable("status_code", 'integer'),
                         status_text_variable: ELARA.Variable("status_text", 'string'),
-                        headers: ELARA.Parse(ELARA.Variable("headers", shared_rest_repos_tags_response_headers_type)),
-                        headers_variable: ELARA.Variable("headers", shared_rest_repos_tags_response_headers_type),
-                        body: ELARA.Parse(ELARA.Variable("body", shared_rest_repos_tags_response_body_type)),
-                        body_variable: ELARA.Variable("body", shared_rest_repos_tags_response_body_type),
-                        value: ELARA.Variable("body", shared_rest_repos_tags_response_body_type),
+                        headers: ELARA.Parse(ELARA.Variable("headers", rest_repos_detail_response_headers_type)),
+                        headers_variable: ELARA.Variable("headers", rest_repos_detail_response_headers_type),
+                        body: ELARA.Parse(ELARA.Variable("body", rest_repos_commit_response_body_type)),
+                        body_variable: ELARA.Variable("body", rest_repos_commit_response_body_type),
+                        value: ELARA.Variable("body", rest_repos_commit_response_body_type),
                     },
-                    variable: ELARA.Variable("tags", shared_rest_repos_tags_response_body_type),
                 }),
             },
-        },
+        }),
     }
 })

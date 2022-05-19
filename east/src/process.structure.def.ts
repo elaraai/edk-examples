@@ -1,4 +1,4 @@
-// © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
+// © Copyright 2018- 2022 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from '@elaraai/edk/lib';
 import {
   Add,
@@ -7,16 +7,23 @@ import {
   DictType,
   GenericFunction,
   Get,
+  IfElse,
   Insert,
   Modulo,
+  Multiply,
   NewDict,
+  NewVariant,
+  Not,
+  Null,
   Print,
   Property,
   Range,
   Reduce,
+  Switch,
   ToDateTime,
   ToDict,
   Variable,
+  Variant,
 } from '@elaraai/edk/lib';
 
 import inputSource from '../gen/input.source';
@@ -137,7 +144,92 @@ export default ELARA.ProcessStructureSchema({
                 Print(Modulo(Variable("Index", "integer"), 100n)),
                 Variable("Value", "integer"),
                 Variable("Index", "integer"),
-            )
+            ),
+            True: true,
+            Pi: 3.14,
+            Null: Null("null"),
+            NewVariant1Mapped: NewVariant({ "Some": "float", "None": "null" }, "Some", 3.14),
+            NewVariant2Mapped: NewVariant({ "Some": "float", "None": "null" }, "None"),
+            NewVariant3Mapped: NewVariant({ "Some": DictType("integer"), "None": "null" }, "Some", new Map<string, bigint>([["a", 1n], ["b", 2n], ["c", 3n]])),
+            NewVariant1Simulated: NewVariant({ "Some": "float", "None": "null" }, "Some", Property("Pi", "float")),
+            NewVariant2Simulated: NewVariant({ "Some": "float", "None": "null" }, "None", Property("Null", "null")),
+            NewVariant3Simulated: NewVariant({ "Some": DictType("integer"), "None": "null" }, "Some", Property("ToDictSimpleSimulated", DictType("integer"))),
+            Switch1Mapped: Switch(
+                Const(Variant({ "Some": "float", "None": "null" }, "Some", 1)),
+                {
+                    Some: Multiply(Variable("x", "float"), 2),
+                    None: Const(0),
+                },
+                "x"
+            ),
+            Switch2Mapped: Switch(
+                Const(Variant({ "Some": "float", "None": "null" }, "None")),
+                {
+                    Some: Multiply(Variable("x", "float"), 2),
+                    None: Const(0),
+                },
+                "x"
+            ),
+            Switch3Mapped: Switch(
+                Const(Variant({ "Some": "float", "None": "null" }, "Some", 1)),
+                {
+                    Some: Const(true),
+                    None: Const(false),
+                },
+            ),
+            Switch4Mapped: Switch(
+                Const(Variant({ "Some": "float", "None": "null" }, "None")),
+                {
+                    Some: Const(true),
+                    None: Const(false),
+                },
+            ),
+            Switch1Simulated: Switch(
+                IfElse(
+                    Property("True", "boolean"),
+                    NewVariant({ "Some": "float", "None": "null" }, "Some", 1),
+                    NewVariant({ "Some": "float", "None": "null" }, "None"),
+                ),
+                {
+                    Some: Multiply(Variable("x", "float"), 2),
+                    None: Const(0),
+                },
+                "x"
+            ),
+            Switch2Simulated: Switch(
+                IfElse(
+                    Not(Property("True", "boolean")),
+                    NewVariant({ "Some": "float", "None": "null" }, "Some", 1),
+                    NewVariant({ "Some": "float", "None": "null" }, "None"),
+                ),
+                {
+                    Some: Multiply(Variable("x", "float"), 2),
+                    None: Const(0),
+                },
+                "x"
+            ),
+            Switch3Simulated: Switch(
+                IfElse(
+                    Property("True", "boolean"),
+                    NewVariant({ "Some": "float", "None": "null" }, "Some", 1),
+                    NewVariant({ "Some": "float", "None": "null" }, "None"),
+                ),
+                {
+                    Some: Const(true),
+                    None: Const(false),
+                },
+            ),
+            Switch4Simulated: Switch(
+                IfElse(
+                    Not(Property("True", "boolean")),
+                    NewVariant({ "Some": "float", "None": "null" }, "Some", 1),
+                    NewVariant({ "Some": "float", "None": "null" }, "None"),
+                ),
+                {
+                    Some: Const(true),
+                    None: Const(false),
+                },
+            ),
         },
         events: {},
     }
