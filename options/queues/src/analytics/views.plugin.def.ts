@@ -1,4 +1,4 @@
-// © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
+// © Copyright 2018- 2022 - Elara AI Pty Ltd ACN 627 124 903
 import { mergeSchemas, ViewSchema, View, Schema, Maximum, Abs, Unique, ViewAggregation, ViewGroup, Sum, StringJoin, Floor, ViewSelection } from "@elaraai/edk/lib"
 
 import pipelines from '../../gen/pipelines.plugin'

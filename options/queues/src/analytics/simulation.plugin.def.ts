@@ -1,4 +1,4 @@
-// © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
+// © Copyright 2018- 2022 - Elara AI Pty Ltd ACN 627 124 903
 import { Schema, SimulationPlugin, mergeSchemas } from '@elaraai/edk/lib';
 
 import queues from '../../gen/queues.structure'

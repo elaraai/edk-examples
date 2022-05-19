@@ -1,4 +1,4 @@
-// © Copyright 2018- 2021 - Elara AI Pty Ltd ACN 627 124 903
+// © Copyright 2018- 2022 - Elara AI Pty Ltd ACN 627 124 903
 import * as ELARA from "@elaraai/edk/lib"
 import { AggregateOperation, CollectDictSum, CollectSet, DateKey, DictType, DisaggregateOperation, Floor, JoinOperation, StringJoin, Unique, Variable } from "@elaraai/edk/lib";
 
