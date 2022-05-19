@@ -6,7 +6,7 @@ The purpose of the EDK examples is to provide worked usage of all aspects of ELA
 
 See below for the various project categories and corresponding links.
 
-- [Gift Shop](./gift_shop/README.md): the example as documented in the [getting started documentation](../start/start.development), demonstrating end-to-end usage to solve complex business problems.
+- [Gift Shop](./gift_shop/README.md): the example as documented in the [getting started documentation](https://elaraai.com/docs/start/start), demonstrating end-to-end usage to solve complex business problems.
 
 ### General projects
 
@@ -57,8 +57,8 @@ See below for the various project categories and corresponding links.
 
 For general usage and code examples we provide the following detailed documentation:
 
-- [EDK CLI](../cli/cli.md): detailed CLI usage reference and examples
-- [EDK API](../api/index.md): programmatic api for the cli functionality
+- [EDK CLI](https://elaraai.com/docs/edk#cli-usage): detailed CLI usage reference and examples
+- [EDK API](https://elaraai.com/docs/edk#api-usage): programmatic api for the cli functionality
 
 ## Release Notes
 
