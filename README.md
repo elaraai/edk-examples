@@ -62,6 +62,14 @@ For general usage and code examples we provide the following detailed documentat
 
 ## Release Notes
 
+## [2022-05-20]
+
+`@elaraai/edk-examples` **v3.9.1**
+
+### Added
+
+- Updated `datasource/rest` example to demonstrate use of the `failure` variable in schema
+
 ### [2022-05-19]
 
 #### General
