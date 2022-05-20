@@ -554,8 +554,15 @@ export default ELARA.RestApiSourceSchema({
                     Authorization: ELARA.StringJoin([ELARA.Const("token "), ELARA.GetField(ELARA.Variable("token", rest_token_response_body_type), "access_token"),], ""),
                 }),
                 paginate: ELARA.Const(false),
-                retry: ELARA.Const(false),
+                retry: ELARA.And(
+                    ELARA.Variable("failed", 'boolean'),
+                    ELARA.Less(
+                        ELARA.Variable("n_attempts", 'integer'),
+                        10n
+                    )
+                ),
                 content: 'application/json',
+                failure_variable: ELARA.Variable("failed", 'boolean'),
                 n_pages_variable: ELARA.Variable("n_pages", 'integer'),
                 n_attempts_variable: ELARA.Variable("n_attempts", 'integer'),
                 datetime_variable: ELARA.Variable("request_datetime", 'datetime'),
@@ -587,6 +594,13 @@ export default ELARA.RestApiSourceSchema({
                         }),
                         content: 'application/x-www-form-urlencoded',
                         datetime_variable: ELARA.Variable("request_datetime", 'datetime'),
+                        retry: ELARA.And(
+                            ELARA.Variable("failure", 'boolean'),
+                            ELARA.Less(
+                                ELARA.Variable("n_attempts", 'integer'),
+                                10n
+                            )
+                        ) 
                     },
                     response: {
                         status_code_variable: ELARA.Variable("status_code", 'integer'),
@@ -617,6 +631,13 @@ export default ELARA.RestApiSourceSchema({
                         }),
                         content: 'application/x-www-form-urlencoded',
                         datetime_variable: ELARA.Variable("request_datetime", 'datetime'),
+                        retry: ELARA.And(
+                            ELARA.Variable("failure", 'boolean'),
+                            ELARA.Less(
+                                ELARA.Variable("n_attempts", 'integer'),
+                                10n
+                            )
+                        ) 
                     },
                     response: {
                         status_code_variable: ELARA.Variable("status_code", 'integer'),
@@ -648,6 +669,13 @@ export default ELARA.RestApiSourceSchema({
                         }),
                         content: 'application/x-www-form-urlencoded',
                         datetime_variable: ELARA.Variable("request_datetime", 'datetime'),
+                        retry: ELARA.And(
+                            ELARA.Variable("failure", 'boolean'),
+                            ELARA.Less(
+                                ELARA.Variable("n_attempts", 'integer'),
+                                10n
+                            )
+                        ) 
                     },
                     response: {
                         status_code_variable: ELARA.Variable("status_code", 'integer'),
